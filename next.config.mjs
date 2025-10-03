@@ -1,14 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: 'gh-app-iwxb.vercel.app',
-            pathname: '/**',
-          },
-    ]
-    }
+  images: {
+    domains: ["b.wallet.ir"],
+  },
 };
 
 export default nextConfig;

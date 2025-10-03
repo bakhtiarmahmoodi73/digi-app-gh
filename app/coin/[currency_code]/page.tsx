@@ -1,9 +1,64 @@
-
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-function Page() {
+type Coin = {
+  id: number;
+  currency_code: string;
+  en_name: string;
+  fa_name: string;
+  price: string;
+  buy_irt_price: string;
+  sell_irt_price: string;
+  irt_price: string;
+  daily_change_percent: string;
+  icon: string;
+  about: string;
+};
+
+
+
+
+
+
+
+
+export default function CoinDetailsPage() {
+  const { currency_code } = useParams<{ currency_code: string }>();
+  const [coin, setCoin] = useState<Coin | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!currency_code) return;
+
+    const fetchData = async () => {
+      try {
+        // برای گرفتن همه کوین‌ها
+        const res = await fetch(`https://b.wallet.ir/coinlist/list/?page=1&limit=100`);
+        const data = await res.json();
+
+        const found = (data.items || []).find(
+          (item: Coin) => item.currency_code === currency_code
+        );
+        setCoin(found || null);
+      } catch (err) {
+        console.error(err);
+        setCoin(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [currency_code]);
+
+  if (loading) return <p className="p-4">در حال بارگذاری...</p>;
+  if (!coin) return <p className="p-4 text-red-500">اطلاعات رمز ارز یافت نشد</p>;
+
   return (
+
     <div  className="relative w-full h-[3580px] bg-white flex flex-col">
       <div className="relative  flex-1">
     <div className="relative flex-1" >
@@ -15,15 +70,17 @@ function Page() {
             قیمت لحظه ای :
           </p>
           <Image
-            src="/images/bitcoin (1) 3.svg"
-            alt="bit"
-            width={10}
-            height={10}
+           src={coin.icon}
+            alt={coin.fa_name} 
+            
+            width={60}
+            height={60}
             className="absolute w-[43px] h-[43px] top-[75px] left-[272px] tablet:w-[61px] tablet:h-[61px] tablet:top-[87px] tablet:left-[648px]  laptop:w-[73px] laptop:h-[73px] laptop:top-[80px] laptop:right-[30px]  "
           />
           <p className="absolute font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] w-[56px] h-[22px] top-[70px] left-[210px] tablet:top-[87px] laptop:w-[72px] laptop:h-[28px] laptop:top-[85px] laptop:right-[110px] laptop:text-[18px] laptop:leading-[28.17px]  ">
-            {" "}
-            بیت کوین{" "}
+            {/* {" "}
+            بیت کوین{" "} */}
+            {coin.fa_name}
           </p>
           <p className="absolute font-iranSansnumber text-[#000000] font-[700] text-[14px] leading-[21px] w-[142px] h-[21px] top-[75px] left-[5px] tablet:top-[88px] tablet:left-[385px]  laptop:w-[182px] laptop:h-[27px] laptop:top-[87px] laptop:right-[392px] laptop:text-[18px] laptop:leading-[27px] ">
             {" "}
@@ -314,7 +371,47 @@ function Page() {
     </div>
     </div>
     </div>
+
+
+
+
+
+
+
+
+    
+      
+//         <img src={coin.icon} alt={coin.fa_name} className="w-12 h-12 rounded-full" />
+//         <div>
+//           <h1 className="text-2xl font-bold">{coin.fa_name}</h1>
+//           <p className="text-gray-500">{coin.en_name} ({coin.currency_code})</p>
+//         </div>
+//       </div>
+
+//       <div className="space-y-2 text-sm">
+//         <p>💲 قیمت دلاری: {Number(coin.price).toLocaleString()} $</p>
+//         <p>
+//           📉 تغییر روزانه:{" "}
+//           <span className={Number(coin.daily_change_percent) >= 0 ? "text-green-600" : "text-red-600"}>
+//             {coin.daily_change_percent}%
+//           </span>
+//         </p>
+//         <p>🟢 خرید: {Number(coin.buy_irt_price).toLocaleString()} تومان</p>
+//         <p>🔴 فروش: {Number(coin.sell_irt_price).toLocaleString()} تومان</p>
+//         <p>💰 قیمت بازار (IRT): {Number(coin.irt_price).toLocaleString()} تومان</p>
+//       </div>
+
+//       <div className="mt-6">
+//         <h2 className="text-lg font-semibold mb-2">درباره {coin.fa_name}</h2>
+//         <p className="text-gray-700 leading-7 text-justify">{coin.about}</p>
+//       </div>
+//     </div>
+
+
+
+
+
+
+
   );
 }
-
-export default Page;

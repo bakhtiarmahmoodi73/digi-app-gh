@@ -11,6 +11,7 @@ import {
 
 type Coin = {
   id: string;
+  currency_code: string;
   name: string;
   symbol: string;
   price_usd: number;
@@ -45,6 +46,7 @@ export default function CoinTable() {
           buy_price: Number(item.buy_irt_price),
           sell_price: Number(item.sell_irt_price),
           icon: item.icon,
+          currency_code: item.currency_code,
         }));
 
         setCoins(formatted);
@@ -97,20 +99,24 @@ export default function CoinTable() {
       accessorKey: "buy_price",
       header: "خرید به والت",
       cell: ({ getValue }) =>
-        getValue<number>() ? `${getValue<number>()?.toLocaleString()} تومان` : "-",
+        getValue<number>()
+          ? `${getValue<number>()?.toLocaleString()} تومان`
+          : "-",
     },
     {
       accessorKey: "sell_price",
       header: "فروش به والت",
       cell: ({ getValue }) =>
-        getValue<number>() ? `${getValue<number>()?.toLocaleString()} تومان` : "-",
+        getValue<number>()
+          ? `${getValue<number>()?.toLocaleString()} تومان`
+          : "-",
     },
     {
       id: "actions",
       header: "",
       cell: ({ row }) => (
         <button
-          onClick={() => router.push(`/coin/${row.original.symbol}`)}
+          onClick={() => router.push(`/coin/${row.original.currency_code}`)}
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
         >
           معامله
