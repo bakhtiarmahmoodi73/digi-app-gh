@@ -7,12 +7,12 @@ import Footer from "../components/Footer";
 import Providers from "./providers";
 
 const iranSans = localFont({
-  src: "../Public/fonts/IRANSansX-RegularD4.ttf",
+  src: "../public/fonts/IRANSansX-RegularD4.ttf",
   variable: "--font-iran-sans",
   weight: "100 900",
 });
 const iranSansnumber = localFont({
-  src: "../Public/fonts/IRANSansXFaNum-LightD4.ttf",
+  src: "../public/fonts/IRANSansXFaNum-LightD4.ttf",
   variable: "--font-number-sans",
   weight: "100 900",
 });
