@@ -378,30 +378,6 @@ export default function CoinDetailsPage() {
       </div>
     </div>
 
-    //         <img src={coin.icon} alt={coin.fa_name} className="w-12 h-12 rounded-full" />
-    //         <div>
-    //           <h1 className="text-2xl font-bold">{coin.fa_name}</h1>
-    //           <p className="text-gray-500">{coin.en_name} ({coin.currency_code})</p>
-    //         </div>
-    //       </div>
-
-    //       <div className="space-y-2 text-sm">
-    //         <p>💲 قیمت دلاری: {Number(coin.price).toLocaleString()} $</p>
-    //         <p>
-    //           📉 تغییر روزانه:{" "}
-    //           <span className={Number(coin.daily_change_percent) >= 0 ? "text-green-600" : "text-red-600"}>
-    //             {coin.daily_change_percent}%
-    //           </span>
-    //         </p>
-    //         <p>🟢 خرید: {Number(coin.buy_irt_price).toLocaleString()} تومان</p>
-    //         <p>🔴 فروش: {Number(coin.sell_irt_price).toLocaleString()} تومان</p>
-    //         <p>💰 قیمت بازار (IRT): {Number(coin.irt_price).toLocaleString()} تومان</p>
-    //       </div>
-
-    //       <div className="mt-6">
-    //         <h2 className="text-lg font-semibold mb-2">درباره {coin.fa_name}</h2>
-    //         <p className="text-gray-700 leading-7 text-justify">{coin.about}</p>
-    //       </div>
-    //     </div>
+   
   );
 }
