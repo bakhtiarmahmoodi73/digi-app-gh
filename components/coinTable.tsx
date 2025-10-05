@@ -516,7 +516,22 @@ export default function CoinsPage() {
       {/* header column titles (مثل تصویر) */}
       <div className="hidden md:flex items-center bg-white border border-gray-200 rounded-md py-3 px-3 mb-2">
         <div className="w-28 text-center text-sm font-medium text-gray-600">عملیات</div>
-        
+        <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-md px-3 py-2 shadow-sm">
+          <svg className="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none">
+            <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <input
+            dir="rtl"
+            placeholder="جستجو ..."
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
+            className="outline-none text-sm placeholder-gray-400"
+          />
+        </div>
         <div className="w-36 text-right text-sm text-gray-600">نام رمز ارز</div>
         <div className="flex-1 grid grid-cols-4 gap-4 text-sm text-gray-600">
         <div className="text-center">ارزش دلاری</div>
