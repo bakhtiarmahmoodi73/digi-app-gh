@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import CoinChart from "../../../components/CoinChart";
 type Coin = {
   id: number;
   currency_code: string;
@@ -286,7 +286,10 @@ export default function CoinDetailsPage() {
             </p>
             <p className="absolute font-iranSans text-center text-[#000000] font-[900] text-[20px] leading-[40px] w-[200px] h-[80px] top-[1480px] left-[78px] tablet:leading-[46.96px] tablet:text-[30px] tablet:w-[518px]  tablet:h-[55px] tablet:top-[1360px] tablet:left-[158px] laptop:w-[518px] laptop:h-[55px] laptop:top-[1243px] laptop:left-[820px] laptop:text-[30px] laptop:leading-[46.96px]">
               نمودار قیمت بیت کوین و نرخ برابری تومان
+
+              <CoinChart />
             </p>
+           
             <p className="absolute font-iranSans text-[#000000] font-[900] text-[20px] leading-[31.3px] w-[266px] h-[31px] top-[2246px] left-[55px] tablet:leading-[46.96px] tablet:text-[30px] tablet:w-[399px]  tablet:h-[47px] tablet:top-[2036px] tablet:left-[218px] laptop:w-[399px] laptop:h-[47px] laptop:top-[2166px] laptop:left-[890px] laptop:text-[30px] laptop:leading-[46.96px]">
               توضیحات بیشتر درباره بیت کوین{" "}
             </p>
