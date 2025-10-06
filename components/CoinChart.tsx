@@ -47,11 +47,9 @@ const CoinChart: React.FC = () => {
   if (loading) return <p className="text-center p-4">در حال بارگذاری...</p>;
   if (!coin) return <p className="text-center p-4">ارز پیدا نشد</p>;
 
-  // ساخت داده شبیه‌سازی شده 24 ساعت
   const basePrice = parseFloat(coin.irt_price);
   const dailyChange = parseFloat(coin.daily_change_percent) / 100;
   const data24h = Array.from({ length: 24 }, (_, i) => {
-    // شبیه‌سازی تغییر قیمت: هر ساعت کمی بالا یا پایین
     const variation = (Math.random() - 0.5) * dailyChange * 2 * basePrice;
     return parseFloat((basePrice + variation).toFixed(2));
   });

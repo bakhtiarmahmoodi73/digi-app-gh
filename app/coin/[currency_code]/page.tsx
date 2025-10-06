@@ -28,7 +28,6 @@ export default function CoinDetailsPage() {
 
     const fetchData = async () => {
       try {
-        // برای گرفتن همه کوین‌ها
         const res = await fetch(
           `https://b.wallet.ir/coinlist/list/?page=1&limit=100`
         );
