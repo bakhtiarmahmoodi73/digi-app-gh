@@ -16,9 +16,17 @@ module.exports = {
         iranSansnumber: ["var(--font-number-sans)"],
       },
       screens: {
-        mobile: "0px",
-        tablet: "376px",
-        laptop: "835px",
+        // موبایل (۰ تا ۳۷۵px)
+        mobile: { max: "375px" },
+
+        // تبلت (۳۷۶ تا ۸۳۴px)
+        tablet: { min: "376px", max: "834px" },
+
+        // لپ‌تاپ (۸۳۵ تا ۱۴۴۰px)
+        laptop: { min: "835px", max: "1440px" },
+
+        // ا برای نمایشگرهای بزرگ‌تر
+        desktop: { min: "1441px" },
       },
     },
   },

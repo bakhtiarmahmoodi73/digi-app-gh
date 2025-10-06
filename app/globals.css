@@ -17,7 +17,10 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: iranSans;
+  font-family: var(--font-iran-sans);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 @layer utilities {
