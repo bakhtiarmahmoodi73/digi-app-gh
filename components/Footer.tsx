@@ -27,26 +27,26 @@ function Footer() {
         className="absolute h-[1px] mobile:w-[335px] mobile:border-[1px] mobile:border-none mobile:left-[22px] mobile:top-[243px] mobile:bg-[#374566]  text-[#374566] tablet:hidden"
       />
     
-       <p className="absolute font-iranSans text-[#FFFFFF] font-[900] leading-[21.91px] text-right text-[14px] w-[93px] h-[22px] top-[265px] left-[261px] tablet:text-[16px] tablet:w-[107px] tablet:h-[25px] tablet:top-[49px] tablet:left-[360px] tablet:leading-[25.04px] laptop:text-[20px] laptop:w-[133px] laptop:h-[31px] laptop:top-[53px] laptop:left-[767px] laptop:leading-[31.3px] ">
+       <p className="absolute font-iranSans text-[#FFFFFF] font-[900] leading-[21.91px] text-right text-[14px] w-[93px] h-[22px] top-[265px] left-[261px] tablet:text-[16px] tablet:w-[107px] tablet:h-[25px] tablet:top-[49px] tablet:left-[360px] tablet:leading-[25.04px] laptop:text-[20px] laptop:w-[133px] laptop:h-[31px] laptop:top-[53px] laptop:left-[780px] laptop:leading-[31.3px] ">
          لینک های مرتبط
        </p>
        <ul>
-         <li className="absolute font-iranSans text-[#ffffff]  top-[311px] left-[296px] font-[400]  text-right tablet:top-[105px]   laptop:h-[25px] laptop:top-[109px]   laptop:leading-[25.04px]absolute   w-[76px] h-[19px]    text-[12px] leading-[18.78px] tablet:left-[100px] laptop:w-[101px] laptop:left-[810px]  laptop:text-[16px] laptop:leading-[25.04px]">
+         <li className="absolute font-iranSans text-[#ffffff] left-[280px] top-[311px]  font-[400]  text-right tablet:top-[105px] tablet:left-[400px]   laptop:h-[25px] laptop:top-[109px]   laptop:leading-[25.04px]absolute   w-[76px] h-[19px]    text-[12px] leading-[18.78px]  laptop:w-[101px] laptop:left-[810px]  laptop:text-[16px] laptop:leading-[25.04px]">
            صفحه اصلی
          </li>
-         <li className="absolute font-iranSans text-[#ffffff] w-[68px] h-[19px] top-[345px] left-[287px] font-[400] text-[12px] leading-[18.78px] text-right tablet:top-[149px] tablet:left-[400px] laptop:w-[120px] laptop:h-[25px] laptop:top-[153px] laptop:left-[790px] laptop:text-[16px] laptop:leading-[25.04px]   ">
+         <li className="absolute font-iranSans text-[#ffffff] w-[80px] h-[19px] top-[345px] left-[275px] font-[400] text-[12px] leading-[18.78px] text-right tablet:top-[149px] tablet:left-[400px] laptop:w-[120px] laptop:h-[25px] laptop:top-[153px] laptop:left-[790px] laptop:text-[16px] laptop:leading-[25.04px]   ">
            {" "}
            قیمت رمز ارزها
          </li>
-         <li className="absolute font-iranSans text-[#ffffff] w-[73px] h-[19px] top-[379px] left-[281px] font-[400] text-[12px] leading-[18.78px] text-right tablet:top-[193px] tablet:left-[394px] laptop:w-[97px] laptop:h-[25px] laptop:top-[197px] laptop:left-[810px] laptop:text-[16px] laptop:leading-[25.04px] ">
+         <li className="absolute font-iranSans text-[#ffffff] w-[73px] h-[19px] top-[379px] left-[281px] font-[400] text-[12px] leading-[18.78px] text-right tablet:top-[193px] tablet:left-[405px] laptop:w-[97px] laptop:h-[25px] laptop:top-[197px] laptop:left-[810px] laptop:text-[16px] laptop:leading-[25.04px] ">
            مقالات و وبلاگ
          </li>
-         <li className="absolute font-iranSans text-[#ffffff] w-[39px] h-[19px] top-[413px] left-[316px] font-[400] text-[12px] leading-[18.78px] text-right tablet:top-[237px] tablet:left-[429px] laptop:w-[76px] laptop:h-[25px] laptop:top-[241px] laptop:left-[830px] laptop:text-[16px] laptop:leading-[25.04px]">
+         <li className="absolute font-iranSans text-[#ffffff] w-[78px] h-[19px] top-[413px] left-[277px] font-[400] text-[12px] leading-[18.78px] text-right tablet:top-[237px] tablet:left-[400px] laptop:w-[76px] laptop:h-[25px] laptop:top-[241px] laptop:left-[830px] laptop:text-[16px] laptop:leading-[25.04px]">
            در باره ما
          </li>
        </ul>
        <ul>
-         <li className="absolute font-iranSans text-[#ffffff] w-[71px] h-[19px] top-[311px] left-[162px] font-[400] text-[12px] leading-[18.78px] text-right tablet:top-[105px] tablet:left-[269px] laptop:w-[110px] laptop:h-[25px] laptop:top-[109px] laptop:left-[610px] laptop:text-[16px] laptop:leading-[25.04px]">
+         <li className="absolute font-iranSans text-[#ffffff] w-[85px] h-[19px] top-[311px] left-[147px] font-[400] text-[12px] leading-[18.78px] text-right tablet:top-[105px] tablet:left-[255px] laptop:w-[110px] laptop:h-[25px] laptop:top-[109px] laptop:left-[610px] laptop:text-[16px] laptop:leading-[25.04px]">
            {" "}
            سوالات متداول
          </li>

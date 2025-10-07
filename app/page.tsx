@@ -7,9 +7,50 @@ export default function Home() {
   return (
     <div className="px-4 tablet:px-10 laptop:px-20 py-10 flex flex-col items-center">
       
-      <h1 className="w-full text-right font-iranSans font-[900] text-black text-2xl tablet:text-3xl laptop:text-4xl leading-tight mb-6">
+      <h1 className="leading-[100%] text-right font-iranSans w-[301px] h-[31px] top-[114px] left-[37px] text-[20px] font-[900] text-[#000000]  tablet:text-[30px] tablet:left-[191px] tablet:top-[153px] tablet:h-[47px] tablet:w-[452px] laptop:text-[40px] laptop:w-[602px] laptop:h-[63px] laptop:top-[200px] laptop:left-[419px] laptop:font-[900]   ">
         لیست قیمت لحظه‌ای ارزهای دیجیتال‌
       </h1>
+      <div className="flex justify-end gap-3 bg-white p-3">
+  <button className="mobile:flex mobile:items-center mobile:justify-between mobile:px-6 rounded-[8px] w-[335px] h-[47px] top-[177px] left-[20px] font-iranSans text-[#EEF2F5] bg-[#1652F0] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px] ">
+    <span>دیفای</span>
+
+    <Image
+            src="/images/Frame (1).png"
+            alt="frame"
+            width={40}
+            height={60}
+            className=" mobile:w-[24px]      tablet:hidden laptop:hidden"
+          />
+  </button>
+
+  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+    حریم خصوصی
+  </button>
+
+  <button className=" mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+    متاورس
+  </button>
+
+  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+    قابل استخراج
+  </button>
+
+  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+    میم کوین
+  </button>
+
+  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+    استیبل کوین
+  </button>
+
+  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+    توکن
+  </button>
+
+  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px] ">
+    ICO
+  </button>
+  </div>
 
       <div className="w-full mb-12">
         <CoinTable />

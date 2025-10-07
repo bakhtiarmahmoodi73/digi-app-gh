@@ -37,9 +37,9 @@ export default function RootLayout({
           <Header />
 
           
-          {/* <main className="container mx-auto px-4">
+          <main className="container mx-auto px-4">
             <div className="">{children}</div>
-          </main> */}
+          </main>
 
          
           <Footer />
