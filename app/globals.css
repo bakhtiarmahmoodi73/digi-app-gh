@@ -19,8 +19,10 @@ body {
   background: var(--background);
   font-family: var(--font-iran-sans);
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  
 }
 
 @layer utilities {

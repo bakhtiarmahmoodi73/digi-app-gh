@@ -5,7 +5,9 @@ import Image from "next/image";
 
 function Header() {
   return (
-    <nav className=" mx-auto px-4 overflow-x-hidden bg-navbar  mobile:h-[64px]  tablet:h-[92px]  laptop:h-[104px] laptop:w-[1440px] ">
+    
+    <nav className="mx-auto   overflow-x-hidden bg-navbar  mobile:h-[64px]  tablet:h-[92px]  laptop:h-[104px] laptop:w-[1440px] max-w-[1440px]">
+      
       <Image
         src="/images/Group 405 (1).png"
         alt="log"
@@ -18,22 +20,22 @@ function Header() {
         alt="logo"
         width={100}
         height={200}
-        className="absolute mobile:w-[57.74px] mobile:h-[27.98px] mobile:top-[18px] mobile:left-[263px] tablet:w-[109px] tablet:h-[53px] tablet:top-[20px] tablet:left-[705px] laptop:w-[109px] laptop:h-[53px] laptop:top-[25px] laptop:left-[1181px] "
+        className="absolute mobile:w-[57.74px] mobile:h-[27.98px] mobile:top-[18px] mobile:left-[263px] tablet:w-[109px] tablet:h-[53px] tablet:top-[20px] tablet:left-[705px] laptop:w-[109px] laptop:h-[53px] laptop:top-[25px] laptop:left-[1020px] "
       />
       <ul className="mobile:hidden tablet:block laptop:block">
-        <li className=" absolute text-[#000000] tablet:w-[69px] tablet:h-[22px]  tablet:left-[609px] tablet:top-[35px] font-[400] tablet:text-[13px] tablet:leading-[21.91px] laptop:w-[85px]   laptop:h-[25px] laptop:top-[39px] laptop:left-[1056px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px]    ">
+        <li className=" absolute text-[#000000] tablet:w-[69px] tablet:h-[22px]  tablet:left-[609px] tablet:top-[35px] font-[400] tablet:text-[13px] tablet:leading-[21.91px] laptop:w-[85px]   laptop:h-[25px] laptop:top-[39px] laptop:left-[890px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px]    ">
           صفحه اصلی
         </li>
-        <li className=" absolute text-[#000000] tablet:w-[79px] tablet:h-[22px]  tablet:left-[511px] tablet:top-[35px] font-[400] tablet:text-[13px] tablet:leading-[21.91px] laptop:w-[90px]   laptop:h-[25px] laptop:top-[39px] laptop:left-[919px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px]    ">
+        <li className=" absolute text-[#000000] tablet:w-[79px] tablet:h-[22px]  tablet:left-[511px] tablet:top-[35px] font-[400] tablet:text-[13px] tablet:leading-[21.91px] laptop:w-[90px]   laptop:h-[25px] laptop:top-[39px] laptop:left-[770px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px]    ">
           قیمت رمزارزها
         </li>
-        <li className=" absolute text-[#000000] tablet:w-[37px] tablet:h-[22px]  tablet:left-[455px] tablet:top-[35px] font-[400] tablet:text-[13px] tablet:leading-[21.91px] laptop:w-[43px]   laptop:h-[25px] laptop:top-[39px] laptop:left-[829px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px]  ">
+        <li className=" absolute text-[#000000] tablet:w-[37px] tablet:h-[22px]  tablet:left-[455px] tablet:top-[35px] font-[400] tablet:text-[13px] tablet:leading-[21.91px] laptop:w-[43px]   laptop:h-[25px] laptop:top-[39px] laptop:left-[680px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px]  ">
           مقالات
         </li>
-        <li className=" absolute text-[#000000] tablet:w-[61px] tablet:h-[22px]  tablet:left-[375px] tablet:top-[35px] font-[400] tablet:text-[13px] tablet:leading-[21.91px] laptop:w-[75px] laptop:h-[25px] laptop:top-[39px] laptop:left-[713px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px]   ">
+        <li className=" absolute text-[#000000] tablet:w-[61px] tablet:h-[22px]  tablet:left-[375px] tablet:top-[35px] font-[400] tablet:text-[13px] tablet:leading-[21.91px] laptop:w-[75px] laptop:h-[25px] laptop:top-[39px] laptop:left-[560px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px]   ">
           تماس با ما
         </li>
-        <li className="absolute font-iranSans text-[#000000] tablet:hidden laptop:block laptop:w-[28px] laptop:h-[25px] laptop:top-[39px] laptop:left-[638px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px] ">
+        <li className="absolute font-iranSans text-[#000000] tablet:hidden laptop:block laptop:w-[28px] laptop:h-[25px] laptop:top-[39px] laptop:left-[500px] laptop:font-[400] laptop:text-[16px] laptop:leading-[25.04px] ">
           سایر
         </li>
       </ul>
@@ -43,9 +45,9 @@ function Header() {
         alt="frame"
         width={40}
         height={60}
-        className="absolute mobile:hidden tablet:block tablet:w-[16px] tablet:h-[16px] tablet:top-[40px] tablet:left-[248px] laptop:w-[24px]  laptop:h-[24px] laptop:top-[40px] laptop:left-[418px] "
+        className="absolute mobile:hidden tablet:block tablet:w-[16px] tablet:h-[16px] tablet:top-[40px] tablet:left-[248px] laptop:w-[24px]  laptop:h-[24px] laptop:top-[40px] laptop:left-[300px] "
       />
-      <p className="absolute font-iranSansnumber text-[#000000] mobile:hidden tablet:block tablet:w-[92px] tablet:h-[21px] tablet:top-[37px] tablet:left-[150px] tablet:text-[14px] tablet:font-[400] tablet:leading-[21px] laptop:w-[89px]  laptop:h-[24px] laptop:top-[40px] laptop:left-[315px] laptop:font-[400] laptop:text-[16px] ">
+      <p className="absolute font-iranSansnumber text-[#000000] mobile:hidden tablet:block tablet:w-[92px] tablet:h-[21px] tablet:top-[37px] tablet:left-[150px] tablet:text-[14px] tablet:font-[400] tablet:leading-[21px] laptop:w-[89px]  laptop:h-[24px] laptop:top-[40px] laptop:left-[200px] laptop:font-[400] laptop:text-[16px] ">
         021-91008590
       </p>
 
@@ -54,9 +56,9 @@ function Header() {
         alt="user"
         width={40}
         height={60}
-        className="absolute mobile:w-[30px] mobile:h-[30px] mobile:top-[18px] mobile:left-[132px] tablet:w-[26px] tablet:h-[26px] tablet:top-[34px] tablet:left-[124px] laptop:w-[26px]  laptop:h-[26px] laptop:top-[38px] laptop:left-[262px] "
+        className="absolute mobile:w-[30px] mobile:h-[30px] mobile:top-[18px] mobile:left-[132px] tablet:w-[26px] tablet:h-[26px] tablet:top-[34px] tablet:left-[124px] laptop:w-[26px]  laptop:h-[26px] laptop:top-[38px] laptop:left-[140px] "
       />
-      <p className="absolute text-[#000000] font-iranSans mobile:w-[77px] mobile:h-[22px] mobile:top-[22px] mobile:left-[46px] mobile:font-[500] mobile:text-[14px] mobile:leading-[21.91px] tablet:w-[77px] tablet:text-[14px] tablet:h-[22px] tablet:top-[36px] tablet:left-[40px] laptop:w-[77px] laptop:h-[22px] laptop:top-[40px] laptop:left-[175px] laptop:font-[500] laptop:text-[14px] laptop:leading-[21.91px]   ">
+      <p className="absolute text-[#000000] font-iranSans mobile:w-[77px] mobile:h-[22px] mobile:top-[22px] mobile:left-[46px] mobile:font-[500] mobile:text-[14px] mobile:leading-[21.91px] tablet:w-[77px] tablet:text-[14px] tablet:h-[22px] tablet:top-[36px] tablet:left-[40px] laptop:w-[77px] laptop:h-[22px] laptop:top-[40px] laptop:left-[50px] laptop:font-[500] laptop:text-[14px] laptop:leading-[21.91px]   ">
         علی اسماعیلی
       </p>
       <Image
@@ -64,9 +66,11 @@ function Header() {
         alt="frame"
         width={40}
         height={60}
-        className="absolute mobile:w-[24px]  mobile:h-[24px] mobile:top-[21px] mobile:left-[20px]  tablet:w-[24px] tablet:h-[24px] tablet:top-[35px] tablet:left-[16px]   laptop:w-[24px]  laptop:h-[24px] laptop:top-[39px] laptop:left-[145px]"
+        className="absolute mobile:w-[24px]  mobile:h-[24px] mobile:top-[21px] mobile:left-[20px]  tablet:w-[24px] tablet:h-[24px] tablet:top-[35px] tablet:left-[10px]   laptop:w-[24px]  laptop:h-[24px] laptop:top-[39px] laptop:left-[20px]"
       />
+      
     </nav>
+    
   );
 }
 
