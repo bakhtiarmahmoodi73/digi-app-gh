@@ -84,17 +84,18 @@ export default function CoinsPage() {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <div className="flex items-center justify-start gap-4 mb-4"></div>
+    <div className="">
+      
 
-      <div className="hidden md:flex items-center bg-white border border-gray-200 rounded-md py-3 px-3 mb-2">
-        <div className="w-36 text-right text-sm text-gray-600">نام رمز ارز</div>
-        <div className="flex-1 grid grid-cols-4 gap-4 text-sm text-gray-600">
+      <div className=" flex items-center pr-4 justify-between   bg-[#E3E7EC] rounded-[8px] laptop: laptop:w-[1140px] laptop:h-[90px] laptop:top-[434px] laptop:left-[161px] ">
+        <div className="text-[#000000] laptop:w-[61px] laptop:h-[25px] laptop:top-[482px] laptop:left-[1183px]    ">نام رمز ارز</div>
+        
           <div className="text-center">ارزش دلاری</div>
           <div className="text-center">تغییر روزانه</div>
           <div className="text-center">خرید از والت</div>
           <div className="text-center">فروش به والت</div>
-        </div>
+        
+        
         <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-md px-2 py-1.5 shadow-sm">
   <svg
     className="w-3.5 h-3.5 text-gray-400"
@@ -128,9 +129,13 @@ export default function CoinsPage() {
     }}
     className="outline-none text-xs placeholder-gray-400"
   />
-</div>
+</div> 
 
       </div>
+
+
+
+
 
       <div className="space-y-2">
         {loading ? (
