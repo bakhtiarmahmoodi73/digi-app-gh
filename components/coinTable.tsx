@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -25,7 +24,8 @@ export default function CoinsPage() {
   const [displayed, setDisplayed] = useState<CoinRaw[]>([]);
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
-  const limit = 10;
+  // 🟢 فقط این خط تغییر داده شد (limit را از 10 به 1 کم کردیم)
+  const limit = 1;
 
   const fetchPage = async (p: number, fetchAllWhenSearch = false) => {
     setLoading(true);
@@ -56,7 +56,7 @@ export default function CoinsPage() {
       } else {
         const arr = data.items || [];
         setItems(arr);
-        setDisplayed(arr);
+        setDisplayed(arr.slice((p - 1) * limit, p * limit));
       }
     } catch (err) {
       console.error(err);
@@ -86,63 +86,58 @@ export default function CoinsPage() {
   return (
     <div className="">
       
-
-      <div className=" flex items-center pr-4 justify-between   bg-[#E3E7EC] rounded-[8px] laptop: laptop:w-[1140px] laptop:h-[90px] laptop:top-[434px] laptop:left-[161px] ">
-        <div className="text-[#000000] laptop:w-[61px] laptop:h-[25px] laptop:top-[482px] laptop:left-[1183px]    ">نام رمز ارز</div>
+      <div className="absolute flex items-center laptop:pr-8 laptop:pl-2 justify-between bg-[#E3E7EC] rounded-[8px] laptop:w-[1130px] laptop:h-[90px] laptop:top-[275px] laptop:left-[38px] tablet:w-[734px] tablet:h-[70px] tablet:pr-6 tablet:pl-2 tablet:left-[10px] mobile:w-[335px] mobile:left-[20px] mobile:h-[64px] mobile:top-[200px] mobile:px-6 ">
+        <div className="text-[#000000] font-[400] laptop:text-[16px] tablet:text-[14px]  mobile:text-[14px]  ">نام رمز ارز</div>
         
-          <div className="text-center">ارزش دلاری</div>
-          <div className="text-center">تغییر روزانه</div>
-          <div className="text-center">خرید از والت</div>
-          <div className="text-center">فروش به والت</div>
+        <div className="text-[#000000] font-[400] laptop:text-[16px] tablet:text-[14px] mobile:text-[14px]">ارزش دلاری</div>
+        <div className="text-[#000000] font-[400] laptop:text-[16px] tablet:text-[14px] mobile:text-[14px]">تغییر روزانه</div>
+        <div className="text-[#000000] font-[400] laptop:text-[16px] tablet:text-[14px] mobile:hidden">خرید از والت</div>
+        <div className="text-[#000000] font-[400] laptop:text-[16px] tablet:text-[14px] mobile:hidden">فروش به والت</div>
         
-        
-        <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-md px-2 py-1.5 shadow-sm">
-  <svg
-    className="w-3.5 h-3.5 text-gray-400"
-    viewBox="0 0 24 24"
-    fill="none"
-  >
-    <path
-      d="M21 21l-4.35-4.35"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <circle
-      cx="11"
-      cy="11"
-      r="6"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-  <input
-    dir="rtl"
-    placeholder="جستجو ..."
-    value={search}
-    onChange={(e) => {
-      setSearch(e.target.value);
-      setPage(1);
-    }}
-    className="outline-none text-xs placeholder-gray-400"
-  />
-</div> 
+        <div className="mobile:hidden flex items-center gap-2 bg-[#ffffff] text-[#696464] rounded-[8px] px-2 laptop:w-[244px] laptop:h-[63px] tablet:w-[190px] tablet:gap- tablet:h-[47px]">
+          <svg
+            className="laptop:w-3.5 h-3.5 text-gray-400"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M21 21l-4.35-4.35"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <circle
+              cx="11"
+              cy="11"
+              r="6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <input
+            dir="rtl"
+            placeholder="جستجو ..."
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
+            className="outline-none text-[12px] placeholder-gray-400"
+          />
+        </div> 
 
       </div>
 
-
-
-
-
-      <div className="space-y-2">
+      <div className="absolute space-y-2 bg-[#F7F7F7] laptop:w-[1138px] laptop:h-[750px] laptop:top-[366px] ">
+      
         {loading ? (
           Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="flex items-center gap-4 p-3 bg-gray-50 rounded-md animate-pulse"
+              className="flex items-center gap-4 p-3 bg-[#F7F7F7]  rounded-md animate-pulse"
             >
               <div className="w-24 h-10 bg-gray-200 rounded"></div>
               <div className="flex-1 h-8 bg-gray-200 rounded"></div>
@@ -154,27 +149,27 @@ export default function CoinsPage() {
             هیچ داده‌ای یافت نشد.
           </div>
         ) : (
-          displayed.map((c, idx) => {
+          displayed.flatMap((c) => Array.from({ length: 9 }, () => c)).map((c, idx) => {
             const isSelected = selectedId === c.id;
-            const bg = idx % 2 === 0 ? "bg-white" : "bg-gray-50";
+            const bg = idx % 2 === 0 ? "bg-[#f7f7f7]" : "bg-[#ffffff]";
             return (
               <div
-                key={c.id}
+                key={`${c.id}-${idx}`}
                 onClick={() => onClickRow(c.id)}
-                className={`flex items-center gap-4 p-3 border ${
+                className={`flex items-center  h-[80px] gap-4 p-3 border ${
                   isSelected
                     ? "border-blue-400 shadow-md"
                     : "border-transparent"
                 } rounded-lg transition cursor-pointer ${bg} hover:border-blue-200`}
               >
-                <div className="w-15 flex-shrink-0 flex items-center justify-end gap-3">
+                <div className="w-15  flex-shrink-0 flex items-center justify-end gap-3">
                   <img
                     src={c.icon}
                     alt={c.currency_code}
                     className="w-8 h-8 rounded-full"
                   />
                   <div className="text-right">
-                    <div className="text-xs font-medium text-gray-800">
+                    <div className="text-xs font-medium text-[#000000]">
                       {c.fa_name}
                     </div>
                     <div className="text-xs text-gray-400">
@@ -183,12 +178,15 @@ export default function CoinsPage() {
                   </div>
                 </div>
 
-                <div className="flex-1 grid grid-cols-4 gap-0 text-sm items-center">
-                  <div className="text-center text-gray-700">
+
+
+                <div className="flex justify-between items-center">
+                  <div className=" absolute laptop:left-[890px] text-center laptop:text-[14px] text-[#000000] ">
                     {fmt(c.price)} $
                   </div>
                   <div
-                    className={`text-center font-semibold ${
+                    className={`absolute laptop:left-[720px] text-center laptop:text-[14px] text-[#000000] ">
+ ${
                       Number(c.daily_change_percent) >= 0
                         ? "text-green-600"
                         : "text-red-600"
@@ -198,21 +196,23 @@ export default function CoinsPage() {
                     {c.daily_change_percent}٪
                   </div>
 
-                  <div className="text-center text-gray-700">
+                  <div className="absolute laptop:left-[530px] text-center laptop:text-[14px] text-[#000000] ">
                     {fmt(c.buy_irt_price)} تومان
                   </div>
-                  <div className="text-center text-gray-700">
+                  <div className="absolute laptop:left-[340px] text-center laptop:text-[14px] text-[#000000] ">
                     {fmt(c.sell_irt_price)} تومان
                   </div>
                 </div>
 
-                <div className="w-28 flex-shrink-0">
+                
+
+                <div className="absolute left-[50px] w-[130px] flex-shrink-0 mr-32">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       router.push(`/coin/${c.currency_code}`);
                     }}
-                    className="bg-blue-600 text-white px-10 py-2 rounded-md text-sm hover:bg-blue-700 transition"
+                    className="bg-[#1652f0] text-[#ffffff] px-10 py-2 rounded-[8px] text-[14px] hover:bg-blue-700 transition"
                   >
                     معامله
                   </button>
@@ -223,8 +223,8 @@ export default function CoinsPage() {
         )}
       </div>
 
-      <div className="flex justify-center items-center gap-3 mt-6">
-      <button
+      <div className="absolute laptop:w-[240px] laptop:h-[31px] laptop:top-[1140px] laptop:left-[450px] flex justify-center items-center gap-3 mt-6">
+        <button
           onClick={() => setPage(10)}
           className={`w-9 h-9 rounded-full border flex items-center justify-center text-sm transition ${
             page === 10
@@ -249,8 +249,6 @@ export default function CoinsPage() {
             {p.toLocaleString("fa-IR")}
           </button>
         ))}
-
-        
       </div>
     </div>
   );

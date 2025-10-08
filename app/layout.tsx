@@ -42,7 +42,7 @@ export default function RootLayout({
           </main>
 
          
-          <Footer />
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>
