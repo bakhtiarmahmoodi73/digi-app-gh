@@ -6,7 +6,7 @@ import Image from "next/image";
 function Header() {
   return (
     
-    <nav className="mx-auto   overflow-x-hidden bg-navbar  mobile:h-[64px]  tablet:h-[92px]  laptop:h-[104px] laptop:w-[1440px] max-w-[1440px]">
+    <nav className="mx-auto   overflow-x-hidden bg-navbar  mobile:h-[64px]    tablet:h-[92px]  laptop:h-[104px] laptop:w-[1440px] max-w-[1440px]">
       
       <Image
         src="/images/Group 405 (1).png"

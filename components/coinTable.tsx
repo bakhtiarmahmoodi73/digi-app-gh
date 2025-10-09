@@ -131,17 +131,17 @@ export default function CoinsPage() {
 
       </div>
 
-      <div className="absolute  mobile:hidden rounded-[8px] space-y-2 bg-[#F7F7F7] laptop:w-[1138px] laptop:h-[750px] laptop:top-[366px] tablet:w-[734px] tablet:h-[739px] tablet:top-[328px] tablet:left-[10px]  ">
+      <div className="absolute  mobile: rounded-[8px] space-y-2 bg-[#F7F7F7] laptop:w-[1138px] laptop:h-[750px] laptop:top-[366px] tablet:w-[734px] tablet:h-[739px] tablet:top-[328px] tablet:left-[10px]  ">
       
         {loading ? (
           Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="flex items-center gap-4 p-3 bg-[#F7F7F7]  rounded-md animate-pulse"
+              className="mobile:hidden flex items-center gap-4 p-3 bg-[#F7F7F7]  rounded-md animate-pulse"
             >
-              <div className="w-24 h-10 bg-gray-200 rounded"></div>
-              <div className="flex-1 h-8 bg-gray-200 rounded"></div>
-              <div className="w-36 h-8 bg-gray-200 rounded"></div>
+              <div className="mobile:hidden w-24 h-10 bg-gray-200 rounded"></div>
+              <div className="mobile:hidden flex-1 h-8 bg-gray-200 rounded"></div>
+              <div className="mobile:hidden w-36 h-8 bg-gray-200 rounded"></div>
             </div>
           ))
         ) : displayed.length === 0 ? (
@@ -162,7 +162,7 @@ export default function CoinsPage() {
                     : "border-transparent"
                 } rounded-lg transition cursor-pointer ${bg} hover:border-blue-200`}
               >
-                <div className=" mobile:top-[600px] mobile:left-[20px] mobile:absolute w-15  flex-shrink-0 flex items-center justify-end gap-3">
+                <div className=" mobile:top-[600px] mobile:left-[0px] mobile:absolute w-15  flex-shrink-0 flex items-center justify-end gap-3">
                   <img
                     src={c.icon}
                     alt={c.currency_code}
@@ -177,7 +177,26 @@ export default function CoinsPage() {
                     </div>
                   </div>
                 </div>
+                {/* <div className="mobile:hidden mobile:block  mobile:top-[600px] mobile:left-[20px]  w-15  flex-shrink-0 flex items-center justify-end gap-3">
+                  <img
+                    src={c.icon}
+                    alt={c.currency_code}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <div className="text-right">
+                    <div className="text-xs font-medium text-[#000000]">
+                      {c.fa_name}
+                    </div>
+                    <div className="text-xs text-gray-400">
+                      {c.currency_code}
+                    </div>
+                  </div>
+                </div>  */}
 
+
+
+
+    
 
 
                 <div className="flex justify-between items-center">
@@ -238,6 +257,8 @@ export default function CoinsPage() {
     معامله
   </button>
 </div>
+
+
 
       <div className="absolute w-[240px] h-[31px] laptop:top-[1140px] laptop:left-[450px] tablet:left-[250px] tablet:top-[1100px] flex justify-center items-center gap-3 mt-6 mobile:top-[1150px] mobile:left-[60px]">
         <button
