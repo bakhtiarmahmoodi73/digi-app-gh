@@ -131,7 +131,7 @@ export default function CoinsPage() {
 
       </div>
 
-      <div className="absolute space-y-2 bg-[#F7F7F7] laptop:w-[1138px] laptop:h-[750px] laptop:top-[366px] ">
+      <div className="absolute  mobile:hidden rounded-[8px] space-y-2 bg-[#F7F7F7] laptop:w-[1138px] laptop:h-[750px] laptop:top-[366px] tablet:w-[734px] tablet:h-[739px] tablet:top-[328px] tablet:left-[10px]  ">
       
         {loading ? (
           Array.from({ length: 6 }).map((_, i) => (
@@ -162,7 +162,7 @@ export default function CoinsPage() {
                     : "border-transparent"
                 } rounded-lg transition cursor-pointer ${bg} hover:border-blue-200`}
               >
-                <div className="w-15  flex-shrink-0 flex items-center justify-end gap-3">
+                <div className=" mobile:top-[600px] mobile:left-[20px] mobile:absolute w-15  flex-shrink-0 flex items-center justify-end gap-3">
                   <img
                     src={c.icon}
                     alt={c.currency_code}
@@ -181,11 +181,11 @@ export default function CoinsPage() {
 
 
                 <div className="flex justify-between items-center">
-                  <div className=" absolute laptop:left-[890px] text-center laptop:text-[14px] text-[#000000] ">
+                  <div className="mobile:hidden absolute laptop:left-[890px] text-center laptop:text-[14px] text-[#000000] tablet:left-[560px] tablet:text-[11px] ">
                     {fmt(c.price)} $
                   </div>
                   <div
-                    className={`absolute laptop:left-[720px] text-center laptop:text-[14px] text-[#000000] ">
+                    className={`mobile:hidden absolute laptop:left-[720px] text-center laptop:text-[14px] text-[#000000] tablet:left-[470px] tablet:text-[11px]">
  ${
                       Number(c.daily_change_percent) >= 0
                         ? "text-green-600"
@@ -196,17 +196,17 @@ export default function CoinsPage() {
                     {c.daily_change_percent}٪
                   </div>
 
-                  <div className="absolute laptop:left-[530px] text-center laptop:text-[14px] text-[#000000] ">
+                  <div className="mobile:hidden absolute laptop:left-[530px] text-center laptop:text-[14px] text-[#000000] tablet:left-[340px] tablet:text-[11px] ">
                     {fmt(c.buy_irt_price)} تومان
                   </div>
-                  <div className="absolute laptop:left-[340px] text-center laptop:text-[14px] text-[#000000] ">
+                  <div className="mobile:hidden absolute laptop:left-[340px] text-center laptop:text-[14px] text-[#000000] tablet:left-[220px] tablet:text-[11px] ">
                     {fmt(c.sell_irt_price)} تومان
                   </div>
                 </div>
 
                 
 
-                <div className="absolute left-[50px] w-[130px] flex-shrink-0 mr-32">
+                <div className="mobile:hidden absolute laptop:left-[50px] w-[130px] tablet:left-[30px] flex-shrink-0 mr-32 ">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -217,13 +217,29 @@ export default function CoinsPage() {
                     معامله
                   </button>
                 </div>
+
+       
+
               </div>
             );
           })
         )}
       </div>
 
-      <div className="absolute laptop:w-[240px] laptop:h-[31px] laptop:top-[1140px] laptop:left-[450px] flex justify-center items-center gap-3 mt-6">
+      <div className="hidden mobile:flex mobile:absolute">
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+      if (displayed.length > 0)
+        router.push(`/coin/${displayed[0].currency_code}`);
+    }}
+    className="absolute bg-[#1652f0] text-[#ffffff] text-[12px]  rounded-[8px]  hover:bg-blue-700 transition w-[307px] h-[47px] top-[250px] "
+  >
+    معامله
+  </button>
+</div>
+
+      <div className="absolute w-[240px] h-[31px] laptop:top-[1140px] laptop:left-[450px] tablet:left-[250px] tablet:top-[1100px] flex justify-center items-center gap-3 mt-6 mobile:top-[1150px] mobile:left-[60px]">
         <button
           onClick={() => setPage(10)}
           className={`w-9 h-9 rounded-full border flex items-center justify-center text-sm transition ${
