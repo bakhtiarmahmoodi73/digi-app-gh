@@ -53,7 +53,7 @@ export default function CoinDetailsPage() {
     return <p className="p-4 text-red-500">اطلاعات رمز ارز یافت نشد</p>;
 
   return (
-    <div className="relative w-full h-[3580px] bg-white flex flex-col">
+    <div className="relative overflow-x-hidden w-full h-[3580px] bg-white flex flex-col">
       <div className="relative  flex-1">
         <div className="relative flex-1">
           <div className="  w-[375px] h-[3837px] tablet:w-[834px] tablet:h-[2860px] laptop:w-[1440px] laptop:h-[3065px] top-[0px]">

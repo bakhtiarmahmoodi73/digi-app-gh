@@ -30,16 +30,16 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={`${iranSans.variable} ${iranSansnumber.variable} overflow-x-hidden     ` }
+        className={`${iranSans.variable} ${iranSansnumber.variable} overflow-x-hidden w-full     ` }
       >
         <Providers>
          
           <Header />
 
           
-          <main className="container mx-auto px-4">
+          {/* <main className="">
             <div className="">{children}</div>
-          </main>
+          </main> */}
 
          
           {/* <Footer /> */}
