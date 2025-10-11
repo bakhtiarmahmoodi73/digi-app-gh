@@ -17,15 +17,15 @@ module.exports = {
       },
       screens: {
         
-        mobile: { max: "375px" },
+        // mobile: { max: "375px" },
 
         
-        tablet: { min: "376px", max: "834px" },
+        // tablet: { min: "376px", max: "834px" },
 
        
-        laptop: { min: "835px", max: "1440px" },
+        // laptop: { min: "835px", max: "1440px" },
 
-        desktop: { min: "1441px" },
+        // desktop: { min: "1441px" },
       },
     },
   },
