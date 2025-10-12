@@ -76,7 +76,7 @@ const CoinChart: React.FC = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-4 bg-white rounded-lg shadow-md">
+    <div className=" p-4 bg-white rounded-[30px] lg:w-[980px] lg:h-[600px]  shadow-md">
       <div className="flex items-center gap-3 mb-4">
         <img src={coin.icon} alt={coin.fa_name} className="w-10 h-10" />
         <h2 className="text-xl font-bold">{coin.fa_name} ({coin.currency_code})</h2>
