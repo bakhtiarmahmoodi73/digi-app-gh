@@ -5,13 +5,13 @@ import CoinTable from "../components/coinTable";
 
 export default function Home() {
   return (
-    <div className="px-4 tablet:px-10 laptop:px-20 py-10 flex flex-col items-center">
+    <div className="px-4 md:px-10 lg:px-20 py-10 flex flex-col items-center">
       
-      <h1 className="leading-[100%] text-right font-iranSans w-[301px] h-[31px] top-[114px] left-[37px] text-[20px] font-[900] text-[#000000]  tablet:text-[30px] tablet:left-[191px] tablet:top-[153px] tablet:h-[47px] tablet:w-[452px] laptop:text-[40px] laptop:w-[602px] laptop:h-[63px] laptop:top-[200px] laptop:left-[419px] laptop:font-[900]   ">
+      <h1 className="leading-[100%] text-right font-iranSans w-[301px] h-[31px] top-[114px] left-[37px] text-[20px] font-[900] text-[#000000]  md:text-[30px] md:left-[191px] md:top-[153px] md:h-[47px] md:w-[452px] lg:text-[40px] lg:w-[602px] lg:h-[63px] lg:top-[200px] lg:left-[419px] lg:font-[900]   ">
         لیست قیمت لحظه‌ای ارزهای دیجیتال‌
       </h1>
-      <div className="flex justify-end gap-3 tablet:gap-2 laptop:pr-14 bg-white mb-8 tablet:pr-16">
-  <button className="mobile:flex mobile:items-center mobile:justify-between mobile:px-6 rounded-[8px] w-[335px] h-[47px] top-[177px] left-[20px] font-iranSans text-[#EEF2F5] bg-[#1652F0] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px] ">
+      <div className="flex justify-end gap-3 lg:gap-2 laptop:pr-14 bg-white mb-8 lg:pr-16">
+  <button className="flex items-center justify-between px-6 rounded-[8px] w-[335px] h-[47px] top-[177px] left-[20px] font-iranSans text-[#EEF2F5] bg-[#1652F0] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px] ">
     <span>دیفای</span>
 
     <Image
@@ -19,35 +19,35 @@ export default function Home() {
             alt="frame"
             width={40}
             height={60}
-            className=" mobile:w-[24px]      tablet:hidden laptop:hidden"
+            className=" w-[24px]      md:hidden lg:hidden"
           />
   </button>
 
-  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+  <button className="hidden md:block rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px]">
     حریم خصوصی
   </button>
 
-  <button className=" mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+  <button className=" hidden md:block rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px]">
     متاورس
   </button>
 
-  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+  <button className="hidden md:block rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px]">
     قابل استخراج
   </button>
 
-  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+  <button className="hidden md:block rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px]">
     میم کوین
   </button>
 
-  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+  <button className="hidden md:block rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px]">
     استیبل کوین
   </button>
 
-  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px]">
+  <button className="hidden md:block rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px]">
     توکن
   </button>
 
-  <button className="mobile:hidden rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] laptop:w-[130px] laptop:h-[47px] laptop:top-[346px] laptop:text-[14px] font-[400] tablet:w-[85px] tablet:h-[47px] tablet:top-[252px] tablet:text-[12px] ">
+  <button className="hidden md:block rounded-[8px] font-iranSans text-[#000000] bg-[#EEF2F5] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px] ">
     ICO
   </button>
   </div>
@@ -56,11 +56,11 @@ export default function Home() {
         <CoinTable />
       </div>
 
-      {/* <h2 className="w-full text-right font-iranSans font-[900] text-black text-xl tablet:text-2xl laptop:text-2xl leading-snug mb-4">
+      {/* <h2 className="w-full text-right font-iranSans font-[900] text-black text-xl md:text-2xl lg:text-2xl leading-snug mb-4">
         توضیحات کلی در مورد رمز ارزها
       </h2>
 
-      <p className="w-full text-right font-iranSans font-[400] text-black text-sm tablet:text-base laptop:text-lg leading-relaxed mb-8">
+      <p className="w-full text-right font-iranSans font-[400] text-black text-sm md:text-base lg:text-lg leading-relaxed mb-8">
         رمز ارز ها از پروتکل های رمزگرافیکی و یا کد های فوق العاده پیچیده برای
         رمز گذاری دیتاهای حساس و انتقال آن ها استفاده می کنند تا معاملات امنی را
         فراهم کنند. توسعه دهندگان رمز ارزها این پروتکل ها را بر پایه اصول پیچیده
@@ -88,7 +88,7 @@ export default function Home() {
         />
       </div>
 
-      <p className="w-full text-right font-iranSans font-[400] text-black text-sm tablet:text-base laptop:text-lg leading-relaxed">
+      <p className="w-full text-right font-iranSans font-[400] text-black text-sm md:text-base lg:text-lg leading-relaxed">
         رمز ارز ها از پروتکل های رمزگرافیکی و یا کد های فوق العاده پیچیده برای
         رمز گذاری دیتاهای حساس و انتقال آن ها استفاده می کنند تا معاملات امنی را
         فراهم کنند. توسعه دهندگان رمز ارزها این پروتکل ها را بر پایه اصول پیچیده
@@ -104,8 +104,8 @@ export default function Home() {
         با دلار، پوند، یورو و غیره جایگزین کنید. خطر اصلی در همین مرحله اتفاق می
         افتد جایی که هکر ها و بدافزار ها امکان بلوکه کردن پول شما را در حین این
         انتقال دارا هستند.
-      </p>
-       */}
+      </p> */}
+      
     </div>
   );
 }
