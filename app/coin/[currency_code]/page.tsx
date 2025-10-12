@@ -53,10 +53,10 @@ export default function CoinDetailsPage() {
     return <p className="p-4 text-red-500">اطلاعات رمز ارز یافت نشد</p>;
 
   return (
-    <div className="relative overflow-x-hidden w-full h-[3580px] bg-white flex flex-col">
+    <div className="relative overflow-x-hidden w-full h-[3250px] bg-white flex flex-col">
       <div className="relative  flex-1">
         <div className="relative flex-1">
-          <div className="  w-[375px] h-[3837px] md:w-[834px] md:h-[2860px] lg:w-full lg:bg-blue-200 lg:h-[3065px] top-[0px]">
+          <div className="  w-[375px] h-[3837px] md:w-[834px] md:h-[2860px] lg:w-full  top-[0px]">
             <div className=" absolute  shadow sm:rounded-[30px] border-[#ffffff] bg-[#ffffff] w-[337px] h-[799px] top-[104px] left-[20px] rounded-[30px] blur-[#0D1A8E14] md:w-[734px] md:h-[448px] md:top-[114px] md:left-[50px] lg:w-[1000px] lg:h-[481px] lg:top-[70px] lg:left-[15px] ">
               <p className="absolute font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] w-[93px] h-[22px] top-[32px] left-[222px] md:top-[45px] md:left-[616px] lg:w-[107px] lg:h-[25px] lg:top-[29px] lg:right-[30px] lg:text-[16px] lg:leading-[25.04px] ">
                 قیمت لحظه ای :
@@ -357,8 +357,8 @@ export default function CoinDetailsPage() {
                 className="absolute w-[16px] h-[16px] text-[#000000]  top-[16px]  left-[21px]  rotate-[-0deg]  md:w-[24px]  md:h-[24px] md:top-[23px] md:left-[18px]"
               />
             </div>
-            <div className="absolute w-[336px] h-[50px] top-[3264px] left-[20px] rounded-[15px] border-[1px]  border-[#F1F1F1]  md:w-[734px]  md:h-[70px] md:top-[2946px] md:left-[51px] lg:w-[1140px] lg:h-[88px] lg:top-[2680px] lg:left-[20px]">
-              <p className="absolute font-iranSans text-[#000000] font-[400] text-[12px] leading-[18.78px] w-[138px] h-[19px] top-[16px] left-[176px] md:leading-[21.91px] md:text-[14px] md:w-[242px]  md:h-[18px] md:top-[20px] md:left-[465px] lg:w-[311px] lg:h-[28px] lg:top-[29px] lg:left-[780px] lg:text-[18px] lg:leading-[28.17px]">
+            <div className="absolute w-[336px] h-[50px] top-[3264px] left-[20px] rounded-[15px] border-[1px]  border-[#F1F1F1]  md:w-[734px]  md:h-[70px] md:top-[2946px] md:left-[51px] lg:w-[980px] lg:h-[88px] lg:top-[2680px] lg:left-[20px]">
+              <p className="absolute font-iranSans text-[#000000] font-[400] text-[12px] leading-[18.78px] w-[138px] h-[19px] top-[16px] left-[176px] md:leading-[21.91px] md:text-[14px] md:w-[242px]  md:h-[18px] md:top-[20px] md:left-[465px] lg:w-[311px] lg:h-[28px] lg:top-[29px] lg:left-[630px] lg:text-[18px] lg:leading-[28.17px]">
                 چرا باید از والت استفاده کنم؟
               </p>
               <Image
@@ -369,15 +369,15 @@ export default function CoinDetailsPage() {
                 className="absolute w-[16px] h-[16px] text-[#000000]  top-[16px]  left-[21px]  rotate-[-0deg]  md:w-[24px]  md:h-[24px] md:top-[20px] md:left-[18px] "
               />
             </div>
-            <div className="absolute w-[334px] h-[454px] top-[3352px] left-[21px] rounded-[15px]  bg-[#F8F9FA] md:w-[734px]  md:h-[294px] md:top-[3069px] md:left-[50px] lg:w-[1137px] lg:h-[366px] lg:top-[3202px] lg:left-[150px]">
-              <p className="absolute font-iranSans text-[#000000] font-[900] text-[16px] leading-[25.04px] text-center  w-[240px] h-[25px] top-[49px] left-[47px] md:leading-[31.3px] md:text-[20px] md:w-[300px]  md:h-[31px] md:top-[50px] md:left-[77px] lg:w-[420px] lg:h-[44px] lg:top-[53px] lg:left-[234px] lg:text-[28px] lg:leading-[43.83px]">
-                علاقه مند به خرید بیت کوین هستید؟lg
+            <div className="absolute w-[334px] h-[454px] top-[3352px] left-[21px] rounded-[15px]  bg-[#F8F9FA] md:w-[734px]  md:h-[294px] md:top-[3069px] md:left-[50px] lg:w-[980px] lg:h-[366px] lg:top-[2820px] lg:left-[20px]">
+              <p className="absolute font-iranSans text-[#000000] font-[900] text-[16px] leading-[25.04px] text-center  w-[240px] h-[25px] top-[49px] left-[47px] md:leading-[31.3px] md:text-[20px] md:w-[300px]  md:h-[31px] md:top-[50px] md:left-[77px] lg:w-[420px] lg:h-[44px] lg:top-[53px] lg:left-[140px] lg:text-[28px] lg:leading-[43.83px]">
+                علاقه مند به خرید بیت کوین هستید؟{" "}
               </p>
-              <p className="absolute font-iranSans text-[#000000] font-[300] text-[12px] leading-[24px] text-center  w-[246px] h-[48px] top-[91px] left-[44px] md:leading-[32px] md:text-right md:text-[16px] md:w-[339px]  md:h-[64px] md:top-[107px] md:left-[6px] lg:w-[476px] lg:h-[96px] lg:top-[140px] lg:text-right lg:left-[130px] lg:text-[22px] lg:leading-[48px]">
+              <p className="absolute font-iranSans text-[#000000] font-[300] text-[12px] leading-[24px] text-center  w-[246px] h-[48px] top-[91px] left-[44px] md:leading-[32px] md:text-right md:text-[16px] md:w-[339px]  md:h-[64px] md:top-[107px] md:left-[6px] lg:w-[476px] lg:h-[96px] lg:top-[140px] lg:text-right lg:left-[80px] lg:text-[22px] lg:leading-[48px]">
                 ما اینجا هستیم تا شما تجربه ای متفاوت از خرید و فروش بیت کوین
                 داشته باشید.
               </p>
-              <button className="absolute font-iranSans font-[700] rounded-[50px] text-[16px] bg-[#1652F0] leading-[25.04px] text-center left-[76px]  top-[156px] h-[47px] w-[182px] text-[#ffffff]  md:top-[197px] md:left-[165px] lg:w-[182px] lg:h-[47px] lg:top-[279px] lg:left-[430px] ">
+              <button className="absolute font-iranSans font-[700] rounded-[50px] text-[16px] bg-[#1652F0] leading-[25.04px] text-center left-[76px]  top-[156px] h-[47px] w-[182px] text-[#ffffff]  md:top-[197px] md:left-[165px] lg:w-[182px] lg:h-[47px] lg:top-[279px] lg:left-[380px] ">
                 اکنون شروع کنید
               </button>
               <Image
@@ -385,7 +385,7 @@ export default function CoinDetailsPage() {
                 alt="boy"
                 width={1}
                 height={1}
-                className="absolute w-[196px] h-[196px]   top-[227px]  left-[65px]  md:w-[265px]  md:h-[265px] md:top-[14px] md:left-[450px] lg:w-[337px] lg:h-[337px] lg:top-[15px] lg:left-[740px] "
+                className="absolute w-[196px] h-[196px]   top-[227px]  left-[65px]  md:w-[265px]  md:h-[265px] md:top-[14px] md:left-[450px] lg:w-[337px] lg:h-[337px] lg:top-[15px] lg:left-[610px] "
               />
             </div>
           </div>
