@@ -57,7 +57,7 @@ export default function CoinDetailsPage() {
       <div className="relative  flex-1">
         <div className="relative flex-1">
           <div className="  w-[375px] h-[3837px] md:w-[834px] md:h-[2860px] lg:w-full  top-[0px]">
-            <div className=" absolute  shadow sm:rounded-[30px] border-[#ffffff] bg-[#ffffff] w-[337px] h-[799px] top-[104px] left-[20px] rounded-[30px] blur-[#0D1A8E14] md:w-[734px] md:h-[448px] md:top-[114px] md:left-[50px] lg:w-[1000px] lg:h-[481px] lg:top-[70px] lg:left-[15px] ">
+            <div className=" absolute xl:w-[1240px]  shadow sm:rounded-[30px] border-[#ffffff] bg-[#ffffff] w-[337px] h-[799px] top-[104px] left-[20px] rounded-[30px] blur-[#0D1A8E14] md:w-[734px] md:h-[448px] md:top-[114px] md:left-[50px] lg:w-[1000px] lg:h-[481px] lg:top-[70px] lg:left-[15px] ">
               <p className="absolute font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] w-[93px] h-[22px] top-[32px] left-[222px] md:top-[45px] md:left-[616px] lg:w-[107px] lg:h-[25px] lg:top-[29px] lg:right-[30px] lg:text-[16px] lg:leading-[25.04px] ">
                 قیمت لحظه ای :
               </p>
@@ -71,7 +71,7 @@ export default function CoinDetailsPage() {
               <p className="absolute font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] w-[56px] h-[22px] top-[70px] left-[210px] md:top-[87px] lg:w-[150px] lg:h-[28px] lg:top-[85px] lg:right-[110px] lg:text-[18px] lg:leading-[28.17px]  ">
                 {coin.fa_name}
               </p>
-              <p className="absolute   font-iranSansnumber text-right overflow-hidden whitespace-nowrap text-[#000000] font-[700] text-[14px] leading-[21px] w-[142px] h-[21px] top-[75px] left-[5px] md:top-[88px] md:left-[385px] lg:w-[150px] lg:h-[27px] lg:top-[87px] lg:left-[580px] lg:text-[18px] lg:leading-[27px]">
+              <p className="absolute  xl:w-[175px] xl:left-[560px] font-iranSansnumber text-right overflow-hidden whitespace-nowrap text-[#000000] font-[700] text-[14px] leading-[21px] w-[142px] h-[21px] top-[75px] left-[5px] md:top-[88px] md:left-[385px] lg:w-[150px] lg:h-[27px] lg:top-[87px] lg:left-[580px] lg:text-[18px] lg:leading-[27px]">
                 {Number(coin.irt_price)
                   .toFixed(0)
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
@@ -91,9 +91,9 @@ export default function CoinDetailsPage() {
               <Image
                 src="/images/Line 102 (1).svg"
                 alt="line"
-                width={507}
+                width={900}
                 height={507}
-                className="absolute  w-[290px] h-[1px] top-[140px] p-[0px] left-[25px]  border-[#EBEBEB] border-none rotate-[-180deg] md:top-[169px] md:left-[400px] md:w-[324px] lg:w-[400px] lg:top-[178px] lg:right-[30px] "
+                className="absolute xl:w-[500px] xl:left-[600px] w-[290px] h-[1px] top-[140px] p-[0px] left-[25px]  border-[#EBEBEB] border-none rotate-[-180deg] md:top-[169px] md:left-[400px] md:w-[324px] lg:w-[400px] lg:top-[178px] lg:left-[580px]  "
               />
 
               <p className="absolute font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] w-[91px] h-[18px] top-[164px] left-[222px] md:top-[186px] md:left-[618px] lg:w-[121px] lg:h-[24px] lg:top-[214px] lg:right-[30px] lg:text-[16px] lg:leading-[24px] ">
@@ -272,10 +272,10 @@ export default function CoinDetailsPage() {
                 ادامه خرید
               </button>
             </div>
-            <p className="absolute font-iranSans text-[#000000] font-[900] text-[20px] leading-[31.3px] w-[291px] h-[31px] top-[956px] left-[123px] md:h-[47px] md:leading-[46.96px] md:text-[30px] md:w-[196px] md:top-[621px] md:left-[750px] lg:w-[196px] lg:h-[47px] lg:top-[680px] lg:left-[800px] lg:text-[30px] lg:leading-[46.96px] ">
+            <p className="absolute xl:left-[1050px] font-iranSans text-[#000000] font-[900] text-[20px] leading-[31.3px] w-[291px] h-[31px] top-[956px] left-[123px] md:h-[47px] md:leading-[46.96px] md:text-[30px] md:w-[196px] md:top-[621px] md:left-[750px] lg:w-[196px] lg:h-[47px] lg:top-[680px] lg:left-[800px] lg:text-[30px] lg:leading-[46.96px] ">
               درباره
             </p>
-            <span className="absolute font-iranSansnumber text-[#0D1A8E] text-[20px] font-[900]  leading-[31.3px] w-[291px] h-[18px] top-[956px] left-[170px] md:w-[100px] md:h-[47px] md:leading-[46.96px] md:text-[30px]  md:top-[621px] md:left-[370px] lg:w-[196px] lg:h-[47px] lg:top-[680px] lg:left-[730px] lg:text-[30px] lg:leading-[46.96px]">
+            <span className="absolute xl:left-[980px] font-iranSansnumber text-[#0D1A8E] text-[20px] font-[900]  leading-[31.3px] w-[291px] h-[18px] top-[956px] left-[170px] md:w-[100px] md:h-[47px] md:leading-[46.96px] md:text-[30px]  md:top-[621px] md:left-[370px] lg:w-[196px] lg:h-[47px] lg:top-[680px] lg:left-[730px] lg:text-[30px] lg:leading-[46.96px]">
               بیت کوین
             </span>
             <Image
@@ -283,9 +283,9 @@ export default function CoinDetailsPage() {
               alt="bitcoin"
               width={1}
               height={1}
-              className="absolute w-[337px] h-[194.91px]  rounded-[20px] top-[1022px]  left-[19px] md:w-[555px]  md:h-[321px] md:top-[715px] md:left-[139px] lg:w-[450px] lg:h-[321px] lg:top-[680px] lg:left-[20px]"
+              className="absolute xl:w-[555px] w-[337px] h-[194.91px]  rounded-[20px] top-[1022px]  left-[19px] md:w-[555px]  md:h-[321px] md:top-[715px] md:left-[139px] lg:w-[450px] lg:h-[321px] lg:top-[680px] lg:left-[20px]"
             />
-            <p className="absolute font-iranSans text-right text-[#000000] font-[400] text-[12px] leading-[28px] w-[333px] h-[252px] top-[1252px] left-[21px] md:text-[14px]  md:w-[735px]  md:h-[140px] md:top-[1083px] md:left-[50px] lg:w-[480px] lg:h-[245px] lg:top-[740px] lg:left-[515px] lg:text-[14px] lg:leading-[32px]">
+            <p className="absolute xl:left-[695px] xl:w-[550px] xl:text-[16px] font-iranSans text-right text-[#000000] font-[400] text-[12px] leading-[28px] w-[333px] h-[252px] top-[1252px] left-[21px] md:text-[14px]  md:w-[735px]  md:h-[140px] md:top-[1083px] md:left-[50px] lg:w-[480px] lg:h-[245px] lg:top-[740px] lg:left-[515px] lg:text-[14px] lg:leading-[32px]">
               بیت کوین با نماد اختصاری BTC یک ارز دیجیتال یا شکلی از دارایی
               دیجیتال است که با ارزش بازار حدود 541 میلیارد دلار، در رتبه 1
               بازار قرار داشته و سهم 52.484 درصدی از کل بازار را در اختیار دارد
@@ -295,17 +295,17 @@ export default function CoinDetailsPage() {
               1.53 تغییر یافته است. بالاترین قیمت بیت کوین در تاریخ 1402 اسفند
               24 معادل 73628.4 دلار بوده که همینک -7.67 اختلاف دارد از آن زمان .
             </p>
-            <p className="absolute font-iranSans text-center text-[#000000] font-[900] text-[20px] leading-[40px] w-[200px] h-[80px] top-[1480px] left-[78px] md:leading-[46.96px] md:text-[30px] md:w-[518px]  md:h-[55px] md:top-[1360px] md:left-[158px] lg:w-[518px] lg:h-[55px] lg:top-[1050px] lg:left-[495px] lg:text-[30px] lg:leading-[46.96px]">
+            <p className="absolute xl:left-[740px] font-iranSans text-center text-[#000000] font-[900] text-[20px] leading-[40px] w-[200px] h-[80px] top-[1480px] left-[78px] md:leading-[46.96px] md:text-[30px] md:w-[518px]  md:h-[55px] md:top-[1360px] md:left-[158px] lg:w-[518px] lg:h-[55px] lg:top-[1050px] lg:left-[495px] lg:text-[30px] lg:leading-[46.96px]">
               نمودار قیمت بیت کوین ونرخ برابری تومان
             </p>
-            <div className="absolute lg:top-[1150px] lg:left-[20px]">
+            <div className="absolute left-[10px] w-[350px] top-[1600px] lg:top-[1150px] sm:left-[20px] sm:w-[580px] sm:top-[1650px]  md:w-[750px] md:left-[10px] md:top-[1450px] lg:left-[20px] lg:w-[980px] xl:w-[1240px]">
               <CoinChart />
             </div>
 
-            <p className="absolute font-iranSans text-[#000000] font-[900] text-[20px] leading-[31.3px] w-[266px] h-[31px] top-[2246px] left-[55px] md:leading-[46.96px] md:text-[30px] md:w-[399px]  md:h-[47px] md:top-[2036px] md:left-[218px] lg:w-[399px] lg:h-[47px] lg:top-[1850px] lg:left-[600px] lg:text-[30px] lg:leading-[46.96px]">
+            <p className="absolute xl:left-[850px] font-iranSans text-[#000000] font-[900] text-[20px] leading-[31.3px] w-[266px] h-[31px] top-[2246px] left-[55px] md:leading-[46.96px] md:text-[30px] md:w-[399px]  md:h-[47px] md:top-[2036px] md:left-[218px] lg:w-[399px] lg:h-[47px] lg:top-[1850px] lg:left-[600px] lg:text-[30px] lg:leading-[46.96px]">
               توضیحات بیشتر درباره بیت کوین{" "}
             </p>
-            <p className="absolute font-iranSans text-[#000000] font-[400] text-[12px] leading-[28px] w-[326px] h-[245px] top-[2316px] left-[25px] md:text-[14px] md:w-[726px]  md:h-[245px] md:top-[2119px] md:left-[54px] lg:w-[980px] lg:h-[245px] lg:top-[1950px] lg:left-[20px] lg:text-[16px] lg:leading-[32px]">
+            <p className="absolute xl:left-[20px] xl:w-[1224px] font-iranSans text-[#000000] font-[400] text-[12px] leading-[28px] w-[326px] h-[245px] top-[2316px] left-[25px] md:text-[14px] md:w-[726px]  md:h-[245px] md:top-[2119px] md:left-[54px] lg:w-[980px] lg:h-[245px] lg:top-[1950px] lg:left-[20px] lg:text-[16px] lg:leading-[32px]">
               بیت کوین با نماد اختصاری BTC یک ارز دیجیتال یا شکلی از دارایی
               دیجیتال است که با ارزش بازار حدود 541 میلیارد دلار، در رتبه 1
               بازار قرار داشته و سهم 52.484 درصدی از کل بازار را در اختیار دارد
@@ -323,11 +323,11 @@ export default function CoinDetailsPage() {
               1.53 تغییر یافته است. بالاترین قیمت بیت کوین در تاریخ 1402 اسفند
               24 معادل 73628.4 دلار بوده که همینک -7.67 اختلاف دارد از آن زمان .
             </p>
-            <p className="absolute font-iranSans text-[#000000] font-[900] text-[20px] leading-[31.3px] w-[121px] h-[31px] top-[2891px] left-[127px]  md:leading-[46.96px] md:text-[30px] md:w-[181px]  md:h-[47px] md:top-[2509px] md:left-[327px] lg:w-[181px] lg:h-[47px] lg:top-[2280px] lg:left-[820px] lg:text-[30px] lg:leading-[46.96px]">
+            <p className="absolute xl:left-[1062px] font-iranSans text-[#000000] font-[900] text-[20px] leading-[31.3px] w-[121px] h-[31px] top-[2891px] left-[127px]  md:leading-[46.96px] md:text-[30px] md:w-[181px]  md:h-[47px] md:top-[2509px] md:left-[327px] lg:w-[181px] lg:h-[47px] lg:top-[2280px] lg:left-[820px] lg:text-[30px] lg:leading-[46.96px]">
               سوالات متداول
             </p>
-            <div className="absolute w-[335px] h-[225px] top-[2953px] left-[20px] rounded-[15px] border-[1px]  border-[#F1F1F1] md:text-[30px] md:w-[734px]  md:h-[223px] md:top-[2605px] md:left-[51px] lg:w-[980px] lg:h-[227px] lg:top-[2340px] lg:left-[20px]">
-              <p className="absolute font-iranSans text-[#000000] font-[500] text-[16px] leading-[25.04px] w-[96px] h-[25px] top-[19px] left-[219px] md:text-[18px] md:leading-[28.11px] md:w-[108px]  md:h-[28px] md:top-[40px] md:left-[599px]  lg:top-[40px] lg:left-[830px] ">
+            <div className="absolute xl:left-[20px] xl:w-[1225px] w-[335px] h-[225px] top-[2953px] left-[20px] rounded-[15px] border-[1px]  border-[#F1F1F1] md:text-[30px] md:w-[734px]  md:h-[223px] md:top-[2605px] md:left-[51px] lg:w-[980px] lg:h-[227px] lg:top-[2340px] lg:left-[20px]">
+              <p className="absolute xl:left-[1050px] xl:w-[120px] xl:text-[20px] font-iranSans text-[#000000] font-[500] text-[16px] leading-[25.04px] w-[96px] h-[25px] top-[19px] left-[219px] md:text-[18px] md:leading-[28.11px] md:w-[108px]  md:h-[28px] md:top-[40px] md:left-[599px]  lg:top-[40px] lg:left-[830px] ">
                 رمز ارز چیست؟
               </p>
               <Image
@@ -337,7 +337,7 @@ export default function CoinDetailsPage() {
                 height={1}
                 className="absolute w-[16px] h-[16px] text-[#000000]  top-[19px]  left-[37px]  rotate-[180deg] md:text-[30px] md:w-[24px]  md:h-[24px] md:top-[50px] md:left-[15px] lg:top-[30px] lg:left-[18px]"
               />
-              <p className="absolute font-iranSans text-[#000000] font-[400] text-[12px] leading-[24px] w-[294px] h-[144px] top-[64px] left-[21px] md:leading-[32px] md:text-[14px] md:w-[690px]  md:h-[96px] md:top-[96px] md:left-[17px] lg:w-[920px] lg:h-[64px] lg:top-[98px] lg:left-[10] lg:text-[14px]">
+              <p className="absolute xl:left-[20px] xl:w-[1155px] xl:text-[20px] font-iranSans text-[#000000] font-[400] text-[12px] leading-[24px] w-[294px] h-[144px] top-[64px] left-[21px] md:leading-[32px] md:text-[14px] md:w-[690px]  md:h-[96px] md:top-[96px] md:left-[17px] lg:w-[920px] lg:h-[64px] lg:top-[98px] lg:left-[10] lg:text-[14px]">
                 لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی
                 و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود.
                 طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن
@@ -345,8 +345,8 @@ export default function CoinDetailsPage() {
                 می نماید، تا از نظر گرافی ...
               </p>
             </div>
-            <div className="absolute w-[336px] h-[50px] top-[3196px] left-[20px] rounded-[15px] border-[1px]  border-[#F1F1F1]  md:w-[734px]  md:h-[70px] md:top-[2852px] md:left-[50px] lg:w-[980px] lg:h-[88px] lg:top-[2580px] lg:left-[20px]">
-              <p className="absolute font-iranSans text-[#000000] font-[400] text-[12px] leading-[18.78px] w-[242px] h-[18px] top-[16px] left-[73px] md:leading-[21.91px] md:text-[14px] md:w-[242px]  md:h-[18px] md:top-[23px] md:left-[466px] lg:w-[311px] lg:h-[28px] lg:top-[29px] lg:left-[630px] lg:text-[18px] lg:leading-[28.17px]">
+            <div className="absolute xl:w-[1225px]  w-[336px] h-[50px] top-[3196px] left-[20px] rounded-[15px] border-[1px]  border-[#F1F1F1]  md:w-[734px]  md:h-[70px] md:top-[2852px] md:left-[50px] lg:w-[980px] lg:h-[88px] lg:top-[2580px] lg:left-[20px]">
+              <p className="absolute xl:text-[20px] xl:left-[780px] xl:w-[400px] font-iranSans text-[#000000] font-[400] text-[12px] leading-[18.78px] w-[242px] h-[18px] top-[16px] left-[73px] md:leading-[21.91px] md:text-[14px] md:w-[242px]  md:h-[18px] md:top-[23px] md:left-[466px] lg:w-[311px] lg:h-[28px] lg:top-[29px] lg:left-[630px] lg:text-[18px] lg:leading-[28.17px]">
                 آیا می توانم با کارت بانکی بیت کوین بخرم؟
               </p>
               <Image
@@ -357,8 +357,8 @@ export default function CoinDetailsPage() {
                 className="absolute w-[16px] h-[16px] text-[#000000]  top-[16px]  left-[21px]  rotate-[-0deg]  md:w-[24px]  md:h-[24px] md:top-[23px] md:left-[18px]"
               />
             </div>
-            <div className="absolute w-[336px] h-[50px] top-[3264px] left-[20px] rounded-[15px] border-[1px]  border-[#F1F1F1]  md:w-[734px]  md:h-[70px] md:top-[2946px] md:left-[51px] lg:w-[980px] lg:h-[88px] lg:top-[2680px] lg:left-[20px]">
-              <p className="absolute font-iranSans text-[#000000] font-[400] text-[12px] leading-[18.78px] w-[138px] h-[19px] top-[16px] left-[176px] md:leading-[21.91px] md:text-[14px] md:w-[242px]  md:h-[18px] md:top-[20px] md:left-[465px] lg:w-[311px] lg:h-[28px] lg:top-[29px] lg:left-[630px] lg:text-[18px] lg:leading-[28.17px]">
+            <div className="absolute xl:w-[1225px] w-[336px] h-[50px] top-[3264px] left-[20px] rounded-[15px] border-[1px]  border-[#F1F1F1]  md:w-[734px]  md:h-[70px] md:top-[2946px] md:left-[51px] lg:w-[980px] lg:h-[88px] lg:top-[2680px] lg:left-[20px]">
+              <p className="absolute xl:text-[20px] xl:left-[780px] xl:w-[400px] font-iranSans text-[#000000] font-[400] text-[12px] leading-[18.78px] w-[138px] h-[19px] top-[16px] left-[176px] md:leading-[21.91px] md:text-[14px] md:w-[242px]  md:h-[18px] md:top-[20px] md:left-[465px] lg:w-[311px] lg:h-[28px] lg:top-[29px] lg:left-[630px] lg:text-[18px] lg:leading-[28.17px]">
                 چرا باید از والت استفاده کنم؟
               </p>
               <Image
@@ -369,15 +369,15 @@ export default function CoinDetailsPage() {
                 className="absolute w-[16px] h-[16px] text-[#000000]  top-[16px]  left-[21px]  rotate-[-0deg]  md:w-[24px]  md:h-[24px] md:top-[20px] md:left-[18px] "
               />
             </div>
-            <div className="absolute w-[334px] h-[454px] top-[3352px] left-[21px] rounded-[15px]  bg-[#F8F9FA] md:w-[734px]  md:h-[294px] md:top-[3069px] md:left-[50px] lg:w-[980px] lg:h-[366px] lg:top-[2820px] lg:left-[20px]">
-              <p className="absolute font-iranSans text-[#000000] font-[900] text-[16px] leading-[25.04px] text-center  w-[240px] h-[25px] top-[49px] left-[47px] md:leading-[31.3px] md:text-[20px] md:w-[300px]  md:h-[31px] md:top-[50px] md:left-[77px] lg:w-[420px] lg:h-[44px] lg:top-[53px] lg:left-[140px] lg:text-[28px] lg:leading-[43.83px]">
+            <div className="absolute xl:w-[1225px] w-[334px] h-[454px] top-[3352px] left-[21px] rounded-[15px]  bg-[#F8F9FA] md:w-[734px]  md:h-[294px] md:top-[3069px] md:left-[50px] lg:w-[980px] lg:h-[366px] lg:top-[2820px] lg:left-[20px]">
+              <p className="absolute xl:text-[34px] xl:w-[550px] font-iranSans text-[#000000] font-[900] text-[16px] leading-[25.04px] text-center  w-[240px] h-[25px] top-[49px] left-[47px] md:leading-[31.3px] md:text-[20px] md:w-[300px]  md:h-[31px] md:top-[50px] md:left-[77px] lg:w-[420px] lg:h-[44px] lg:top-[53px] lg:left-[140px] lg:text-[28px] lg:leading-[43.83px]">
                 علاقه مند به خرید بیت کوین هستید؟{" "}
               </p>
-              <p className="absolute font-iranSans text-[#000000] font-[300] text-[12px] leading-[24px] text-center  w-[246px] h-[48px] top-[91px] left-[44px] md:leading-[32px] md:text-right md:text-[16px] md:w-[339px]  md:h-[64px] md:top-[107px] md:left-[6px] lg:w-[476px] lg:h-[96px] lg:top-[140px] lg:text-right lg:left-[80px] lg:text-[22px] lg:leading-[48px]">
+              <p className="absolute xl:text-[24px] xl:left-[190px] font-iranSans text-[#000000] font-[300] text-[12px] leading-[24px] text-center  w-[246px] h-[48px] top-[91px] left-[44px] md:leading-[32px] md:text-right md:text-[16px] md:w-[339px]  md:h-[64px] md:top-[107px] md:left-[6px] lg:w-[476px] lg:h-[96px] lg:top-[140px] lg:text-right lg:left-[80px] lg:text-[22px] lg:leading-[48px]">
                 ما اینجا هستیم تا شما تجربه ای متفاوت از خرید و فروش بیت کوین
                 داشته باشید.
               </p>
-              <button className="absolute font-iranSans font-[700] rounded-[50px] text-[16px] bg-[#1652F0] leading-[25.04px] text-center left-[76px]  top-[156px] h-[47px] w-[182px] text-[#ffffff]  md:top-[197px] md:left-[165px] lg:w-[182px] lg:h-[47px] lg:top-[279px] lg:left-[380px] ">
+              <button className="absolute xl:w-[300px] xl:left-[360px] font-iranSans font-[700] rounded-[50px] text-[16px] bg-[#1652F0] leading-[25.04px] text-center left-[76px]  top-[156px] h-[47px] w-[182px] text-[#ffffff]  md:top-[197px] md:left-[165px] lg:w-[182px] lg:h-[47px] lg:top-[279px] lg:left-[380px] ">
                 اکنون شروع کنید
               </button>
               <Image
@@ -385,7 +385,7 @@ export default function CoinDetailsPage() {
                 alt="boy"
                 width={1}
                 height={1}
-                className="absolute w-[196px] h-[196px]   top-[227px]  left-[65px]  md:w-[265px]  md:h-[265px] md:top-[14px] md:left-[450px] lg:w-[337px] lg:h-[337px] lg:top-[15px] lg:left-[610px] "
+                className="absolute xl:left-[850px] w-[196px] h-[196px]   top-[227px]  left-[65px]  md:w-[265px]  md:h-[265px] md:top-[14px] md:left-[450px] lg:w-[337px] lg:h-[337px] lg:top-[15px] lg:left-[610px] "
               />
             </div>
           </div>
