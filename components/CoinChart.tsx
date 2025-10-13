@@ -26,7 +26,7 @@ const CoinChart: React.FC = () => {
     const fetchCoin = async () => {
       try {
         const res = await fetch(
-          `https://b.wallet.ir/coinlist/list/?page=1&limit=100`
+          `https://b.wallet.ir/coinlist/list/?page=1&limit=10`
         );
         const data = await res.json();
 
