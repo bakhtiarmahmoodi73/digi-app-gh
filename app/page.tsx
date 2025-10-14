@@ -56,7 +56,7 @@ export default function Home() {
         <CoinTable />
       </div>
 
-      {/* <h2 className="w-full text-right font-iranSans font-[900] text-black text-xl md:text-2xl lg:text-2xl leading-snug mb-4">
+      <h2 className="w-full text-right font-iranSans font-[900] text-black text-xl md:text-2xl lg:text-2xl leading-snug mb-4">
         توضیحات کلی در مورد رمز ارزها
       </h2>
 
@@ -104,7 +104,7 @@ export default function Home() {
         با دلار، پوند، یورو و غیره جایگزین کنید. خطر اصلی در همین مرحله اتفاق می
         افتد جایی که هکر ها و بدافزار ها امکان بلوکه کردن پول شما را در حین این
         انتقال دارا هستند.
-      </p> */}
+      </p> 
       
     </div>
   );

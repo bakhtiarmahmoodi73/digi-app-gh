@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
 type Coin = {
   id: number;
@@ -16,8 +16,9 @@ type Coin = {
 };
 
 const CoinChart: React.FC = () => {
-  const searchParams = useSearchParams();
-  const currency_code = searchParams.get("currency_code") || "BTC";
+  
+  const params = useParams();
+  const currency_code = (params?.currency_code as string) || "BTC";
 
   const [coin, setCoin] = useState<Coin | null>(null);
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,7 @@ const CoinChart: React.FC = () => {
     const fetchCoin = async () => {
       try {
         const res = await fetch(
-          `https://b.wallet.ir/coinlist/list/?page=1&limit=10`
+          `https://b.wallet.ir/coinlist/list/?page=1&limit=100`
         );
         const data = await res.json();
 
@@ -42,7 +43,7 @@ const CoinChart: React.FC = () => {
     };
 
     fetchCoin();
-  }, [currency_code]);
+  }, [currency_code]); 
 
   if (loading) return <p className="text-center p-4">در حال بارگذاری...</p>;
   if (!coin) return <p className="text-center p-4">ارز پیدا نشد</p>;
@@ -76,10 +77,12 @@ const CoinChart: React.FC = () => {
   };
 
   return (
-    <div className=" p-4 bg-white rounded-[30px]  lg:h-[600px]  shadow-md">
+    <div className="p-4 bg-white rounded-[30px] lg:h-[600px] shadow-md">
       <div className="flex items-center gap-3 mb-4">
         <img src={coin.icon} alt={coin.fa_name} className="w-10 h-10" />
-        <h2 className="text-xl font-bold">{coin.fa_name} ({coin.currency_code})</h2>
+        <h2 className="text-xl font-bold">
+          {coin.fa_name} ({coin.currency_code})
+        </h2>
         <span
           className={`ml-auto font-semibold ${
             parseFloat(coin.daily_change_percent) >= 0
