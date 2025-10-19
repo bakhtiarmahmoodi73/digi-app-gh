@@ -8,6 +8,7 @@ function Footer() {
     <footer className="relative mx-auto overflow-x-hidden bg-[#1B2A4E] sm:w-full md:h-[357px] lg:h-[402px] h-[579px] w-full">
       {/* Container for centering content on xl and above */}
       <div className="relative w-full h-full xl:max-w-[1440px] xl:mx-auto xl:left-[70px]">
+        
         <Image
           src="/images/logo_light.d1640c2f 1.png"
           alt="logo"

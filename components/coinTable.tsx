@@ -88,7 +88,7 @@ export default function CoinsPage() {
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1).reverse();
 
   return (
-    <div className="relative flex flex-col items-center min-h-screen py-10">
+    <div className="relative mx-auto flex flex-col items-center min-h-screen mt-4 w-[365px]  ">
       {/* Desktop View */}
       <div className="hidden md:flex flex-col items-center w-full">
         <div className="flex items-center justify-between bg-[#F5F7FA] border border-[#E5E9F2] rounded-[12px]
@@ -239,40 +239,19 @@ export default function CoinsPage() {
 
       {/* Mobile View */}
       <div className="block md:hidden w-full px-4">
-        {/* Search Box */}
-        <div className="flex items-center bg-white border border-[#E2E8F0] rounded-[8px] w-full h-[45px] px-2 mb-4">
-          <svg
-            className="w-4 h-4 text-gray-400"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M21 21l-4.35-4.35"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <circle
-              cx="11"
-              cy="11"
-              r="6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <input
-            dir="rtl"
-            placeholder="جستجو..."
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setPage(1);
-            }}
-            className="outline-none text-[13px] pl-2 w-full placeholder-gray-400"
-          />
+        {/* Top Gray Box */}
+        <div className="relative top-[0px] bg-[#E3E7EC] rounded-[8px] h-[64px] ">
+          <div className="flex justify-between items-center h-[64px] mx-4">
+            <div className="">
+              <div className="text-[14px] text-[#000000]">نام رمز ارز</div>
+            </div>
+            <div className="">
+              <div className="text-[14px] text-[#000000]">ارزش دلاری</div>
+            </div>
+            <div className="">
+              <div className="text-[14px] text-[#000000]">تغییر روزانه</div>
+            </div>
+          </div>
         </div>
 
         {loading ? (
@@ -305,78 +284,65 @@ export default function CoinsPage() {
               <div
                 key={c.id}
                 onClick={() => onClickRow(c.id)}
-                className={`bg-white rounded-[10px] shadow-sm border border-[#E5E9F2] p-4 mb-4 transition cursor-pointer
+                className={`rounded-[10px] shadow-sm border border-[#E5E9F2] overflow-hidden mb-4 transition cursor-pointer
                   ${isSelected ? "border border-blue-400 shadow-md" : ""}`}
               >
-                {/* Top Gray Box */}
-                <div className="bg-gray-100 rounded-[8px] p-3 mb-4">
-                  <div className="flex justify-between items-center text-center mb-2">
-                    <div className="flex-1">
-                      <div className="text-[12px] text-gray-500 mb-1">نام رمز ارز</div>
-                      <div className="text-[14px] font-medium text-[#1E293B]">{c.fa_name}</div>
+              
+                <div className="bg-[#f7f7f7] ">
+                <div className="flex justify-between gap-4 items-center mb-4 ">
+  <img
+    src={c.icon}
+    alt={c.currency_code}
+    className="w-8 h-8 mr-2 rounded-full mt-6"
+  />
+  <div className="text-left  mt-4">
+    <div className="text-[12px] text-[#000000]">{c.fa_name}</div>
+    <div className="text-[14px] font-medium text-[#000000]">{c.currency_code}</div>
+  </div>
+  <div className="ml-auto w-[100px] mr-4  ">${fmt(c.price)}</div>
+  <div
+    className={`text-[12px] font-medium ml-4 ${
+      Number(c.daily_change_percent) >= 0
+        ? "text-green-600"
+        : "text-red-600"
+    }`}
+  >
+    {Number(c.daily_change_percent) >= 0 ? "+" : ""}
+    {c.daily_change_percent}٪
+  </div>
+</div>
+                  {/* Buy/Sell Section */}
+                  <div className="space-y-2 mb-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] mr-2 text-[#000000]">فروش به والت</span>
+                      <span className="text-[13px] ml-2 font-medium text-[#000000]">{fmt(c.sell_irt_price)} تومان</span>
                     </div>
-                    <div className="flex-1">
-                      <div className="text-[12px] text-gray-500 mb-1">ارزش دلاری</div>
-                      <div className="text-[14px] font-medium text-[#1E293B]">{fmt(c.price)} $</div>
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-[12px] text-gray-500 mb-1">تغییر روزانه</div>
-                      <div
-                        className={`text-[14px] font-medium ${
-                          Number(c.daily_change_percent) >= 0
-                            ? "text-green-600"
-                            : "text-red-600"
-                        }`}
-                      >
-                        {Number(c.daily_change_percent) >= 0 ? "+" : ""}
-                        {c.daily_change_percent}٪
-                      </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] mr-2 text-[#000000]">خرید از والت</span>
+                      <span className="text-[13px] ml-2 font-medium text-[#000000]">{fmt(c.buy_irt_price)} تومان</span>
                     </div>
                   </div>
+
+                  {/* Trade Button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/coin/${c.currency_code}`);
+                    }}
+                    className="bg-[#1652f0] text-[#ffffff] text-[14px] font-medium w-full py-3 rounded-[8px] hover:bg-gray-100 transition"
+                  >
+                    معامله
+                  </button>
                 </div>
 
-                {/* Coin Info Section */}
-                <div className="flex justify-end items-center mb-4">
-                  <div className="text-left ml-3">
-                    <div className="text-[14px] font-medium text-[#1E293B]">{c.currency_code}</div>
-                    <div className="text-[12px] text-gray-500">{c.fa_name}</div>
-                  </div>
-                  <img
-                    src={c.icon}
-                    alt={c.currency_code}
-                    className="w-10 h-10 rounded-full"
-                  />
-                </div>
-
-                {/* Buy/Sell Section */}
-                <div className="space-y-2 mb-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[13px] text-gray-600">فروش به والت</span>
-                    <span className="text-[13px] font-medium text-[#1E293B]">{fmt(c.sell_irt_price)} تومان</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[13px] text-gray-600">خرید از والت</span>
-                    <span className="text-[13px] font-medium text-[#1E293B]">{fmt(c.buy_irt_price)} تومان</span>
-                  </div>
-                </div>
-
-                {/* Trade Button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    router.push(`/coin/${c.currency_code}`);
-                  }}
-                  className="bg-[#1652F0] text-white text-[14px] font-medium w-full py-3 rounded-[8px] hover:bg-[#1447D8] transition mb-4"
-                >
-                  معامله
-                </button>
-
-                {/* Additional Rows - 8 سطر تکراری */}
-                <div className="space-y-3">
+                {/* Additional Rows - 8 سطر تکراری با پس‌زمینه متناوب */}
+                <div>
                   {Array.from({ length: 8 }).map((_, rowIdx) => (
                     <div
                       key={rowIdx}
-                      className="flex justify-between items-center p-3 bg-gray-50 rounded-[8px]"
+                      className={`flex justify-between items-center p-3 ${
+                        rowIdx % 2 === 0 ? "bg-white" : "bg-gray-100"
+                      }`}
                     >
                       <div className="flex items-center gap-2">
                         <img
