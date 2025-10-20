@@ -8,7 +8,6 @@ function Footer() {
     <footer className="relative mx-auto overflow-x-hidden bg-[#1B2A4E] sm:w-full md:h-[357px] lg:h-[402px] h-[579px] w-full">
       {/* Container for centering content on xl and above */}
       <div className="relative w-full h-full xl:max-w-[1440px] xl:mx-auto xl:left-[70px]">
-        
         <Image
           src="/images/logo_light.d1640c2f 1.png"
           alt="logo"
@@ -17,9 +16,9 @@ function Footer() {
           className="absolute text-[#FFFFFF] w-[110px] h-[53px] left-[246px] top-[56px] sm:w-[140px] sm:h-[53px] sm:left-[480px] sm:top-[56px] md:w-[132px] md:h-[64px] md:left-[600px] md:top-[30px] lg:left-[885px] xl:h-[64px] xl:left-[1035px] xl:top-[42px]"
         />
         <p className="absolute font-iranSans text-[#FFFFFF] font-[400] leading-[24px] text-justify text-[12px] w-[335px] h-[96px] top-[123px] left-[22px] sm:w-[470px] sm:left-[150px] sm:text-[13px] md:w-[200px] md:h-[120px] md:top-[100px] md:text-[12px] md:left-[540px] lg:left-[665px] lg:w-[352px] lg:text-[16px] lg:top-[125px] xl:w-[352px] xl:h-[150px] xl:top-[120px] xl:left-[815px] xl:text-[16px] xl:leading-[30px] justify-center">
-          راهکارهای پرداخت ری در سال 2009 فعالیت خود را در زمینه سیستم های پرداخت
-          بین المللی با وبسایت wallet.ir آغاز کرد. ری پرداخت با نام تجاری MGY
-          INVESTMENT LTD با شماره ثبت ۷۳۶۵۰۶۳ در کشور انگلستان به ثبت رسید و
+          راهکارهای پرداخت ری در سال 2009 فعالیت خود را در زمینه سیستم های
+          پرداخت بین المللی با وبسایت wallet.ir آغاز کرد. ری پرداخت با نام تجاری
+          MGY INVESTMENT LTD با شماره ثبت ۷۳۶۵۰۶۳ در کشور انگلستان به ثبت رسید و
           فعالیت رسمی آغاز نمود.
         </p>
         <Image
@@ -29,7 +28,7 @@ function Footer() {
           height={0}
           className="absolute h-[1px] w-[335px] border-[1px] border-none left-[22px] top-[243px] sm:w-[480px] sm:left-[140px] bg-[#374566] text-[#374566] md:hidden"
         />
-        
+
         <p className="absolute font-iranSans text-[#FFFFFF] font-[900] leading-[21.91px] text-right text-[14px] w-[93px] h-[22px] top-[265px] left-[261px] sm:left-[525px] md:text-[16px] md:w-[107px] md:h-[25px] md:top-[49px] md:left-[360px] md:leading-[25.04px] lg:text-[20px] lg:w-[133px] lg:left-[470px] xl:text-[20px] xl:w-[133px] xl:h-[31px] xl:top-[53px] xl:left-[600px] xl:leading-[31.3px]">
           لینک های مرتبط
         </p>

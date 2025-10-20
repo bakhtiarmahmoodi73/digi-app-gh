@@ -56,7 +56,6 @@ export default function CoinsPage() {
         const arr = data.items || [];
         setItems(arr);
         setDisplayed(arr.slice((p - 1) * limit, p * limit));
-        // فقط این خط اضافه شده - تنظیم totalPages از داده API
         setTotalPages(data.total_page || 10);
       }
     } catch (err) {
@@ -84,15 +83,18 @@ export default function CoinsPage() {
     setSelectedId((prev) => (prev === id ? null : id));
   };
 
-  // ایجاد آرایه صفحات بر اساس totalPages واقعی
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1).reverse();
+  const pageNumbers = Array.from(
+    { length: totalPages },
+    (_, i) => i + 1
+  ).reverse();
 
   return (
     <div className="relative mx-auto flex flex-col items-center min-h-screen mt-4 w-[365px]  ">
-      {/* Desktop View */}
       <div className="hidden md:flex flex-col items-center md:w-[800px] lg:w-[1200px]    ">
-        <div className="flex items-center md:gap-8 lg:gap-[98px] xl:gap-32 xl:px-6 bg-[#E3E7EC] border  rounded-[8px]
-          xl:w-[1200px] h-[70px] md:px-2 text-[#1E293B] font-[500] text-[15px] mb-0">
+        <div
+          className="flex items-center md:gap-8 lg:gap-[98px] xl:gap-32 xl:px-6 bg-[#E3E7EC] border  rounded-[8px]
+          xl:w-[1200px] h-[70px] md:px-2 text-[#1E293B] font-[500] text-[15px] mb-0"
+        >
           <div className="xl:w-[120px]">نام رمز ارز</div>
           <div className="xl:w-[130px]">ارزش دلاری</div>
           <div className="xl:w-[130px]">تغییر روزانه</div>
@@ -237,9 +239,7 @@ export default function CoinsPage() {
         </div>
       </div>
 
-      {/* Mobile View */}
       <div className="block  sm:ml-16 sm:w-[500px]  md:hidden w-full px-4">
-        {/* Top Gray Box */}
         <div className="relative sm:w-[550px]  top-[0px] bg-[#E3E7EC] rounded-[8px] h-[64px] ">
           <div className="flex justify-between items-center h-[64px] mx-4">
             <div className="">
@@ -256,7 +256,10 @@ export default function CoinsPage() {
 
         {loading ? (
           Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="bg-white rounded-[10px] shadow-sm border border-[#E5E9F2] p-4 mb-4 animate-pulse">
+            <div
+              key={i}
+              className="bg-white rounded-[10px] shadow-sm border border-[#E5E9F2] p-4 mb-4 animate-pulse"
+            >
               <div className="flex justify-between items-start mb-4">
                 <div className="w-20 h-6 bg-gray-200 rounded"></div>
                 <div className="w-16 h-6 bg-gray-200 rounded"></div>
@@ -287,43 +290,54 @@ export default function CoinsPage() {
                 className={`rounded-[10px] sm:w-[550px] shadow-sm border border-[#E5E9F2] overflow-hidden mb-4 transition cursor-pointer
                   ${isSelected ? "border border-blue-400 shadow-md" : ""}`}
               >
-              
                 <div className="bg-[#f7f7f7] ">
-                <div className="flex justify-between gap-4 items-center mb-4  ">
-  <img
-    src={c.icon}
-    alt={c.currency_code}
-    className="w-8 h-8 mr-2 rounded-full mt-6"
-  />
-  <div className="text-left  mt-4">
-    <div className="text-[12px] text-[#000000]">{c.fa_name}</div>
-    <div className="text-[14px] font-medium text-[#000000]">{c.currency_code}</div>
-  </div>
-  <div className="ml-auto w-[100px] mr-4  ">${fmt(c.price)}</div>
-  <div
-    className={`text-[12px] font-medium ml-4 ${
-      Number(c.daily_change_percent) >= 0
-        ? "text-green-600"
-        : "text-red-600"
-    }`}
-  >
-    {Number(c.daily_change_percent) >= 0 ? "+" : ""}
-    {c.daily_change_percent}٪
-  </div>
-</div>
-                  {/* Buy/Sell Section */}
+                  <div className="flex justify-between gap-4 items-center mb-4  ">
+                    <img
+                      src={c.icon}
+                      alt={c.currency_code}
+                      className="w-8 h-8 mr-2 rounded-full mt-6"
+                    />
+                    <div className="text-left  mt-4">
+                      <div className="text-[12px] text-[#000000]">
+                        {c.fa_name}
+                      </div>
+                      <div className="text-[14px] font-medium text-[#000000]">
+                        {c.currency_code}
+                      </div>
+                    </div>
+                    <div className="ml-auto w-[100px] mr-4 sm:mr-32  ">
+                      ${fmt(c.price)}
+                    </div>
+                    <div
+                      className={`text-[12px] font-medium ml-4 ${
+                        Number(c.daily_change_percent) >= 0
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {Number(c.daily_change_percent) >= 0 ? "+" : ""}
+                      {c.daily_change_percent}٪
+                    </div>
+                  </div>
                   <div className="space-y-2 mb-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-[13px] mr-2 text-[#000000]">فروش به والت</span>
-                      <span className="text-[13px] ml-2 font-medium text-[#000000]">{fmt(c.sell_irt_price)} تومان</span>
+                      <span className="text-[13px] mr-2 text-[#000000]">
+                        فروش به والت
+                      </span>
+                      <span className="text-[13px] ml-2 font-medium text-[#000000]">
+                        {fmt(c.sell_irt_price)} تومان
+                      </span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-[13px] mr-2 text-[#000000]">خرید از والت</span>
-                      <span className="text-[13px] ml-2 font-medium text-[#000000]">{fmt(c.buy_irt_price)} تومان</span>
+                      <span className="text-[13px] mr-2 text-[#000000]">
+                        خرید از والت
+                      </span>
+                      <span className="text-[13px] ml-2 font-medium text-[#000000]">
+                        {fmt(c.buy_irt_price)} تومان
+                      </span>
                     </div>
                   </div>
 
-                  {/* Trade Button */}
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -335,7 +349,6 @@ export default function CoinsPage() {
                   </button>
                 </div>
 
-                {/* Additional Rows - 8 سطر تکراری با پس‌زمینه متناوب */}
                 <div>
                   {Array.from({ length: 8 }).map((_, rowIdx) => (
                     <div
@@ -351,8 +364,12 @@ export default function CoinsPage() {
                           className="w-6 h-6 rounded-full"
                         />
                         <div className="text-right">
-                          <div className="text-[12px] font-medium text-[#1E293B]">{c.currency_code}</div>
-                          <div className="text-[11px] text-gray-500">{c.fa_name}</div>
+                          <div className="text-[12px] font-medium text-[#1E293B]">
+                            {c.currency_code}
+                          </div>
+                          <div className="text-[11px] text-gray-500">
+                            {c.fa_name}
+                          </div>
                         </div>
                       </div>
                       <div className="text-[12px] text-[#1E293B] text-center">
@@ -376,7 +393,6 @@ export default function CoinsPage() {
           })
         )}
 
-        {/* Mobile Pagination */}
         <div className="flex justify-center items-center gap-2 mt-6 flex-wrap">
           {pageNumbers.map((p) => (
             <button
