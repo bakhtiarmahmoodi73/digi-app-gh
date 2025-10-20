@@ -6,7 +6,7 @@ function Header() {
   return (
     <nav className="mx-auto overflow-x-hidden bg-navbar h-[64px] md:h-[92px] lg:h-[104px] w-full">
       <div className="relative mx-auto h-full">
-        <div className="relative xl:max-w-[1440px] md:ml-[40px] lg:ml-[0] xl:mx-auto h-full">
+        <div className="relative  xl:max-w-[1440px] md:ml-[40px] lg:ml-[0] xl:mx-auto h-full">
           <Image
             src="/images/Group 405 (1).png"
             alt="log"

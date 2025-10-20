@@ -7,12 +7,12 @@ export default function Home() {
   return (
     <div className="mx-auto xl:max-w-[1240px] 2xl:max-w-[1440px]  overflow-x-hidden   py-10 flex flex-col items-center xl:items-center">
       <div className="xl:mr-10 2xl:mr-52">
-      <h1 className="leading-[100%] mx-auto text-right font-iranSans w-[301px] h-[31px] top-[114px] text-[20px] font-[900] text-[#000000] md:text-[30px] md:left-[191px] md:top-[153px] md:h-[47px] md:w-[452px] lg:text-[40px] lg:w-[602px] lg:h-[63px] lg:top-[200px] lg:left-[419px] lg:font-[900] xl:text-center">
+      <h1 className="leading-[100%]  mx-auto text-right font-iranSans w-[301px] h-[31px] top-[114px] text-[20px] font-[900] text-[#000000] sm:w-[550px] sm:text-[25px] sm:ml- sm:mb-4 md:text-[30px] md:left-[191px] md:top-[153px] md:h-[47px] md:w-[452px] lg:text-[40px] lg:w-[602px] lg:h-[63px] lg:top-[200px] lg:left-[419px] lg:font-[900] xl:text-center">
         لیست قیمت لحظه‌ای ارزهای دیجیتال‌
       </h1>
       
-      <div className="flex   gap-3 lg:gap-2 xl:gap-6 xl:ml-4 bg-white">
-        <button className="flex mx-auto xl:w-[130px] items-center justify-between px-6 rounded-[8px] w-[335px] h-[47px] mt-6 font-iranSans text-[#EEF2F5] bg-[#1652F0] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px] sm:mt-0">
+      <div className="flex   gap-3 lg:gap-2 xl:gap-5 xl:ml-4 bg-white">
+        <button className="flex mx-auto sm:w-[550px] sm:ml-10 md:ml-0 xl:ml-0 xl:w-[130px] items-center justify-between px-6 rounded-[8px] w-[335px] h-[47px] mt-6 font-iranSans text-[#EEF2F5] bg-[#1652F0] lg:w-[130px] lg:h-[47px] lg:top-[346px] lg:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px] sm:mt-0">
           <span className="xl:mr-[30px]">دیفای</span>
           <Image
             src="/images/Frame (1).png"

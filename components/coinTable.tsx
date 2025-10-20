@@ -90,15 +90,15 @@ export default function CoinsPage() {
   return (
     <div className="relative mx-auto flex flex-col items-center min-h-screen mt-4 w-[365px]  ">
       {/* Desktop View */}
-      <div className="hidden md:flex flex-col items-center w-full">
-        <div className="flex items-center justify-between bg-[#F5F7FA] border border-[#E5E9F2] rounded-[12px]
-          w-[1130px] h-[70px] px-6 text-[#1E293B] font-[500] text-[15px] mb-4">
-          <div>نام رمز ارز</div>
-          <div>ارزش دلاری</div>
-          <div>تغییر روزانه</div>
-          <div>خرید از والت</div>
-          <div>فروش به والت</div>
-          <div className="flex items-center bg-white border border-[#E2E8F0] rounded-[8px] w-[250px] h-[45px] px-2">
+      <div className="hidden md:flex flex-col items-center md:w-[800px] lg:w-[1200px]    ">
+        <div className="flex items-center md:gap-8 lg:gap-[98px] xl:gap-32 xl:px-6 bg-[#E3E7EC] border  rounded-[8px]
+          xl:w-[1200px] h-[70px] md:px-2 text-[#1E293B] font-[500] text-[15px] mb-0">
+          <div className="xl:w-[120px]">نام رمز ارز</div>
+          <div className="xl:w-[130px]">ارزش دلاری</div>
+          <div className="xl:w-[130px]">تغییر روزانه</div>
+          <div className="xl:w-[150px]">خرید از والت</div>
+          <div className="xl:w-[180px]">فروش به والت</div>
+          <div className="flex md:w-[150px] xl:w-[220px] items-center  bg-[#FFFFFF] border  rounded-[8px] w-[250px] h-[45px] px-2">
             <svg
               className="w-4 h-4 text-gray-400"
               viewBox="0 0 24 24"
@@ -134,7 +134,7 @@ export default function CoinsPage() {
           </div>
         </div>
 
-        <div className="bg-white w-[1130px] rounded-[10px] shadow-sm border border-[#E5E9F2] divide-y divide-[#E5E9F2]">
+        <div className="bg-[#FFFFFF] md:mx-auto md:w-[85%] lg:w-[85%] xl:w-full lg:mx-auto w-[1130px] rounded-[10px] shadow-sm border border-[#E5E9F2] divide-y divide-[#E5E9F2]">
           {loading ? (
             Array.from({ length: 6 }).map((_, i) => (
               <div
@@ -163,7 +163,7 @@ export default function CoinsPage() {
                     key={`${c.id}-${idx}`}
                     onClick={() => onClickRow(c.id)}
                     className={`flex items-center justify-between px-6 h-[75px] transition cursor-pointer
-                      ${idx % 2 === 0 ? "bg-white" : "bg-[#F9FAFB]"}
+                      ${idx % 2 === 0 ? "bg-[#F7F7F7]" : "bg-[#FFFFFF]"}
                       ${isSelected ? "border border-blue-400 shadow-md" : ""}`}
                   >
                     <div className="flex items-center gap-3">
@@ -209,7 +209,7 @@ export default function CoinsPage() {
                         e.stopPropagation();
                         router.push(`/coin/${c.currency_code}`);
                       }}
-                      className="bg-[#1652F0] text-white text-[14px] font-medium px-6 py-2 rounded-[8px] hover:bg-[#1447D8] transition"
+                      className="bg-[#1652F0] xl:w-[120px] text-white text-[14px] font-medium px-6 py-2 rounded-[8px] hover:bg-[#1447D8] transition"
                     >
                       معامله
                     </button>
@@ -238,9 +238,9 @@ export default function CoinsPage() {
       </div>
 
       {/* Mobile View */}
-      <div className="block md:hidden w-full px-4">
+      <div className="block  sm:ml-16 sm:w-[500px]  md:hidden w-full px-4">
         {/* Top Gray Box */}
-        <div className="relative top-[0px] bg-[#E3E7EC] rounded-[8px] h-[64px] ">
+        <div className="relative sm:w-[550px]  top-[0px] bg-[#E3E7EC] rounded-[8px] h-[64px] ">
           <div className="flex justify-between items-center h-[64px] mx-4">
             <div className="">
               <div className="text-[14px] text-[#000000]">نام رمز ارز</div>
@@ -284,12 +284,12 @@ export default function CoinsPage() {
               <div
                 key={c.id}
                 onClick={() => onClickRow(c.id)}
-                className={`rounded-[10px] shadow-sm border border-[#E5E9F2] overflow-hidden mb-4 transition cursor-pointer
+                className={`rounded-[10px] sm:w-[550px] shadow-sm border border-[#E5E9F2] overflow-hidden mb-4 transition cursor-pointer
                   ${isSelected ? "border border-blue-400 shadow-md" : ""}`}
               >
               
                 <div className="bg-[#f7f7f7] ">
-                <div className="flex justify-between gap-4 items-center mb-4 ">
+                <div className="flex justify-between gap-4 items-center mb-4  ">
   <img
     src={c.icon}
     alt={c.currency_code}
