@@ -29,7 +29,7 @@ export default function CoinDetailsPage() {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://b.wallet.ir/coinlist/list/?page=1&limit=10`
+          `https://b.wallet.ir/coinlist/list/?page=1&limit=1`
         );
         const data = await res.json();
 

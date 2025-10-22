@@ -29,7 +29,7 @@ export default function CoinsPage() {
   const fetchPage = async (p: number, fetchAllWhenSearch = false) => {
     setLoading(true);
     try {
-      const useLimit = fetchAllWhenSearch ? 1000 : limit;
+      const useLimit = fetchAllWhenSearch ? 1 : limit;
       const res = await fetch(
         `https://b.wallet.ir/coinlist/list/?page=${
           fetchAllWhenSearch ? 1 : p
