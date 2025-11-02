@@ -5,19 +5,19 @@ import Image from "next/image";
 
 function Footer() {
   return (
-    <footer className=" mx-auto overflow-x-hidden w-full  bg-[#1B2A4E] md:h-[357px]  ">
+    <footer className=" mx-auto overflow-x-hidden w-full h-[579px]  bg-[#1B2A4E] md:h-[357px] xl:h-[402px] xl:max-w-[1440px] ">
     
-      <div className="flex flex-col mx-auto md:flex-row md:gap-[34px] md:mx-0 md:mr-[18px] ">
+      <div className="flex flex-col mx-auto md:flex-row md:gap-[34px] md:mx-0 md:mr-[18px] 2xl:gap-[38px]  xl:mx-[150px]">
 
-        <div className="flex flex-col mt-[56px]  mx-[18px] gap-[16px] md:gap-[23px]  md:mx-0 md:mt-[52px]   ">
+        <div className="flex flex-col mt-[56px]  mx-[18px] gap-[16px] md:gap-[23px]  md:mx-0 md:mt-[52px] xl:gap-[14px] xl:mt-[44px]  xl:w-[352px] xl:h-[228px] ">
         <Image
           src="/images/logo_light.d1640c2f 1.png"
           alt="logo"
           width={200}
           height={200}
-          className=" text-[#FFFFFF] w-[110px] h-[53px] md:w-[132px]   xl:h-[64px] xl:left-[1035px] xl:top-[42px]"
+          className=" text-[#FFFFFF] w-[110px] h-[53px] md:w-[132px] xl:h-[64px] "
         />
-        <p className=" font-iranSans text-[#FFFFFF] font-[400] leading-[24px] text-justify text-[12px]    md:w-[283px] md:h-[120px]  xl:w-[352px] xl:h-[150px] xl:top-[120px] xl:left-[815px] xl:text-[16px] xl:leading-[30px] justify-center">
+        <p className=" font-iranSans text-[#FFFFFF] font-[400] leading-[24px] text-justify text-[12px]    md:w-[283px] md:h-[120px]  xl:w-[352px] xl:h-[150px]  xl:text-[16px] xl:leading-[30px] justify-center">
           راهکارهای پرداخت ری در سال 2009 فعالیت خود را در زمینه سیستم های
           پرداخت بین المللی با وبسایت wallet.ir آغاز کرد. ری پرداخت با نام تجاری
           MGY INVESTMENT LTD با شماره ثبت ۷۳۶۵۰۶۳ در کشور انگلستان به ثبت رسید و
@@ -36,18 +36,18 @@ function Footer() {
 
 
 
-        <div className="flex mx-[18px] w-full mt-[22px]  gap-[48px] md:gap-[93px] md:mx-0 md:mt-[49px]   ">
+        <div className="flex mx-[18px] w-full mt-[22px]  gap-[48px] md:gap-[93px] md:mx-0 md:mt-[49px] xl:gap-[48px] 2xl:gap-[93px]   ">
 
         <div className="flex flex-col w-full gap-[24px]  ">
           <div>
-        <p className=" font-iranSans text-[#FFFFFF] font-[900]  text-[14px]   md:text-[16px] lg:text-[20px] lg:w-[133px] lg:left-[470px] xl:text-[20px] xl:w-[133px] xl:h-[31px] xl:top-[53px] xl:left-[600px] xl:leading-[31.3px]">
+        <p className=" font-iranSans text-[#FFFFFF] font-[900]  text-[14px]   md:text-[16px]   xl:text-[20px]  xl:leading-[31.3px]">
           لینک های مرتبط
         </p>
         </div>
-        <div className="flex gap-[63px] md:gap-[89px] ">
+        <div className="flex gap-[63px] md:gap-[89px] xl:gap-[63px] 2xl:gap-[89px]">
         <div className="flex ">
-        <ul className="flex flex-col gap-[15px] md:gap-[25px]">
-          <li className=" font-iranSans text-[#ffffff]  font-[400]    w-[76px] h-[19px] text-[12px] ">
+        <ul className="flex flex-col gap-[15px] md:gap-[25px] xl:gap-[22px]">
+          <li className=" font-iranSans text-[#ffffff]  font-[400]    w-[76px] h-[19px] text-[12px] xl:text-[16px] xl:w-[120px] xl:h-[25px] ">
             صفحه اصلی
           </li>
           <li className=" font-iranSans text-[#ffffff] w-[80px]   font-[400] text-[12px]   xl:w-[120px] xl:h-[25px] xl:top-[153px] xl:left-[620px] xl:text-[16px] xl:leading-[25.04px]">
@@ -62,7 +62,7 @@ function Footer() {
         </ul>
         </div>
         <div className="flex">
-        <ul className="flex flex-col gap-[15px] md:gap-[25px]">
+        <ul className="flex flex-col gap-[15px] md:gap-[25px] xl:gap-[22px]">
           <li className=" font-iranSans text-[#ffffff] w-[85px]  font-[400] text-[12px]  xl:w-[110px] xl:h-[25px] xl:top-[109px] xl:left-[430px] xl:text-[16px] xl:leading-[25.04px]">
             {" "}
             سوالات متداول
@@ -90,9 +90,9 @@ function Footer() {
           تبادل ارز{" "}
         </p>
         </div>
-        <div className="flex   md:gap-[89px]">
+        <div className="flex   md:gap-[89px] xl:gap-[63px] 2xl:gap-[89px]">
         <div className="flex ">
-        <ul className="flex  flex-col gap-[15px] md:gap-[25px]">
+        <ul className="flex  flex-col gap-[15px] md:gap-[25px] xl:gap-[22px]">
           <li className=" font-iranSans text-[#ffffff] w-[76px] font-[400] text-[12px]    xl:w-[101px] xl:h-[25px] xl:top-[109px] xl:left-[250px] xl:text-[16px] xl:leading-[25.04px]">
             {" "}
             خرید بیت کوین{" "}
@@ -114,7 +114,7 @@ function Footer() {
         <div className=" hidden xl:flex">
 
         
-        <ul className="hidden xl:flex xl:flex-col xl:gap-[15px]" >
+        <ul className="hidden xl:flex xl:flex-col xl:gap-[22px]" >
           <li className=" font-iranSans text-[#ffffff] font-[400] lg:w-[150px] lg:text-[16px] lg:top-[110px] lg:left-[0px] xl:w-[135px] xl:h-[25px] xl:top-[109px] xl:left-[50px] xl:text-[16px] xl:leading-[25.04px]">
             {" "}
             خرید یواس دی کوین{" "}
@@ -149,19 +149,18 @@ function Footer() {
 
 
 
-        {/* <div className="hidden md:flex md:flex-col"> */}
 
         
 
-       <div className="flex  mx-[18px] mt-[12px] md:absolute md:mt-[308px] md:mr-[500px] md:block lg:mr-[575px]">
-        <ul className="flex  w-full  mx-[52px] justify-between md:mx-[25px] lg:mx-[30px]">
+       <div className="flex  mx-[18px] mt-[12px] md:absolute md:mt-[308px] md:mr-[500px] md:block lg:mr-[575px] xl:mt-[328px] xl:mr-[660px] 2xl:mr-[745px] ">
+        <ul className="flex  w-full  mx-[52px] justify-between md:mx-[25px] lg:mx-[30px] xl:justify-normal">
           <li className="">
             <Image
               src="/images/Group 104.svg"
               alt="li"
               width={11}
               height={11}
-              className=" w-[31.91px]  text-[#F8F9FA] border-none border-[1px]  "
+              className=" w-[31.91px]  text-[#F8F9FA] border-none border-[1px] xl:w-[50px] xl:h-[50px] xl:mx-[12.5px] "
             />
           </li>
           <li>
@@ -170,7 +169,7 @@ function Footer() {
               alt="li"
               width={11}
               height={11}
-              className=" w-[31.91px]  text-[#F8F9FA] border-none border-[1px]   "
+              className=" w-[31.91px]  text-[#F8F9FA] border-none border-[1px] xl:w-[50px] xl:h-[50px] xl:mx-[12.5px] "
             />
           </li>
           <li>
@@ -179,7 +178,7 @@ function Footer() {
               alt="li"
               width={11}
               height={11}
-              className=" w-[31.91px]  text-[#F8F9FA] border-none border-[1px]  "
+              className=" w-[31.91px]  text-[#F8F9FA] border-none border-[1px] xl:w-[50px] xl:h-[50px] xl:mx-[12.5px]"
             />
           </li>
           <li>
@@ -188,7 +187,7 @@ function Footer() {
               alt="li"
               width={11}
               height={11}
-              className=" w-[31.91px]  text-[#F8F9FA] border-none border-[1px]   "
+              className=" w-[31.91px]  text-[#F8F9FA] border-none border-[1px] xl:w-[50px] xl:h-[50px] xl:mx-[12.5px]"
             />
           </li>
           <li>
@@ -197,33 +196,32 @@ function Footer() {
               alt="li"
               width={11}
               height={11}
-              className=" w-[31.91px] text-[#F8F9FA] border-none border-[1px] "
+              className=" w-[31.91px] text-[#F8F9FA] border-none border-[1px] xl:w-[50px] xl:h-[50px] xl:mx-[12.5px]"
             />
           </li>
         </ul>
         </div>
 
 
-        <div className="mx-[18px] mt-[15px]  md:absolute md:mt-[289.5px] md:w-[735px] lg:w-[820px] md:right-[0px]">
+        <div className="mx-[18px] mt-[15px]  md:absolute md:mt-[289.5px] md:mr-[0px] md:w-[735px] lg:w-[820px]  xl:w-[1050px] 2xl:w-[1138px] xl:mt-[306px] xl:mr-[0px]  ">
         <Image
           src="/images/Line 35 (2).png"
           alt="line"
           width={10}
           height={10}
-          className=" h-[1px] w-full border-[1px] border-none md:w-full bg-[#374566]  text-[#374566] "
+          className=" h-[1px] w-full border-[1px] border-none md:w-full bg-[#374566]  text-[#374566]  "
         />
        </div>
 
-       <div className="mt-[12px] mx-[39px] md:absolute md:mt-[314px] md:mr-[0px] ">
-        <p className=" font-iranSans text-[#FFFFFF] font-[400] leading-[18.78px]  text-[12px] w-full ">
+       <div className="mt-[12px] mx-[39px] md:absolute md:mt-[314px] md:mr-[0px] xl:mt-[337px] ">
+        <p className=" font-iranSans text-[#FFFFFF] font-[400] leading-[18.78px]  text-[12px] w-full xl:text-[16px]">
           تمامی حقوق این سرویس متعلق به مجموعه{" "}
-          <span className="font-iranSans  text-[14px] leading-[18.78px] font-bold lg:text-[16px] lg:leading-[25.04px]">
+          <span className="font-iranSans  text-[14px] leading-[18.78px] font-[700]  lg:text-[20px] lg:leading-[25.04px]">
             ری پیمنت
           </span>{" "}
           است
         </p>
         </div>
-        {/* </div> */}
 
 
 
