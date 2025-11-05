@@ -30,14 +30,14 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={`${iranSans.variable} ${iranSansnumber.variable} overflow-x-hidden w-full     ` }
+        className={`${iranSans.variable} ${iranSansnumber.variable}` }
       >
         <Providers>
          
           <Header />
 
           
-          <main className="">
+          <main>
             <div className="">{children}</div>
           </main>
 

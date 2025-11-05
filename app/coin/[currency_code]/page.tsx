@@ -53,29 +53,29 @@ export default function CoinDetailsPage() {
     return <p className="p-4 text-red-500">اطلاعات رمز ارز یافت نشد</p>;
 
   return (
-    <div className=" overflow-x-hidden   h-[4416px]   md:h-[3400px]  bg-[#ffffff] flex flex-col ">
+    <div className="  overflow-x-hidden  h-[4416px]   md:h-[3796px]  bg-[#ffffff] flex flex-col ">
           
           
             
-          <div className="bg-[#ffffff] w-[calc(100%-26px)] mx-[18px] h-[799px] mt-[40px]  rounded-[30px] shadow-[0_4px_103px_0_rgba(13,26,142,0.08)] flex flex-col">
-          <div className="flex flex-col">
-                <p className=" font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] mt-[32px] mr-[22px] ">
+          <div className="bg-[#ffffff] w-[calc(100%-36px)] mx-[18px] h-[799px] mt-[40px]  rounded-[30px] shadow-[0_4px_103px_0_rgba(13,26,142,0.08)] flex flex-col md:flex md: md:flex-row md:mt-[22px] md:mx-[50px] md:w-[calc(100%-100px)] md:h-[448px]  ">
+          <div className="flex flex-col  md:w-[349px] xl:w-full">
+                <p className=" font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] mt-[32px] mr-[22px] md:mt-[45px] md:mr-[25px] ">
                   قیمت لحظه ای :
                 </p>
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center  justify-between">
 
-                <div className="flex gap-[6px] mt-[21px] mr-[22px]">
-                  <div>
+                <div className="flex gap-[6px] mt-[21px] mr-[22px] md:gap-[12px] md:mt-[20px] md:mr-[25px]">
+                  <div className="md:w-[61px] md:h-[61px]  ">
                   <Image
                     src={coin.icon}
                     alt={coin.fa_name}
                     width={60}
                     height={60}
-                    className=" w-[43px] h-[43px] top-[75px] left-[272px] md:w-[61px] md:h-[61px] md:top-[87px] md:left-[648px] sm:top-[87px] sm:left-[540px] lg:w-[73px] lg:h-[73px] lg:top-[80px] lg:right-[30px]"
+                    className=" w-[43px] h-[43px] top-[75px] left-[272px] md:w-[61px] md:h-[61px] md:top-[87px] lg:w-[73px] lg:h-[73px] lg:top-[80px] lg:right-[30px]"
                   />
                   </div>
-                <div className="flex flex-col gap-[8px]">
+                <div className="flex flex-col gap-[8px] ">
                   <p className=" font-iranSans text-[#000000] font-[700]  text-[14px] leading-[21.91px] w-[100px] h-[22px] top-[70px] left-[210px] md:top-[87px] sm:top-[80px] sm:left-[470px] lg:w-[150px] lg:h-[28px] lg:top-[85px] lg:right-[110px] lg:text-[18px] lg:leading-[28.17px]">
                     {coin.fa_name}
                   </p>
@@ -106,7 +106,7 @@ export default function CoinDetailsPage() {
                 </div>
 
 
-                <div className="   border-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg] mt-[18px] ">
+                <div className="   border-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg] mt-[18px] md:mt-[21px] ">
                 <Image
                   src="/images/Line 102 (1).svg"
                   alt="line"
@@ -118,7 +118,7 @@ export default function CoinDetailsPage() {
 
 
 
-                <div className="flex flex-col mt-[24px] mr-[22px] ml-[25px] gap-[26px] ">
+                <div className="flex flex-col mt-[24px] mr-[22px] ml-[25px] gap-[26px] md:gap-[32px] md:mt-[17px] ">
 
                   <div className="flex justify-between">
                     <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] ">
@@ -220,28 +220,30 @@ export default function CoinDetailsPage() {
 
 
 
-               <div className=" mt-[30px]  border-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg]   lg:rotate-[-90deg] "
+               <div className=" mt-[30px]  border-[#EBEBEB] bg-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg]  md:mr-[28px]  md:ml-[26px] md md:w-[1px] md:mt-[16px] md:h-[415px] md:rotate-[180deg] "
                >
               <Image
                 src="/images/Line 102 (1).svg"
                 alt="lineee"
                 width={900}
                 height={500}
+                className=""
               />
               </div>
 
 
 
 
-              <div className="mt-[26px]  mr-[22px] ml-[25px] ">
+                  
+                  
+              <div className="mt-[26px]  mr-[22px] ml-[25px] md:mt-[41px] md:mr-0  md:w-[305px] xl:w-full">
 
                 <p className=" font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] ">
                   ارسال می کنید:
                 </p>
 
                 
-                  
-                    <div className="mt-[12px]  h-[47px] rounded-[8px] bg-[#F8F9FA] flex items-center justify-between  ">
+                    <div className="mt-[12px]  h-[47px] rounded-[8px] bg-[#F8F9FA] flex items-center justify-between   ">
                     <p className=" font-iranSans text-[#696464] font-[300] text-[12px] leading-[18.78px]  h-[19px] mr-[12px] ">
                       مقدار را وارد کنید
                     </p>

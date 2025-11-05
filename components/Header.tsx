@@ -69,7 +69,7 @@ function Header() {
           alt="frame"
           width={40}
           height={60}
-          className=" w-[24px] h-[24px] mt-[21px]  mb-[19px] md:pl-[0px]"
+          className=" w-[24px] h-[24px] mt-[21px] ml-[18px] mb-[19px] md:ml-[0px]"
         />
         </div>
       </div>
