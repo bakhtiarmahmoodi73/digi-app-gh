@@ -53,48 +53,48 @@ export default function CoinDetailsPage() {
     return <p className="p-4 text-red-500">اطلاعات رمز ارز یافت نشد</p>;
 
   return (
-    <div className="  overflow-x-hidden  h-[4416px]   md:h-[3796px]  bg-[#ffffff] flex flex-col ">
+    <div className=" mx-auto overflow-x-hidden  h-[4416px]   md:h-[3796px]  bg-[#ffffff] flex flex-col max-w-[1440px] ">
           
           
             
-          <div className="bg-[#ffffff] w-[calc(100%-36px)] mx-[18px] h-[799px] mt-[40px]  rounded-[30px] shadow-[0_4px_103px_0_rgba(13,26,142,0.08)] flex flex-col md:flex md: md:flex-row md:mt-[22px] md:mx-[50px] md:w-[calc(100%-100px)] md:h-[448px]  ">
-          <div className="flex flex-col  md:w-[349px] xl:w-full">
-                <p className=" font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] mt-[32px] mr-[22px] md:mt-[45px] md:mr-[25px] ">
+          <div className="bg-[#ffffff] w-[calc(100%-36px)] mx-[18px] h-[799px] mt-[40px]  rounded-[30px] shadow-[0_4px_103px_0_rgba(13,26,142,0.08)] flex flex-col md:flex  md:flex-row md:mt-[22px] md:mx-[50px] md:w-[calc(100%-100px)] md:h-[448px] xl:h-[481px] xl:mx-[150px] xl:w-[calc(100%-300px)] xl:mt-[60px]   ">
+          <div className="flex flex-col  md:w-1/2 xl:w-1/2">
+                <p className=" font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] mt-[32px] mr-[22px] md:mt-[45px] md:mr-[25px] xl:text-[16px] xl:mt-[29px] xl:mr-[33px]  ">
                   قیمت لحظه ای :
                 </p>
 
                 <div className="flex items-center  justify-between">
 
-                <div className="flex gap-[6px] mt-[21px] mr-[22px] md:gap-[12px] md:mt-[20px] md:mr-[25px]">
-                  <div className="md:w-[61px] md:h-[61px]  ">
+                <div className="flex gap-[6px] mt-[21px] mr-[22px] md:gap-[12px] md:mt-[20px] md:mr-[25px] xl:mr-[33px] xl:mt-[26px] ">
+                  <div className=" w-[43px] h-[43px] md:w-[61px]  md:h-[61px] xl:w-[71px]  ">
                   <Image
                     src={coin.icon}
                     alt={coin.fa_name}
                     width={60}
                     height={60}
-                    className=" w-[43px] h-[43px] top-[75px] left-[272px] md:w-[61px] md:h-[61px] md:top-[87px] lg:w-[73px] lg:h-[73px] lg:top-[80px] lg:right-[30px]"
+                    
                   />
                   </div>
-                <div className="flex flex-col gap-[8px] ">
-                  <p className=" font-iranSans text-[#000000] font-[700]  text-[14px] leading-[21.91px] w-[100px] h-[22px] top-[70px] left-[210px] md:top-[87px] sm:top-[80px] sm:left-[470px] lg:w-[150px] lg:h-[28px] lg:top-[85px] lg:right-[110px] lg:text-[18px] lg:leading-[28.17px]">
+                <div className="flex flex-col gap-[8px] xl:gap-[12px] ">
+                  <p className=" font-iranSans text-[#000000] font-[700]  text-[14px] leading-[21.91px] w-[150px] xl:text-[18px] ">
                     {coin.fa_name}
                   </p>
-                  <p className=" font-iranSans text-[#696464] font-[700] text-[14px] leading-[21.91px] w-[27px] h-[22px] top-[100px] left-[239px] md:top-[117px] md:left-[609px] sm:top-[110px] sm:left-[495px] lg:w-[34px] lg:h-[28px] lg:top-[125px] lg:right-[110px] lg:text-[18px] lg:leading-[28.17px]">
+                  <p className=" font-iranSans text-[#696464] font-[400] text-[14px] leading-[21.91px] xl:text-[18px] ">
                     {coin.currency_code}
                   </p>
                   </div>
 
                 </div>
 
-                <div className="flex flex-col mt-[21px] ml-[25px] gap-[8px] items-end">
+                <div className="flex flex-col mt-[21px] ml-[25px] gap-[8px] items-end ">
                  
-                  <p className="  font-iranSansnumber text-[14px]  text-[#000000] font-[700] ">
+                  <p className="  font-iranSansnumber text-[14px]  text-[#000000] font-[700] xl:text-[18px] ">
                     {Number(coin.irt_price)
                       .toFixed(0)
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                     <span className="mr-[4px]">تومان</span>
                   </p>
-                  <p className=" font-iranSansnumber text-[#696464] font-[400] text-[14px]    ">
+                  <p className=" font-iranSansnumber text-[#696464] font-[400] text-[14px]  xl:text-[18px]  ">
                     $
                     {Number(coin.price)
                       .toFixed(0)
@@ -106,7 +106,7 @@ export default function CoinDetailsPage() {
                 </div>
 
 
-                <div className="   border-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg] mt-[18px] md:mt-[21px] ">
+                <div className="   border-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg] mt-[18px] md:mt-[21px] xl:mr-[33px] xl:mt-[25px] ">
                 <Image
                   src="/images/Line 102 (1).svg"
                   alt="line"
@@ -118,14 +118,14 @@ export default function CoinDetailsPage() {
 
 
 
-                <div className="flex flex-col mt-[24px] mr-[22px] ml-[25px] gap-[26px] md:gap-[32px] md:mt-[17px] ">
+                <div className="flex flex-col mt-[24px] mr-[22px] ml-[25px] gap-[26px] md:gap-[32px] md:mt-[17px] xl:mr-[33px] xl:gap-[34px] xl:mt-[36px] ">
 
                   <div className="flex justify-between">
-                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] ">
+                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] xl:text-[16px] ">
                       تغییر قیمت امروز :
                     </p>
                     <p
-                      className={` font-iranSansnumber font-[400] text-[12px] leading-[18px]
+                      className={` font-iranSansnumber font-[400] text-[12px] leading-[18px] xl:text-[16px]
                       ${
                         Number(coin.daily_change_percent) >= 0
                           ? "text-green-600"
@@ -139,12 +139,12 @@ export default function CoinDetailsPage() {
                   </div>
 
                   <div className="flex justify-between">
-                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px]">
+                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                       خرید بیت کوین:
                     </p>
                     <div className="flex justify-between gap-[4px]">
                       <p
-                        className={` font-iranSansnumber font-[400] text-[12px] leading-[18px]  ${
+                        className={` font-iranSansnumber font-[400] text-[12px] leading-[18px] xl:text-[16px] ${
                           Number(coin.daily_change_percent) >= 0
                             ? "text-green-600"
                             : "text-red-600"
@@ -154,19 +154,19 @@ export default function CoinDetailsPage() {
                           .toFixed(0)
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                       </p>
-                      <span className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] ">
+                      <span className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                         تومان
                       </span>
                     </div>
                   </div>
 
                   <div className="flex justify-between">
-                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px]">
+                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                       فروش بیت کوین:
                     </p>
                     <div className="flex justify-between gap-[4px]">
                       <p
-                        className={` font-iranSansnumber font-[400] text-[12px] leading-[18px]  ${
+                        className={` font-iranSansnumber font-[400] text-[12px] leading-[18px] xl:text-[16px] ${
                           Number(coin.daily_change_percent) >= 0
                             ? "text-green-600"
                             : "text-red-600"
@@ -176,35 +176,35 @@ export default function CoinDetailsPage() {
                           .toFixed(0)
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                       </p>
-                      <span className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] ">
+                      <span className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                         تومان
                       </span>
                     </div>
                   </div>
 
                   <div className="flex justify-between">
-                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] ">
+                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                       بالاترین قیمت 24 ساعته :
                     </p>
                     <div className="flex justify-between gap-[4px]">
-                      <p className=" font-iranSansnumber text-[#147D03] font-[400] text-[12px] leading-[18px] ">
+                      <p className=" font-iranSansnumber text-[#147D03] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                         1.000.000.000
                       </p>
-                      <span className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] ">
+                      <span className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                         تومان
                       </span>
                     </div>
                   </div>
 
                   <div className="flex justify-between">
-                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] ">
+                    <p className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                       پایین ترین قیمت 24 ساعته :
                     </p>
                     <div className="flex justify-between gap-[4px]">
-                      <p className=" font-iranSansnumber text-[#FF6868] font-[400] text-[12px] leading-[18px] ">
+                      <p className=" font-iranSansnumber text-[#FF6868] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                         1.000.000.000
                       </p>
-                      <span className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] ">
+                      <span className=" font-iranSansnumber text-[#000000] font-[400] text-[12px] leading-[18px] xl:text-[16px]">
                         تومان
                       </span>
                     </div>
@@ -220,7 +220,7 @@ export default function CoinDetailsPage() {
 
 
 
-               <div className=" mt-[30px]  border-[#EBEBEB] bg-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg]  md:mr-[28px]  md:ml-[26px] md md:w-[1px] md:mt-[16px] md:h-[415px] md:rotate-[180deg] "
+               <div className=" mt-[30px]  border-[#EBEBEB] bg-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg]  md:mr-[28px]  md:ml-[26px] md md:w-[1px] md:mt-[16px] md:h-[415px] xl:mt-[14px] xl:h-[448px] xl:mr-0 xl:ml-2 2xl:mr-[45px] 2xl:ml-[40px] md:rotate-[180deg] "
                >
               <Image
                 src="/images/Line 102 (1).svg"
@@ -236,14 +236,14 @@ export default function CoinDetailsPage() {
 
                   
                   
-              <div className="mt-[26px]  mr-[22px] ml-[25px] md:mt-[41px] md:mr-0  md:w-[305px] xl:w-full">
+              <div className="mt-[26px]  mr-[22px] ml-[25px] md:mt-[41px] md:mr-0  md:w-1/2 xl:w-1/2 xl:mt-[29px] xl:mr-[12px] ">
 
-                <p className=" font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] ">
+                <p className=" font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] xl:text-[16px] ">
                   ارسال می کنید:
                 </p>
 
                 
-                    <div className="mt-[12px]  h-[47px] rounded-[8px] bg-[#F8F9FA] flex items-center justify-between   ">
+                    <div className="mt-[12px]  h-[47px] rounded-[8px] bg-[#F8F9FA] flex items-center justify-between  xl:bg-[#F6F4F4] xl:rounded-[50px] xl:mt-[18px] ">
                     <p className=" font-iranSans text-[#696464] font-[300] text-[12px] leading-[18.78px]  h-[19px] mr-[12px] ">
                       مقدار را وارد کنید
                     </p>
@@ -286,8 +286,8 @@ export default function CoinDetailsPage() {
 
 
 
-                  <div className="mt-[21px] flex justify-end">
-                    <div className="flex items-center justify-center bg-[#E8E8E8] w-[34.34px] h-[34.34px] top-[514px] left-[18px] rounded-[50%]">
+                  <div className="mt-[21px] xl:mt-[34px] flex justify-end">
+                    <div className="flex items-center justify-center bg-[#E8E8E8] w-[34.34px] h-[34.34px] xl:bg-[#F6F4F4] xl:w-[40px] xl:h-[40px]   rounded-[50%]">
                     <Image
                       src="/images/noun-back-and-forth-1522889 1.svg"
                       alt="frame"
@@ -300,14 +300,14 @@ export default function CoinDetailsPage() {
 
 
 
-                  <p className=" font-iranSans  text-[#000000] font-[700] text-[14px] leading-[21.91px] ">
+                  <p className=" font-iranSans  text-[#000000] font-[700] text-[14px] leading-[21.91px]  xl:text-[16px] ">
                       دریافت می کنید:
                     </p>
 
 
                 
                   
-                    <div className="mt-[12px]  h-[47px] rounded-[8px] bg-[#F8F9FA] flex items-center justify-between  ">
+                    <div className="mt-[12px]  h-[47px] rounded-[8px] bg-[#F8F9FA] flex items-center justify-between xl:bg-[#F6F4F4] xl:rounded-[50px] xl:mt-[19px] ">
                     <p className=" font-iranSans text-[#696464] font-[300] text-[12px] leading-[18.78px]  h-[19px] mr-[12px] ">
                     مقدار نهایی
                     </p>
@@ -355,21 +355,21 @@ export default function CoinDetailsPage() {
 
 
                 
-                    <div className="flex justify-between mt-[15px]">
-                      <p className=" font-iranSans text-[#000000] font-[700] text-[12px] leading-[18.78px] ">
+                    <div className="flex justify-between mt-[15px] xl:mt-[25px]">
+                      <p className=" font-iranSans text-[#000000] font-[700] text-[12px] leading-[18.78px] xl:text-[16px]">
                         نرخ ارز یک
                       </p>
-                      <p className=" font-iranSans text-[#000000] font-[700] text-[12px] leading-[18px] ">
+                      <p className=" font-iranSans text-[#000000] font-[700] text-[12px] leading-[18px] xl:text-[16px]">
                         5.600 دلار
                       </p>
                     </div>
                     
                     
-                    <div className="flex justify-between mt-[19px]">
-                      <p className=" font-iranSans text-[#000000] font-[700] text-[12px] leading-[18.78px] ">
+                    <div className="flex justify-between mt-[19px] xl:mt-[15px] ">
+                      <p className=" font-iranSans text-[#000000] font-[700] text-[12px] leading-[18.78px] xl:text-[16px]">
                         نرخ ارز دو
                       </p>
-                      <p className=" font-iranSans text-[#000000] font-[700] text-[12px] leading-[18px] ">
+                      <p className=" font-iranSans text-[#000000] font-[700] text-[12px] leading-[18px] xl:text-[16px]">
                         49.750 تومان
                       </p>
                     </div>
@@ -381,7 +381,7 @@ export default function CoinDetailsPage() {
                 <button className=" mt-[31px] w-full font-iranSans bg-[#1652F0] h-[47px]  rounded-[8px] text-[14px] font-[700] leading-[21.91px] text-[#FFFFFF]   xl:hidden">
                   ثبت سفارش خرید
                 </button>
-                <button className=" hidden  xl:block border border-[#0D1A8E] text-[#0D1A8E] w-[474px] h-[47px] rounded-[50px] font-iranSans font-[700] text-[16px] leading-[25.04px]">
+                <button className=" hidden xl:mt-[25px] xl:block border border-[#0D1A8E] text-[#0D1A8E] w-full h-[47px] rounded-[50px] font-iranSans font-[700] text-[16px] leading-[25.04px]">
                   ادامه خرید
                 </button>
               </div>
