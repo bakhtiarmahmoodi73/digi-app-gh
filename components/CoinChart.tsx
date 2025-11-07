@@ -254,7 +254,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
                 " تومان";
             }
             lines.push(
-              `<div style="display:flex;justify-content:space-between"><span>${label}</span><span style="font-weight:600">${value}</span></div>`
+              `<div  style="display:flex;justify-content:space-between"><span>${label}</span><span style="font-weight:600">${value}</span></div>`
             );
           });
           lines.push("</div>");
@@ -409,9 +409,9 @@ const CoinChart: React.FC<CoinChartProps> = ({
   }, [data]);
 
   return (
-    <div className={`w-full  ${className}`}>
-      <div className="border border-blue-200 rounded-lg p-4 bg-white shadow-sm">
-        <div className="flex items-center justify-start  mb-2 ">
+    <div className={` bg-[#ffffff] overflow-hidden mt-[32px] md:mt-[56px] md:mx-[50px]  md:w-[calc(100%-100px)] xl:mt-[63px] xl:h-[697px] xl:mx-[150px] xl:w-[calc(100%-300px)]  rounded-[30px] mx-[19px] w-[calc(100%-38px)] shadow-[0_4px_103px_0_rgba(13,26,142,0.08)] ${className}`}>
+      <div className="">
+        <div className="flex items-center justify-start  mr-6 ">
           <div className="text-sm text-gray-500"></div>
           <div className="flex items-center gap-4  ">
             {periods.map((p) => (
