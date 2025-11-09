@@ -33,7 +33,7 @@ export default function CoinsPage() {
     setLoading(true);
     try {
       const res = await fetch(
-        `https://b.wallet.ir/coinlist/list/?page=1&limit=100`
+        `https://b.wallet.ir/coinlist/list/?page=1&limit=9`
       );
       if (!res.ok) throw new Error("خطا در دریافت داده‌ها");
       const responseData = await res.json();
@@ -72,7 +72,7 @@ export default function CoinsPage() {
       {
         accessorKey: "fa_name",
         header: () => (
-          <div className="w-full text-right pr-4">نام رمز ارز</div>
+          <div className="xl:w-full text-right pr-4">نام رمز ارز</div>
         ),
         cell: ({ row }) => (
           <div className="flex  items-center gap-3 w-full pr-4">
@@ -231,7 +231,7 @@ export default function CoinsPage() {
   };
 
   return (
-    <div className="relative mx-auto flex flex-col items-center min-h-screen mt-4 w-full max-w-[1200px] px-4">
+    <div className=" bg-red-200 mx-auto flex flex-col items-center min-h-screen mt-4 w-full max-w-[1140px] xl:px-0">
       {/* Desktop Version */}
       <div className="hidden lg:block w-full">
         {/* Header با همترازی دقیق */}
