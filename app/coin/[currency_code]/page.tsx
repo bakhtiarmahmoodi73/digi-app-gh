@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import CoinChart from "../../../components/CoinChart";
+
 type Coin = {
   id: number;
   currency_code: string;
@@ -28,15 +29,34 @@ export default function CoinDetailsPage() {
 
     const fetchData = async () => {
       try {
-        const res = await fetch(
-          `https://b.wallet.ir/coinlist/list/?page=1&limit=1`
-        );
-        const data = await res.json();
+        let foundCoin = null;
+        let page = 1;
+        const maxPages = 10;  
 
-        const found = (data.items || []).find(
-          (item: Coin) => item.currency_code === currency_code
-        );
-        setCoin(found || null);
+        while (page <= maxPages && !foundCoin) {
+          const res = await fetch(`https://b.wallet.ir/coinlist/list/`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              page: page,
+              limit: "9"
+            })
+          });
+          
+          if (!res.ok) break;
+          
+          const data = await res.json();
+          foundCoin = (data.items || []).find(
+            (item: Coin) => item.currency_code === currency_code
+          );
+          
+          if (foundCoin) break;
+          page++;
+        }
+
+        setCoin(foundCoin || null);
       } catch (err) {
         console.error(err);
         setCoin(null);
@@ -47,6 +67,10 @@ export default function CoinDetailsPage() {
 
     fetchData();
   }, [currency_code]);
+
+  
+
+
 
   if (loading) return <p className="p-4">در حال بارگذاری...</p>;
   if (!coin)

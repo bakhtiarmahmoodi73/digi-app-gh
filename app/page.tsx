@@ -5,16 +5,31 @@ import CoinTable from "../components/coinTable";
 
 export default function Home() {
   return (
-    <div className=" mx-auto  overflow-x-hidden  flex flex-col max-w-[1440px] ">
-      <div className="mx-auto xl:mx-auto xl:mt-[96px] md:mt-[61px] md:mx-auto">
+    <div className=" mx-auto  overflow-x-hidden mb-[55px] xl:mt-[0px] md:mb-0 flex flex-col max-w-[1440px] ">
+      <div className="mx-auto xl:mx-auto xl:mt-[96px] md:mt-[61px] ">
         <p className="xl:text-[40px] md:text-[30px] leading-[100%] font-iranSans text-[20px] font-[900] text-[#000000] mt-[50px] mx-auto ">
           لیست قیمت لحظه‌ای ارزهای دیجیتال‌
         </p>
         </div>
 
 
-        <div className="flex mt-[32px] mx-[20px] md:mx-[50px] lg:mx-auto md:gap-[8px] md:mt-[61px] xl:gap-[14px] xl:mx-[150px] 2xl:mx-auto xl:mt-[83px] bg-[#ffffff]">
-          <button className="rounded-[8px] w-[335px] h-[47px]  font-iranSans text-[#F7F7F7] bg-[#1652F0] xl:w-[130px] xl:h-[47px]  xl:text-[14px] font-[400] md:w-[85px] md:h-[47px]  md:text-[12px] ">
+        <div className="mt-[32px] mx-[20px] md:hidden">
+        <button className="flex items-center justify-between rounded-[8px] w-full h-[47px] font-[900]  text-[12px] font-iranSans text-[#F7F7F7] bg-[#1652F0] xl:w-[130px] xl:h-[47px]  xl:text-[14px]  md:w-[85px] md:h-[47px]  md:text-[12px] ">
+            <span className="mr-[28px]">دیفای</span>
+            <Image
+              src="/images/Frame (1).png"
+              alt="frame"
+              width={40}
+              height={60}
+              className="w-[24px] ml-[18px] invert brightness-0 md:hidden"
+            />
+          </button>
+        </div>
+
+
+
+        <div className="hidden md:grid md:mt-[52px] xl:mt-[83px] md:mx-[50px] xl:mx-[150px] md:gap-x-[8px] xl:gap-x-[16px] gap-y-0 md:items-center md:grid-cols-[repeat(8,minmax(50px,1fr))] bg-[#ffffff]">
+          <button className="rounded-[8px]   font-iranSans text-[#F7F7F7] bg-[#1652F0]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px]  md:text-[12px] ">
             <span>دیفای</span>
             <Image
               src="/images/Frame (1).png"
@@ -24,42 +39,39 @@ export default function Home() {
               className="w-[24px] invert brightness-0 md:hidden"
             />
           </button>
-
-          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7] xl:w-[130px] xl:h-[47px]  xl:text-[14px] font-[400] md:w-[85px] md:h-[47px]  md:text-[12px]">
+          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px]  md:text-[12px]">
             حریم خصوصی
           </button>
-
-          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7] xl:w-[130px] xl:h-[47px]  xl:text-[14px] font-[400] md:w-[85px] md:h-[47px]  md:text-[12px]">
+          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px]  md:text-[12px]">
             متاورس
           </button>
-
-          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7] xl:w-[130px] xl:h-[47px]  xl:text-[14px] font-[400] md:w-[85px] md:h-[47px]  md:text-[12px]">
+          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px]  md:text-[12px]">
             قابل استخراج
           </button>
-
-          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7] xl:w-[130px] xl:h-[47px]  xl:text-[14px] font-[400] md:w-[85px] md:h-[47px]  md:text-[12px]">
+          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px]  md:text-[12px]">
             میم کوین
           </button>
-
-          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7] xl:w-[130px] xl:h-[47px]  xl:text-[14px] font-[400] md:w-[85px] md:h-[47px]  md:text-[12px]">
+          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px]  md:text-[12px]">
             استیبل کوین
           </button>
-
-          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7] xl:w-[130px] xl:h-[47px]  xl:text-[14px] font-[400] md:w-[85px] md:h-[47px] md:top-[252px] md:text-[12px]">
+          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px] md:top-[252px] md:text-[12px]">
             توکن
           </button>
-
-          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7] xl:w-[130px] xl:h-[47px]  xl:text-[14px] font-[400] md:w-[85px] md:h-[47px]  md:text-[12px]">
+          <button className="hidden  md:block rounded-[8px] font-iranSans text-[#000000] bg-[#F7F7F7]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px]  md:text-[12px]">
             ICO
           </button>
         </div>
 
-        <div className="mt-[12px] mx-[20px] xl:mt-[41px] xl:mx-[150px] xl:h-[982px] md:mt-[15px] md:mx-[50px] ">
+
+
+
+
+        <div className="mt-[12px] mx-[20px]  xl:mt-[41px] xl:mx-0 xl:h-[982px] md:mt-[15px] md:mx-[50px] ">
           <CoinTable />
         </div>
          
          <div>
-        <p className=" font-iranSans font-[900] text-[20px] mt-[71px] mx-[20px] text-[#000000] xl:mt-[219px] xl:text-[24px] xl:text-right xl:mr-[150px] md:mt-[161px] md:text-[24px] md:text-right md:mx-[50px]  ">
+        <p className=" font-iranSans font-[900] text-[20px] mt-[71px] mx-[20px] md:mt-[102px] text-[#000000] xl:mt-[166px] xl:text-[24px] xl:text-right xl:mr-[150px]  md:text-[24px] md:text-right md:mx-[50px]  ">
           توضیحات کلی در مورد رمز ارزها
         </p>
         </div>
