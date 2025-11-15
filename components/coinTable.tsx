@@ -389,7 +389,7 @@ export default function CoinsPage() {
                   </div>
                 </div>
 
-                <div className="md:text-[12px] text-[#000000] text-center ">
+                <div className="md:text-[12px] text-[#000000] xl:pl-10 text-center ">
                   {fmt(row.price)} $
                 </div>
 

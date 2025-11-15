@@ -12,6 +12,9 @@ interface ChartDataItem {
   price_toman: number;
   price_usd: number;
   dollar_rate: number;
+  coin?: {
+    fa_name: string;
+  };
 }
 
 interface CoinChartProps {
@@ -30,8 +33,8 @@ const periodLabelMap: Record<ChartPeriod, string> = {
 };
 
 const CoinChart: React.FC<CoinChartProps> = ({
-  symbol = "BTC",
-  defaultPeriod = "1y",
+  symbol,
+  defaultPeriod = "24h",
   className = "",
 }) => {
   const [periods, setPeriods] = useState<ChartPeriod[]>([
@@ -47,6 +50,35 @@ const CoinChart: React.FC<CoinChartProps> = ({
   const [data, setData] = useState<ChartDataItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentSymbol, setCurrentSymbol] = useState<string>(symbol || "BTC");
+
+  // Get coin symbol from URL path
+  useEffect(() => {
+    const getSymbolFromURL = () => {
+      if (symbol) return symbol;
+      
+      const pathname = window.location.pathname;
+      const pathParts = pathname.split('/').filter(part => part.trim() !== '');
+      
+      // Assuming URL structure like /coin/btc or /currency/sol etc.
+      const possibleSymbol = pathParts[pathParts.length - 1];
+      if (possibleSymbol && possibleSymbol.length <= 10) {
+        return possibleSymbol.toUpperCase();
+      }
+      
+      return "BTC"; // fallback
+    };
+
+    const newSymbol = getSymbolFromURL();
+    setCurrentSymbol(newSymbol);
+  }, [symbol]);
+
+  // Ensure selectedPeriod is always valid
+  useEffect(() => {
+    if (!periods.includes(selectedPeriod)) {
+      setSelectedPeriod("24h");
+    }
+  }, [periods, selectedPeriod]);
 
   const formatDateLabel = (ts: number, period: ChartPeriod) => {
     const d = new Date(ts);
@@ -65,7 +97,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
       "Dec",
     ];
     if (period === "24h") {
-      return `${d.getHours()}:00`;
+      return `${d.getHours().toString().padStart(2, '0')}:00`;
     }
     return `${d.getDate()} ${monthNames[d.getMonth()]}`;
   };
@@ -129,7 +161,17 @@ const CoinChart: React.FC<CoinChartProps> = ({
     let mounted = true;
     (async () => {
       try {
-        const res = await fetch("https://b.wallet.ir/coinlist/chart-period");
+        const res = await fetch("https://b.wallet.ir/coinlist/chart-period", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            items: ["24h", "1w", "1m", "3m", "1y", "ALL"],
+            success: true,
+            status: 200
+          }),
+        });
         if (!res.ok) throw new Error("periods fetch failed");
         const json = await res.json();
         if (json && Array.isArray(json.items) && mounted) {
@@ -152,30 +194,38 @@ const CoinChart: React.FC<CoinChartProps> = ({
 
     (async () => {
       try {
-        const url = `https://b.wallet.ir/coinlist/chart?period=${selectedPeriod}&symbol=${encodeURIComponent(
-          symbol
-        )}`;
-        const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error(`chart fetch failed (${res.status})`);
+        const response = await fetch("https://b.wallet.ir/coinlist/chart", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            period: selectedPeriod,
+            currency_code: currentSymbol
+          }),
+        });
+        
+        if (!response.ok) {
+          throw new Error(`chart fetch failed (${response.status})`);
         }
-        const json = await res.json();
+        
+        const json = await response.json();
 
         let mapped: ChartDataItem[] = [];
 
         if (Array.isArray(json.items) && json.items.length) {
           mapped = (json.items as any[]).map((it: any) => {
-            const ts = it.timestamp
-              ? Number(it.timestamp)
-              : new Date(it.date || it.time).getTime();
+            const ts = it.time ? Number(it.time) * 1000 : new Date(it.date || it.time).getTime();
+            const price_usd = Number(it.price || it.usd_price || 0);
+            const dollar_rate = Number(it.usd_price || it.rate || 84625);
+            const price_toman = Number(it.irt_price || it.price_toman || 0);
+
             return {
               timestamp: ts,
               dateLabel: formatDateLabel(ts, selectedPeriod),
-              price_toman: Number(
-                it.price_toman ?? it.toman ?? it.price_toman_raw ?? 0
-              ),
-              price_usd: Number(it.price_usd ?? it.usd ?? it.price ?? 0),
-              dollar_rate: Number(it.dollar_rate ?? it.rate ?? it.dollar ?? 0),
+              price_toman: price_toman,
+              price_usd: price_usd,
+              dollar_rate: dollar_rate,
             } as ChartDataItem;
           });
         } else if (Array.isArray(json.data) && json.data.length) {
@@ -214,13 +264,18 @@ const CoinChart: React.FC<CoinChartProps> = ({
     return () => {
       mounted = false;
     };
-  }, [selectedPeriod, symbol]);
+  }, [selectedPeriod, currentSymbol]);
 
   const echartsOption = useMemo(() => {
     const xData = data.map((d) => d.dateLabel);
     const tomanSeries = data.map((d) => d.price_toman);
     const usdSeries = data.map((d) => d.price_usd);
     const rateSeries = data.map((d) => d.dollar_rate);
+
+    // Get coin name for chart title
+    const getCoinName = () => {
+      return currentSymbol;
+    };
 
     return {
       backgroundColor: "#ffffff",
@@ -241,7 +296,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
             if (!p || p.value == null) return;
             let label = p.seriesName;
             let value = p.value;
-            if (p.seriesName === "قیمت بیت‌کوین (تومان)") {
+            if (p.seriesName === `قیمت ${getCoinName()} (تومان)`) {
               value =
                 new Intl.NumberFormat("fa-IR").format(Number(p.value)) +
                 " تومان";
@@ -262,8 +317,20 @@ const CoinChart: React.FC<CoinChartProps> = ({
         },
       },
       grid: [
-        { left: 40, top: 40, right: 80, height: "60%" },
-        { left: 40, right: 40, top: "75%", height: "18%" },
+        { 
+          left: 50, 
+          top: 40, 
+          right: 50, 
+          height: "60%",
+          backgroundColor: "#fafafa"
+        },
+        { 
+          left: 50, 
+          right: 50, 
+          top: "75%", 
+          height: "20%",
+          backgroundColor: "#f8f8f8"
+        },
       ],
       xAxis: [
         {
@@ -272,7 +339,11 @@ const CoinChart: React.FC<CoinChartProps> = ({
           boundaryGap: false,
           gridIndex: 0,
           axisLine: { lineStyle: { color: "#e6eefb" } },
-          axisLabel: { color: "#7b8aa6", fontSize: 12 },
+          axisLabel: { 
+            color: "#7b8aa6", 
+            fontSize: 12,
+            interval: 'auto'
+          },
           axisTick: { show: false },
         },
         {
@@ -281,7 +352,13 @@ const CoinChart: React.FC<CoinChartProps> = ({
           data: xData,
           boundaryGap: false,
           axisLine: { lineStyle: { color: "#e6eefb" } },
-          axisLabel: { show: false },
+          axisLabel: { 
+            show: true,
+            color: "#7b8aa6",
+            fontSize: 10,
+            interval: 'auto'
+          },
+          axisTick: { show: true },
         },
       ],
       yAxis: [
@@ -289,7 +366,6 @@ const CoinChart: React.FC<CoinChartProps> = ({
           type: "value",
           name: "دلار",
           position: "left",
-          offset: 0,
           gridIndex: 0,
           nameTextStyle: { color: "#7b8aa6", fontSize: 12 },
           axisLabel: {
@@ -319,9 +395,26 @@ const CoinChart: React.FC<CoinChartProps> = ({
         {
           type: "value",
           gridIndex: 1,
-          axisLabel: { show: false },
-          axisLine: { show: false },
-          splitLine: { show: false },
+          name: "نرخ دلار",
+          nameTextStyle: { color: "#7b8aa6", fontSize: 12 },
+          axisLabel: { 
+            show: true,
+            color: "#7b8aa6",
+            fontSize: 10,
+            formatter: (v: number) => {
+              if (Math.abs(v) >= 1e7) return `${(v / 1e7).toFixed(1)}M`;
+              if (Math.abs(v) >= 1e4) return `${(v / 1e4).toFixed(0)}K`;
+              return v;
+            }
+          },
+          axisLine: { show: true, lineStyle: { color: "#e6eefb" } },
+          splitLine: { 
+            show: true, 
+            lineStyle: { 
+              color: "#f0f0f0",
+              type: "dashed"
+            } 
+          },
         },
       ],
       dataZoom: [
@@ -332,28 +425,33 @@ const CoinChart: React.FC<CoinChartProps> = ({
           end: 100,
         },
         {
-          show: false,
+          show: true,
           xAxisIndex: [0, 1],
           type: "slider",
-          top: "92%",
+          top: "95%",
+          height: 20,
           start: 0,
           end: 100,
+          backgroundColor: "#f8f8f8",
+          borderColor: "#e6eefb",
+          fillerColor: "rgba(22,82,240,0.1)",
+          textStyle: { color: "#7b8aa6" },
         },
       ],
       legend: {
         show: true,
-        bottom: 6,
+        top: 10,
         itemGap: 20,
         textStyle: { color: "#6b7280", fontSize: 12, fontFamily: "iranSans" },
         data: [
-          "قیمت بیت‌کوین (تومان)",
+          `قیمت ${getCoinName()} (تومان)`,
           "برابری دلار (USD)",
           "نرخ دلار (تومان)",
         ],
       },
       series: [
         {
-          name: "قیمت بیت‌کوین (تومان)",
+          name: `قیمت ${getCoinName()} (تومان)`,
           type: "line",
           smooth: true,
           showSymbol: false,
@@ -395,7 +493,10 @@ const CoinChart: React.FC<CoinChartProps> = ({
           xAxisIndex: 1,
           yAxisIndex: 2,
           data: rateSeries,
-          lineStyle: { width: 1.6, color: "#16A34A" },
+          lineStyle: { 
+            width: 1.6, 
+            color: "#16A34A" 
+          },
           areaStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: "rgba(22,163,74,0.16)" },
@@ -406,7 +507,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
       ],
       textStyle: { fontFamily: "iranSans, sans-serif" },
     };
-  }, [data]);
+  }, [data, currentSymbol]);
 
   return (
     <div className={` bg-[#ffffff] overflow-hidden mt-[32px] md:mt-[56px] md:mx-[50px]  md:w-[calc(100%-100px)] xl:mt-[63px] xl:h-[697px] xl:mx-[150px] xl:w-[calc(100%-300px)]  rounded-[30px] mx-[19px] w-[calc(100%-38px)] shadow-[0_4px_103px_0_rgba(13,26,142,0.08)] ${className}`}>

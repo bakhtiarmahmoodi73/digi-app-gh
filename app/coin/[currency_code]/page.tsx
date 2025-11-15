@@ -72,8 +72,11 @@ export default function CoinDetailsPage() {
 
 
 
-  if (loading) return <p className="p-4">در حال بارگذاری...</p>;
-  if (!coin)
+  if (loading) return (
+    <div className="flex justify-center w-full">
+      <p className="text-center mx-[20px] 2xl:mx-auto max-w-[1440px]">در حال بارگذاری...</p>
+    </div>
+  );  if (!coin)
     return <p className="p-4 text-red-500">اطلاعات رمز ارز یافت نشد</p>;
 
   return (
@@ -84,40 +87,53 @@ export default function CoinDetailsPage() {
             قیمت لحظه ای :
           </p>
 
-          <div className="flex w-[calc(100%-30px) px-[15px]    items-center justify-between md:px-0  ">
-            <div className="flex  gap-[6px] mt-[0px]  md:gap-[12px] md:mt-[20px]  xl:mt-[26px] ">
-              <div className=" w-[43px] h-[43px]  md:w-[61px] md:mr-[0px] xl:mr-[33px] md:h-[61px] xl:w-[71px]  ">
-                <Image
-                  src={coin.icon}
-                  alt={coin.fa_name}
-                  width={60}
-                  height={60}
-                />
-              </div>
-              <div className="flex flex-col gap-[8px] xl:gap-[12px] ">
-                <p className=" font-iranSans text-[#000000] font-[700]  text-[14px] leading-[21.91px] w-[150px] xl:text-[18px] ">
-                  {coin.fa_name}
-                </p>
-                <p className=" font-iranSans text-[#696464] font-[400] text-[14px] leading-[21.91px] xl:text-[18px] ">
-                  {coin.currency_code}
-                </p>
-              </div>
-            </div>
-            <div className="flex    flex-col mt-[21px]  gap-[8px] items-end ">
-              <p className="  font-iranSansnumber text-[14px]  text-[#000000] font-[700] xl:text-[18px] ">
-                {Number(coin.irt_price)
-                  .toFixed(0)
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
-                <span className="mr-[4px]">تومان</span>
-              </p>
-              <p className=" font-iranSansnumber text-[#696464] font-[400] text-[14px]  xl:text-[18px]  ">
-                $
-                {Number(coin.price)
-                  .toFixed(0)
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
-              </p>
-            </div>
-          </div>
+
+
+
+
+
+          <div className="grid gap-0 grid-cols-2 w-[calc(100%-30px)] pr-[15px] items-center md:px-0">
+  <div className="flex gap-[6px] mt-[20px] md:gap-[12px] md:mt-[20px] xl:mt-[26px] items-center">
+    <div className="w-[43px] h-[43px] md:w-[61px] md:mr-[0px] xl:mr-[33px] md:h-[61px] xl:w-[71px] flex-shrink-0">
+      <Image
+        src={coin.icon}
+        alt={coin.fa_name}
+        width={60}
+        height={60}
+        className="w-full h-full object-contain"
+      />
+    </div>
+    <div className="flex flex-col gap-[8px] xl:gap-[12px] min-w-0 flex-1">
+      <p className="font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] xl:text-[18px] truncate">
+        {coin.fa_name}
+      </p>
+      <p className="font-iranSans text-[#696464] font-[400] text-[14px] leading-[21.91px] xl:text-[18px] truncate">
+        {coin.currency_code}
+      </p>
+    </div>
+  </div>
+  <div className="flex flex-col mt-[20px] md:mt-[21px] xl:mt-[33px] gap-[8px] items-end">
+    <p className="font-iranSansnumber text-[14px] text-[#000000] font-[700] xl:text-[18px] whitespace-nowrap">
+      {Number(coin.irt_price)
+        .toFixed(0)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+      <span className="mr-[4px]">تومان</span>
+    </p>
+    <p className="font-iranSansnumber text-[#696464] font-[400] text-[14px] xl:text-[18px] whitespace-nowrap">
+      $
+      {Number(coin.price)
+        .toFixed(0)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+    </p>
+  </div>
+</div>
+
+
+
+
+
+
+
 
           <div className="   border-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg] mt-[18px] md:mt-[21px] xl:mr-[33px] xl:mt-[25px] ">
             <Image
