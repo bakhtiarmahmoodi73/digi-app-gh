@@ -109,16 +109,16 @@ export default function CoinsPage() {
       {
         accessorKey: "price",
         header: () => <div className=" ">ارزش دلاری</div>,
-        cell: ({ getValue }) => (
-          <div className="text-[16px] text-[#000000]">{fmt(getValue())} $</div>
+        cell: ({ row }) => (
+          <div className="text-[16px] text-[#000000]">{fmt(row.original.price)} $</div>
         ),
         size: 130,
       },
       {
         accessorKey: "daily_change_percent",
         header: () => <div className="">تغییر روزانه</div>,
-        cell: ({ getValue }) => {
-          const value = getValue() as string;
+        cell: ({ row }) => {
+          const value = row.original.daily_change_percent;
           const change = Number(value);
           return (
             <div
@@ -136,9 +136,9 @@ export default function CoinsPage() {
       {
         accessorKey: "buy_irt_price",
         header: () => <div className="">خرید از والت</div>,
-        cell: ({ getValue }) => (
+        cell: ({ row }) => (
           <div className="text-[16px] text-[#000000] ">
-            {fmt(getValue())} تومان
+            {fmt(row.original.buy_irt_price)} تومان
           </div>
         ),
         size: 150,
@@ -146,9 +146,9 @@ export default function CoinsPage() {
       {
         accessorKey: "sell_irt_price",
         header: () => <div className="">فروش به والت</div>,
-        cell: ({ getValue }) => (
+        cell: ({ row }) => (
           <div className="text-[16px] text-[#000000] ">
-            {fmt(getValue())} تومان
+            {fmt(row.original.sell_irt_price)} تومان
           </div>
         ),
         size: 150,
@@ -253,9 +253,6 @@ export default function CoinsPage() {
 
   const selectedRow = selectedId ? filteredData.find(row => row.id === selectedId) : null;
 
-
-
-
   const getPaginationPages = () => {
     const pages = [];
   
@@ -282,9 +279,6 @@ export default function CoinsPage() {
   
     return pages.reverse(); 
   };
-  
-
-
 
   return (
     <div className="  flex flex-col items-center     xl:w-[calc(100%-300px) w-full ">
