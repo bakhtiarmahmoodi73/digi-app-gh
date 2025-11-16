@@ -10,6 +10,8 @@ import {
   ColumnDef,
   flexRender,
 } from "@tanstack/react-table";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 type CoinRaw = {
   id: number;
@@ -32,45 +34,35 @@ export default function CoinsPage() {
   const [totalPages, setTotalPages] = useState<number>(9);
 
   const fetchData = async (page: number = 1, searchQuery: string = "") => {
-    setLoading(true);
-    try {
-      const res = await fetch(`https://b.wallet.ir/coinlist/list/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          page: page,
-          limit:"9",
-          search: searchQuery
-        })
-      });
-      
-      if (!res.ok) throw new Error("خطا در دریافت داده‌ها");
-      const responseData = await res.json();
-      
-      setData(responseData.items || []);
-      setTotalPages(responseData.total_page || 9);
-    } catch (err) {
-      console.error(err);
-      setData([]);
-    } finally {
-      setLoading(false);
-    }
+    const { data: responseData } = await axios.post(`https://b.wallet.ir/coinlist/list/`, {
+      page: page,
+      limit: "9",
+      search: searchQuery
+    });
+    
+    return responseData;
   };
 
-  useEffect(() => {
-    fetchData(currentPage, search);
-  }, [currentPage]);
+  const { data: queryData, isLoading, error } = useQuery({
+    queryKey: ['coins', currentPage, search],
+    queryFn: () => fetchData(currentPage, search),
+  });
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setCurrentPage(1);
-      fetchData(1, search);
-    }, 500);
+    if (queryData) {
+      setData(queryData.items || []);
+      setTotalPages(queryData.total_page || 9);
+      setLoading(false);
+    }
+  }, [queryData]);
 
-    return () => clearTimeout(timeoutId);
-  }, [search]);
+  useEffect(() => {
+    if (error) {
+      console.error(error);
+      setData([]);
+      setLoading(false);
+    }
+  }, [error]);
 
   const fmt = (v: string | number | undefined | null) => {
     if (v === undefined || v === null || v === "") return "-";
@@ -349,7 +341,7 @@ export default function CoinsPage() {
         </div>
 
         <div className="bg-white   border border-[#F7F7F7]  xl:w-[calc(100%-300px) xl:mx-[150px]">
-          {loading ? (
+          {isLoading ? (
             <div className="text-center py-12 text-gray-500">
               در حال دریافت داده‌ها...
             </div>
@@ -460,7 +452,7 @@ export default function CoinsPage() {
             </div>
 
             <div className="mt-[20px]">
-              <div className=" flex items-center justify-between px-[20px] mb-4">
+              <div className=" grid grid-cols-3 minmax(140px, 1fr)] gap-x-[0px] sm:gap-x-[130px] items-center  mb-4">
                 <div className="flex items-center justify-around gap-3">
                   <div className="flex gap-[6px]">
                   <img
@@ -480,7 +472,7 @@ export default function CoinsPage() {
 
                 </div>
 
-                <div className="text-[12px] font-medium text-center text-[#000000] flex items-center">
+                <div className="text-[12px] font-medium text-center text-[#000000] flex  items-center justify-center ">
                   {fmt(selectedRow.price)} $
                 </div>
                 <div
@@ -530,7 +522,7 @@ export default function CoinsPage() {
 
         
         <div className="border border-[#F7F7F7]">
-          {loading ? (
+          {isLoading ? (
             <div className="text-center py-12 text-gray-500">
               در حال دریافت داده‌ها...
             </div>

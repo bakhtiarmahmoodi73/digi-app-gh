@@ -3,6 +3,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import * as echarts from "echarts";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 type ChartPeriod = "24h" | "1w" | "1m" | "3m" | "1y" | "ALL";
 
@@ -157,114 +159,94 @@ const CoinChart: React.FC<CoinChartProps> = ({
     return items;
   };
 
-  useEffect(() => {
-    let mounted = true;
-    (async () => {
-      try {
-        const res = await fetch("https://b.wallet.ir/coinlist/chart-period", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            items: ["24h", "1w", "1m", "3m", "1y", "ALL"],
-            success: true,
-            status: 200
-          }),
-        });
-        if (!res.ok) throw new Error("periods fetch failed");
-        const json = await res.json();
-        if (json && Array.isArray(json.items) && mounted) {
-          const valid = (json.items as string[]).filter((i) =>
-            ["24h", "1w", "1m", "1y"].includes(i)
-          ) as ChartPeriod[];
-          if (valid.length) setPeriods(valid);
-        }
-      } catch (err) {}
-    })();
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  const fetchPeriods = async () => {
+    const { data } = await axios.post("https://b.wallet.ir/coinlist/chart-period", {
+      items: ["24h", "1w", "1m", "3m", "1y", "ALL"],
+      success: true,
+      status: 200
+    });
+    return data;
+  };
+
+  const { data: periodsData } = useQuery({
+    queryKey: ['chartPeriods'],
+    queryFn: fetchPeriods,
+  });
 
   useEffect(() => {
-    let mounted = true;
-    setLoading(true);
-    setError(null);
+    if (periodsData && Array.isArray(periodsData.items)) {
+      const valid = (periodsData.items as string[]).filter((i) =>
+        ["24h", "1w", "1m", "1y"].includes(i)
+      ) as ChartPeriod[];
+      if (valid.length) setPeriods(valid);
+    }
+  }, [periodsData]);
 
-    (async () => {
-      try {
-        const response = await fetch("https://b.wallet.ir/coinlist/chart", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            period: selectedPeriod,
-            currency_code: currentSymbol
-          }),
+  const fetchChartData = async () => {
+    const { data } = await axios.post("https://b.wallet.ir/coinlist/chart", {
+      period: selectedPeriod,
+      currency_code: currentSymbol
+    });
+    return data;
+  };
+
+  const { data: chartData, isLoading, error: chartError } = useQuery({
+    queryKey: ['chartData', selectedPeriod, currentSymbol],
+    queryFn: fetchChartData,
+  });
+
+  useEffect(() => {
+    if (chartData) {
+      let mapped: ChartDataItem[] = [];
+
+      if (Array.isArray(chartData.items) && chartData.items.length) {
+        mapped = (chartData.items as any[]).map((it: any) => {
+          const ts = it.time ? Number(it.time) * 1000 : new Date(it.date || it.time).getTime();
+          const price_usd = Number(it.price || it.usd_price || 0);
+          const dollar_rate = Number(it.usd_price || it.rate || 84625);
+          const price_toman = Number(it.irt_price || it.price_toman || 0);
+
+          return {
+            timestamp: ts,
+            dateLabel: formatDateLabel(ts, selectedPeriod),
+            price_toman: price_toman,
+            price_usd: price_usd,
+            dollar_rate: dollar_rate,
+          } as ChartDataItem;
         });
-        
-        if (!response.ok) {
-          throw new Error(`chart fetch failed (${response.status})`);
-        }
-        
-        const json = await response.json();
-
-        let mapped: ChartDataItem[] = [];
-
-        if (Array.isArray(json.items) && json.items.length) {
-          mapped = (json.items as any[]).map((it: any) => {
-            const ts = it.time ? Number(it.time) * 1000 : new Date(it.date || it.time).getTime();
-            const price_usd = Number(it.price || it.usd_price || 0);
-            const dollar_rate = Number(it.usd_price || it.rate || 84625);
-            const price_toman = Number(it.irt_price || it.price_toman || 0);
-
-            return {
-              timestamp: ts,
-              dateLabel: formatDateLabel(ts, selectedPeriod),
-              price_toman: price_toman,
-              price_usd: price_usd,
-              dollar_rate: dollar_rate,
-            } as ChartDataItem;
-          });
-        } else if (Array.isArray(json.data) && json.data.length) {
-          mapped = (json.data as any[]).map((it: any) => {
-            const ts = it.t
-              ? Number(it.t)
-              : new Date(it.date || it.time).getTime();
-            return {
-              timestamp: ts,
-              dateLabel: formatDateLabel(ts, selectedPeriod),
-              price_toman: Number(it.toman ?? it.price_toman ?? it[1] ?? 0),
-              price_usd: Number(it.usd ?? it.price_usd ?? it[2] ?? 0),
-              dollar_rate: Number(it.rate ?? it.dollar_rate ?? it[3] ?? 0),
-            } as ChartDataItem;
-          });
-        }
-
-        if (!mapped.length) {
-          mapped = generateFallbackData(selectedPeriod);
-        }
-
-        mapped.sort((a, b) => a.timestamp - b.timestamp);
-
-        if (mounted) setData(mapped);
-      } catch (err: any) {
-        const fallback = generateFallbackData(selectedPeriod);
-        if (mounted) {
-          setData(fallback);
-          setError("خطا در دریافت داده از سرور — نمایش داده نمونه");
-        }
-      } finally {
-        if (mounted) setLoading(false);
+      } else if (Array.isArray(chartData.data) && chartData.data.length) {
+        mapped = (chartData.data as any[]).map((it: any) => {
+          const ts = it.t
+            ? Number(it.t)
+            : new Date(it.date || it.time).getTime();
+          return {
+            timestamp: ts,
+            dateLabel: formatDateLabel(ts, selectedPeriod),
+            price_toman: Number(it.toman ?? it.price_toman ?? it[1] ?? 0),
+            price_usd: Number(it.usd ?? it.price_usd ?? it[2] ?? 0),
+            dollar_rate: Number(it.rate ?? it.dollar_rate ?? it[3] ?? 0),
+          } as ChartDataItem;
+        });
       }
-    })();
 
-    return () => {
-      mounted = false;
-    };
-  }, [selectedPeriod, currentSymbol]);
+      if (!mapped.length) {
+        mapped = generateFallbackData(selectedPeriod);
+      }
+
+      mapped.sort((a, b) => a.timestamp - b.timestamp);
+      setData(mapped);
+      setLoading(false);
+    }
+  }, [chartData, selectedPeriod]);
+
+  useEffect(() => {
+    if (chartError) {
+      const fallback = generateFallbackData(selectedPeriod);
+      setData(fallback);
+      setError("خطا در دریافت داده از سرور — نمایش داده نمونه");
+      setLoading(false);
+    }
+  }, [chartError, selectedPeriod]);
 
   const echartsOption = useMemo(() => {
     const xData = data.map((d) => d.dateLabel);
@@ -532,7 +514,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
         </div>
 
         <div className="w-full">
-          {loading ? (
+          {isLoading ? (
             <div className="py-20 text-center text-gray-400">
               در حال بارگذاری...
             </div>

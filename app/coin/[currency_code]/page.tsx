@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import CoinChart from "../../../components/CoinChart";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 type Coin = {
   id: number;
@@ -22,75 +24,57 @@ type Coin = {
 export default function CoinDetailsPage() {
   const { currency_code } = useParams<{ currency_code: string }>();
   const [coin, setCoin] = useState<Coin | null>(null);
-  const [loading, setLoading] = useState(true);
+
+  const fetchCoinData = async (currency_code: string) => {
+    let foundCoin = null;
+    let page = 1;
+    const maxPages = 10;
+
+    while (page <= maxPages && !foundCoin) {
+      const { data } = await axios.post(`https://b.wallet.ir/coinlist/list/`, {
+        page: page,
+        limit: "9"
+      });
+      
+      foundCoin = (data.items || []).find(
+        (item: Coin) => item.currency_code === currency_code
+      );
+      
+      if (foundCoin) break;
+      page++;
+    }
+
+    return foundCoin || null;
+  };
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['coin', currency_code],
+    queryFn: () => fetchCoinData(currency_code as string),
+    enabled: !!currency_code,
+  });
 
   useEffect(() => {
-    if (!currency_code) return;
+    if (data) {
+      setCoin(data);
+    }
+  }, [data]);
 
-    const fetchData = async () => {
-      try {
-        let foundCoin = null;
-        let page = 1;
-        const maxPages = 10;  
-
-        while (page <= maxPages && !foundCoin) {
-          const res = await fetch(`https://b.wallet.ir/coinlist/list/`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              page: page,
-              limit: "9"
-            })
-          });
-          
-          if (!res.ok) break;
-          
-          const data = await res.json();
-          foundCoin = (data.items || []).find(
-            (item: Coin) => item.currency_code === currency_code
-          );
-          
-          if (foundCoin) break;
-          page++;
-        }
-
-        setCoin(foundCoin || null);
-      } catch (err) {
-        console.error(err);
-        setCoin(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [currency_code]);
-
-  
-
-
-
-  if (loading) return (
+  if (isLoading) return (
     <div className="flex justify-center w-full">
       <p className="text-center mx-[20px] 2xl:mx-auto max-w-[1440px]">در حال بارگذاری...</p>
     </div>
-  );  if (!coin)
+  );  
+  if (error || !coin)
     return <p className="p-4 text-red-500">اطلاعات رمز ارز یافت نشد</p>;
 
   return (
     <div className=" mx-auto overflow-x-hidden  h-[3820px]   md:h-[3440px]  bg-[#ffffff] flex flex-col max-w-[1440px] ">
+      {/* بقیه کد بدون تغییر */}
       <div className="bg-[#ffffff] w-[calc(100%-36px)] mx-[18px] h-[799px] mt-[40px]  rounded-[30px] shadow-[0_4px_103px_0_rgba(13,26,142,0.08)] flex flex-col md:flex  md:flex-row md:mt-[22px] md:mx-[50px] md:w-[calc(100%-100px)] md:h-[448px] xl:h-[481px] xl:mx-[150px] xl:w-[calc(100%-300px)] xl:mt-[60px]   ">
         <div className="flex flex-col  md:w-1/2 xl:w-1/2">
           <p className=" font-iranSans text-[#000000] font-[700] text-[14px] leading-[21.91px] mt-[32px] mr-[22px] md:mt-[45px] md:mr-[25px] xl:text-[16px] xl:mt-[29px] xl:mr-[33px]  ">
             قیمت لحظه ای :
           </p>
-
-
-
-
-
 
           <div className="grid gap-0 grid-cols-2 w-[calc(100%-30px)] pr-[15px] items-center md:px-0">
   <div className="flex gap-[6px] mt-[20px] md:gap-[12px] md:mt-[20px] xl:mt-[26px] items-center">
@@ -127,13 +111,6 @@ export default function CoinDetailsPage() {
     </p>
   </div>
 </div>
-
-
-
-
-
-
-
 
           <div className="   border-[#EBEBEB] mr-[22px] ml-[25px] rotate-[-180deg] mt-[18px] md:mt-[21px] xl:mr-[33px] xl:mt-[25px] ">
             <Image
