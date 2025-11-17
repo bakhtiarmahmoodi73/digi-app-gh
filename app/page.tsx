@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import CoinTable from "../components/coinTable";
+import ButtonGroup from "@/components/Buttons";
 
 export default function Home() {
   return (
@@ -28,8 +29,12 @@ export default function Home() {
 
 
 
-        <div className="hidden md:grid md:mt-[52px] xl:mt-[83px] md:mx-[50px] xl:mx-[150px] md:gap-x-[8px] xl:gap-x-[16px] gap-y-0 md:items-center md:grid-cols-[repeat(8,minmax(50px,1fr))] bg-[#ffffff]">
-          <button className="rounded-[8px]   font-iranSans text-[#F7F7F7] bg-[#1652F0]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px]  md:text-[12px] ">
+
+
+
+
+        {/* <div className="hidden md:grid md:mt-[52px] xl:mt-[83px] md:mx-[50px] xl:mx-[150px] md:gap-x-[8px] xl:gap-x-[16px] gap-y-0 md:items-center md:grid-cols-[repeat(8,minmax(50px,1fr))] bg-[#ffffff]">
+          <button className="rounded-[8px]   font-iranSans text-[#F7F7F7] bg-[#1652F0]  xl:h-[47px]  xl:text-[14px] font-[400]  md:h-[47px]  md:text-[12px] bg-[#F7F7F7]">
             <span>دیفای</span>
             <Image
               src="/images/Frame (1).png"
@@ -61,6 +66,10 @@ export default function Home() {
             ICO
           </button>
         </div>
+ */}
+
+   <ButtonGroup />
+
 
 
 

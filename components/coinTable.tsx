@@ -64,6 +64,12 @@ export default function CoinsPage() {
     }
   }, [error]);
 
+  useEffect(() => {
+    if (search.trim() !== "") {
+      setCurrentPage(1);
+    }
+  }, [search]);
+
   const fmt = (v: string | number | undefined | null) => {
     if (v === undefined || v === null || v === "") return "-";
     const n = Number(v);
@@ -71,16 +77,9 @@ export default function CoinsPage() {
     return n.toLocaleString("fa-IR");
   };
 
-  const filteredData = useMemo(() => {
-    if (!search.trim()) return data;
-
-    const q = search.trim().toLowerCase();
-    return data.filter(
-      (c: CoinRaw) =>
-        (c.fa_name && c.fa_name.toLowerCase().includes(q)) ||
-        (c.currency_code && c.currency_code.toLowerCase().includes(q))
-    );
-  }, [data, search]);
+  const displayData = useMemo(() => {
+    return data;
+  }, [data]);
 
   const columns = useMemo<ColumnDef<CoinRaw>[]>(
     () => [
@@ -212,7 +211,7 @@ export default function CoinsPage() {
   );
 
   const table = useReactTable({
-    data: filteredData,
+    data: displayData, 
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -242,7 +241,6 @@ export default function CoinsPage() {
   grid 
   gap-x-0 gap-y-0 items-center 
   md:grid-cols-[repeat(6,minmax(112px,1fr))]
- 
 `;
 
   const mobileGridClass = `
@@ -250,8 +248,6 @@ export default function CoinsPage() {
   gap-x-0 gap-y-0 items-center 
   grid-cols-[minmax(120px,1fr)_minmax(80px,1fr)_minmax(80px,1fr)]
 `;
-
-  const selectedRow = selectedId ? filteredData.find(row => row.id === selectedId) : null;
 
   const getPaginationPages = () => {
     const pages = [];
@@ -269,7 +265,7 @@ export default function CoinsPage() {
       pages.push(i);
     }
   
-    if (currentPage < totalPages - 2) {
+    if (currentPage < totalPages - 1) {
       pages.push("...");
     }
   
@@ -339,14 +335,12 @@ export default function CoinsPage() {
             <div className="text-center py-12 text-gray-500">
               در حال دریافت داده‌ها...
             </div>
-          ) : data.length === 0 ? (
+          ) : displayData.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
-              هیچ داده‌ای یافت نشد.
+              {search ? "نتیجه‌ای برای جستجوی شما یافت نشد." : "هیچ داده‌ای یافت نشد."}
             </div>
           ) : (
-
-
-            data.map((row, index) => (
+            displayData.map((row, index) => (
               <div
                 key={row.id}
                 onClick={() => onClickRow(row.id)}
@@ -437,99 +431,100 @@ export default function CoinsPage() {
       </div>
 
       <div className="w-full md:hidden">
-        {selectedRow && (
-          <div className=" bg-[#F7F7F7] rounded-[8px]   overflow-hidden">
-            <div className="bg-[#E3E7EC]  flex  justify-between px-[20px] items-center h-[64px] ">
-              <div className="text-[14px] font-[400] text-[#000000]">نام رمز ارز</div>
-              <div className="text-[14px] font-[400] text-[#000000]">ارزش دلاری</div>
-              <div className="text-[14px] font-[400] text-[#000000]">تغییر روزانه</div>
-            </div>
-
-            <div className="mt-[20px]">
-              <div className=" grid grid-cols-3 minmax(140px, 1fr)] gap-x-[0px] sm:gap-x-[130px] items-center  mb-4">
-                <div className="flex items-center justify-around gap-3">
-                  <div className="flex gap-[6px]">
-                  <img
-                    src={selectedRow.icon}
-                    alt={selectedRow.currency_code}
-                    className="w-8 h-8 rounded-full flex-shrink-0"
-                  />
-                  <div className="text-right">
-                    <div className="text-[12px] font-medium text-[#000000]  leading-tight">
-                      {selectedRow.fa_name}
-                    </div>
-                    <div className="text-[11px] mt-[5px] text-[#696464] leading-tight">
-                      {selectedRow.currency_code}
-                    </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div className="text-[12px] font-medium text-center text-[#000000] flex  items-center justify-center ">
-                  {fmt(selectedRow.price)} $
-                </div>
-                <div
-                  className={`text-[14px] font-[400] flex items-center justify-center ${
-                    Number(selectedRow.daily_change_percent) >= 0
-                      ? "text-green-600"
-                      : "text-red-600"
-                  }`}
-                >
-                  {Number(selectedRow.daily_change_percent) >= 0 ? "+" : ""}
-                  {selectedRow.daily_change_percent}٪
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center mt-[23px] mx-[13px]">
-                <span className="text-[12px] font-[400] text-[#000000]">
-                  فروش به والت
-                </span>
-                <span className="text-[12px] font-[400] text-[#000000]">
-                  {fmt(selectedRow.sell_irt_price)} تومان
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center mt-[11px] mx-[13px]">
-                <span className="text-[12px] font-[400] text-[#000000]">
-                  خرید از والت
-                </span>
-                <span className="text-[12px] font-[400] text-[#000000]">
-                  {fmt(selectedRow.buy_irt_price)} تومان
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-[26px] mx-[13px]">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  router.push(`/coin/${selectedRow.currency_code}`);
-                }}
-                className="bg-[#1652F0] text-white text-[12px] font-[900] w-full h-[47px] rounded-[8px] hover:bg-[#1447D8] transition"
-              >
-                معامله
-              </button>
-            </div>
-          </div>
-        )}
-
-        
         <div className="border border-[#F7F7F7]">
           {isLoading ? (
             <div className="text-center py-12 text-gray-500">
               در حال دریافت داده‌ها...
             </div>
-          ) : filteredData.length === 0 ? (
+          ) : displayData.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
-              هیچ داده‌ای یافت نشد.
+              {search ? "نتیجه‌ای برای جستجوی شما یافت نشد." : "هیچ داده‌ای یافت نشد."}
             </div>
           ) : (
-            filteredData
-              .filter(row => row.id !== selectedId) 
-              .map((row, index) => {
-                return (
-                  <div key={row.id}>
+            displayData.map((row, index) => {
+              const isSelected = selectedId === row.id;
+              
+              return (
+                <div key={row.id}>
+                  {isSelected ? (
+                    <div 
+                      onClick={() => setSelectedId(null)}
+                      className="bg-[#F7F7F7] border-b border-[#E5E9F2] cursor-pointer"
+                    >
+                      <div className="bg-[#E3E7EC] flex justify-between px-[20px] items-center h-[64px]">
+                        <div className="text-[14px] font-[400] text-[#000000]">نام رمز ارز</div>
+                        <div className="text-[14px] font-[400] text-[#000000]">ارزش دلاری</div>
+                        <div className="text-[14px] font-[400] text-[#000000]">تغییر روزانه</div>
+                      </div>
+
+                      <div className="mt-[20px] px-4">
+                        <div className="grid grid-cols-3 items-center mb-4">
+                          <div className="flex items-center justify-start">
+                            <div className="flex gap-[6px]">
+                              <img
+                                src={row.icon}
+                                alt={row.currency_code}
+                                className="w-8 h-8 rounded-full flex-shrink-0"
+                              />
+                              <div className="text-right">
+                                <div className="text-[12px] font-medium text-[#000000] leading-tight">
+                                  {row.fa_name}
+                                </div>
+                                <div className="text-[11px] mt-[5px] text-[#696464] leading-tight">
+                                  {row.currency_code}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="text-[12px] font-medium text-center text-[#000000]">
+                            {fmt(row.price)} $
+                          </div>
+                          <div
+                            className={`text-[14px] font-[400] text-center ${
+                              Number(row.daily_change_percent) >= 0
+                                ? "text-green-600"
+                                : "text-red-600"
+                            }`}
+                          >
+                            {Number(row.daily_change_percent) >= 0 ? "+" : ""}
+                            {row.daily_change_percent}٪
+                          </div>
+                        </div>
+
+                        <div className="flex justify-between items-center mt-[23px]">
+                          <span className="text-[12px] font-[400] text-[#000000]">
+                            فروش به والت
+                          </span>
+                          <span className="text-[12px] font-[400] text-[#000000]">
+                            {fmt(row.sell_irt_price)} تومان
+                          </span>
+                        </div>
+
+                        <div className="flex justify-between items-center mt-[11px]">
+                          <span className="text-[12px] font-[400] text-[#000000]">
+                            خرید از والت
+                          </span>
+                          <span className="text-[12px] font-[400] text-[#000000]">
+                            {fmt(row.buy_irt_price)} تومان
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="mt-[26px] mx-[13px] mb-4">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            router.push(`/coin/${row.currency_code}`);
+                          }}
+                          className="bg-[#1652F0] text-white text-[12px] font-[900] w-full h-[47px] rounded-[8px] hover:bg-[#1447D8] transition"
+                        >
+                          معامله
+                        </button>
+                      </div>
+            
+                    </div>
+                  ) : (
                     <div
                       onClick={() => onClickRow(row.id)}
                       className={`h-[70px] transition cursor-pointer border-b border-[#E5E9F2] px-4 
@@ -568,9 +563,10 @@ export default function CoinsPage() {
                         {row.daily_change_percent}٪
                       </div>
                     </div>
-                  </div>
-                );
-              })
+                  )}
+                </div>
+              );
+            })
           )}
         </div>
 
