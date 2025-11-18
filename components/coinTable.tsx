@@ -394,7 +394,7 @@ export default function CoinsPage() {
                 </div>
 
                 <div
-                  className={`md:text-[12px] font-number-regular text-center ${
+                  className={`md:text-[12px] font-number-regular text-center xl:pl-5 ${
                     Number(row.daily_change_percent) >= 0
                       ? "text-green-600"
                       : "text-red-600"
@@ -404,11 +404,11 @@ export default function CoinsPage() {
                   {row.daily_change_percent}٪
                 </div>
 
-                <div className="md:text-[12px] font-number-regular text-[#000000] text-center">
+                <div className="md:text-[12px] font-number-regular text-[#000000] text-center   xl:pl-5">
                   {fmt(row.buy_irt_price)} تومان
                 </div>
 
-                <div className="md:text-[12px] font-number-regular  text-[#000000] text-center">
+                <div className="md:text-[12px] font-number-regular  text-[#000000] text-center  xl:pl-5">
                   {fmt(row.sell_irt_price)} تومان
                 </div>
 
