@@ -302,7 +302,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
         { 
           left: 50, 
           right: 50, 
-          top: "85%", 
+          top: "80%", 
           height: "10%",
           backgroundColor: "#f8f8f8"
         },
@@ -418,10 +418,10 @@ const CoinChart: React.FC<CoinChartProps> = ({
           end: 100,
         },
         {
-          show: true,
+          show: false,
           xAxisIndex: [0, 1],
           type: "slider",
-          top: "95%",
+          top: "%",
           height: 20,
           start: 0,
           end: 100,
