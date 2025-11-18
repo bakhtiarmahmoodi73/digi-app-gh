@@ -34,17 +34,24 @@ export default function CoinsPage() {
   const [totalPages, setTotalPages] = useState<number>(9);
 
   const fetchData = async (page: number = 1, searchQuery: string = "") => {
-    const { data: responseData } = await axios.post(`https://b.wallet.ir/coinlist/list/`, {
-      page: page,
-      limit: "9",
-      search: searchQuery
-    });
-    
+    const { data: responseData } = await axios.post(
+      `https://b.wallet.ir/coinlist/list/`,
+      {
+        page: page,
+        limit: "9",
+        search: searchQuery,
+      }
+    );
+
     return responseData;
   };
 
-  const { data: queryData, isLoading, error } = useQuery({
-    queryKey: ['coins', currentPage, search],
+  const {
+    data: queryData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["coins", currentPage, search],
     queryFn: () => fetchData(currentPage, search),
   });
 
@@ -109,7 +116,9 @@ export default function CoinsPage() {
         accessorKey: "price",
         header: () => <div className=" ">ارزش دلاری</div>,
         cell: ({ row }) => (
-          <div className="text-[16px] text-[#000000]">{fmt(row.original.price)} $</div>
+          <div className="text-[16px] text-[#000000]">
+            {fmt(row.original.price)} $
+          </div>
         ),
         size: 130,
       },
@@ -211,7 +220,7 @@ export default function CoinsPage() {
   );
 
   const table = useReactTable({
-    data: displayData, 
+    data: displayData,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -234,7 +243,7 @@ export default function CoinsPage() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const gridClass = `
@@ -251,47 +260,56 @@ export default function CoinsPage() {
 
   const getPaginationPages = () => {
     const pages = [];
-  
+
     pages.push(1);
-  
+
     if (currentPage > 2) {
       pages.push("...");
     }
-  
+
     const start = Math.max(2, currentPage - 2);
     const end = Math.min(totalPages - 1, currentPage + 2);
-  
+
     for (let i = start; i <= end; i++) {
       pages.push(i);
     }
-  
+
     if (currentPage < totalPages - 1) {
       pages.push("...");
     }
-  
+
     if (totalPages >= 1) {
       pages.push(totalPages);
     }
-  
-    return pages.reverse(); 
+
+    return pages.reverse();
   };
 
   return (
     <div className="  flex flex-col items-center     xl:w-[calc(100%-300px) w-full ">
-
       <div className="hidden md:block  md:w-full ">
-        <div className={` bg-[#E3E7EC] border rounded-[8px] md:h-[70px]  xl:h-[90px] 
+        <div
+          className={` bg-[#E3E7EC] border rounded-[8px] md:h-[70px]  xl:h-[90px] 
 
     ${gridClass}
 
-      text-[#000000] font-[400]  xl:w-[calc(100%-300px) xl:mx-[150px] `}>
-          
-            <div className=" text-[#000000] md:text-[14px] xl:text-[16px] md:mr-[30px] xl:mr-0 xl:text-center">نام رمز ارز</div>
-            <div className="text-[#000000] md:text-[14px] xl:text-[16px] text-center">ارزش دلاری</div>
-            <div className="text-[#000000] md:text-[14px] xl:text-[16px] text-center">تغییر روزانه</div>
-            <div className="text-[#000000] md:text-[14px] xl:text-[16px] text-center">خرید از والت</div>
-            <div className="text-[#000000] md:text-[14px] xl:text-[16px] text-center">فروش به والت</div>
-          
+      text-[#000000] font-[400]  xl:w-[calc(100%-300px) xl:mx-[150px] `}
+        >
+          <div className=" text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] md:mr-[30px] xl:mr-0 xl:text-center">
+            نام رمز ارز
+          </div>
+          <div className="text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] text-center">
+            ارزش دلاری
+          </div>
+          <div className="text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] text-center">
+            تغییر روزانه
+          </div>
+          <div className="text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] text-center">
+            خرید از والت
+          </div>
+          <div className="text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] text-center">
+            فروش به والت
+          </div>
 
           <div className="flex md:ml-[14px]">
             <div className="flex items-center  bg-white border rounded-[8px] md:h-[47px]  xl:h-[63px] px-3 xl:w-[244px] ">
@@ -324,7 +342,7 @@ export default function CoinsPage() {
                 onChange={(e) => {
                   setSearch(e.target.value);
                 }}
-                className="outline-none md:text-[12px] w-full placeholder-gray-400 bg-transparent"
+                className="outline-none font-iran-sans-regular md:text-[12px] w-full placeholder-gray-400 bg-transparent"
               />
             </div>
           </div>
@@ -337,7 +355,9 @@ export default function CoinsPage() {
             </div>
           ) : displayData.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
-              {search ? "نتیجه‌ای برای جستجوی شما یافت نشد." : "هیچ داده‌ای یافت نشد."}
+              {search
+                ? "نتیجه‌ای برای جستجوی شما یافت نشد."
+                : "هیچ داده‌ای یافت نشد."}
             </div>
           ) : (
             displayData.map((row, index) => (
@@ -360,21 +380,21 @@ export default function CoinsPage() {
                     className="w-8 h-8 rounded-full flex-shrink-0"
                   />
                   <div className="text-right flex-1">
-                    <div className="md:text-[12px] font-medium text-[#000000] leading-tight">
+                    <div className="md:text-[12px] font-iran-sans-medium text-[#000000] leading-tight">
                       {row.fa_name}
                     </div>
-                    <div className="md:text-[12px] md:mt-[5px] text-[#696464] leading-tight">
+                    <div className="md:text-[12px] md:mt-[5px] font-iran-sans-regular text-[#696464] leading-tight">
                       {row.currency_code}
                     </div>
                   </div>
                 </div>
 
-                <div className="md:text-[12px] text-[#000000] xl:pl-10 text-center ">
+                <div className="md:text-[12px] font-number-regular text-[#000000] xl:pl-10 text-center ">
                   {fmt(row.price)} $
                 </div>
 
                 <div
-                  className={`md:text-[12px] font-[400] text-center ${
+                  className={`md:text-[12px] font-number-regular text-center ${
                     Number(row.daily_change_percent) >= 0
                       ? "text-green-600"
                       : "text-red-600"
@@ -384,11 +404,11 @@ export default function CoinsPage() {
                   {row.daily_change_percent}٪
                 </div>
 
-                <div className="md:text-[12px] text-[#000000] text-center">
+                <div className="md:text-[12px] font-number-regular text-[#000000] text-center">
                   {fmt(row.buy_irt_price)} تومان
                 </div>
 
-                <div className="md:text-[10px] lg:text-[12px] text-[#000000] text-center">
+                <div className="md:text-[12px] font-number-regular  text-[#000000] text-center">
                   {fmt(row.sell_irt_price)} تومان
                 </div>
 
@@ -398,7 +418,7 @@ export default function CoinsPage() {
                       e.stopPropagation();
                       router.push(`/coin/${row.currency_code}`);
                     }}
-                    className="bg-[#1652F0] text-[#EEF2F5] md:text-[14px] font-[900] rounded-[8px] hover:bg-[#1447D8] transition whitespace-nowrap md:w-[130px] md:h-[47px]"
+                    className="bg-[#1652F0] text-[#EEF2F5] md:text-[14px] font-iran-sans-black rounded-[8px] hover:bg-[#1447D8] transition whitespace-nowrap md:w-[130px] md:h-[47px]"
                   >
                     معامله
                   </button>
@@ -409,14 +429,16 @@ export default function CoinsPage() {
         </div>
 
         <div className="flex justify-center items-center gap-2 mt-6 relative z-50">
-          {getPaginationPages().map((page, index) => (
-            page === '...' ? (
-              <span key={`ellipsis-${index}`} className="px-2 text-gray-500">...</span>
+          {getPaginationPages().map((page, index) =>
+            page === "..." ? (
+              <span key={`ellipsis-${index}`} className="px-2 text-gray-500">
+                ...
+              </span>
             ) : (
               <button
                 key={page}
                 onClick={() => handlePageChange(page as number)}
-                className={`w-[31px] h-[31px] rounded-full flex items-center justify-center  transition cursor-pointer relative z-50
+                className={`w-[31px] font-number-regular h-[31px] rounded-full flex items-center justify-center  transition cursor-pointer relative z-50
                   ${
                     currentPage === page
                       ? "bg-[#1652F0] text-white border-[#1652F0]"
@@ -426,7 +448,7 @@ export default function CoinsPage() {
                 {(page as number).toLocaleString("fa-IR")}
               </button>
             )
-          ))}
+          )}
         </div>
       </div>
 
@@ -438,23 +460,31 @@ export default function CoinsPage() {
             </div>
           ) : displayData.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
-              {search ? "نتیجه‌ای برای جستجوی شما یافت نشد." : "هیچ داده‌ای یافت نشد."}
+              {search
+                ? "نتیجه‌ای برای جستجوی شما یافت نشد."
+                : "هیچ داده‌ای یافت نشد."}
             </div>
           ) : (
             displayData.map((row, index) => {
               const isSelected = selectedId === row.id;
-              
+
               return (
                 <div key={row.id}>
                   {isSelected ? (
-                    <div 
+                    <div
                       onClick={() => setSelectedId(null)}
                       className="bg-[#F7F7F7] border-b border-[#E5E9F2] cursor-pointer"
                     >
                       <div className="bg-[#E3E7EC] flex justify-between px-[20px] items-center h-[64px]">
-                        <div className="text-[14px] font-[400] text-[#000000]">نام رمز ارز</div>
-                        <div className="text-[14px] font-[400] text-[#000000]">ارزش دلاری</div>
-                        <div className="text-[14px] font-[400] text-[#000000]">تغییر روزانه</div>
+                        <div className="text-[14px] font-iran-sans-regular font-[400] text-[#000000]">
+                          نام رمز ارز
+                        </div>
+                        <div className="text-[14px] font-iran-sans-regular font-[400] text-[#000000]">
+                          ارزش دلاری
+                        </div>
+                        <div className="text-[14px] font-iran-sans-regular font-[400] text-[#000000]">
+                          تغییر روزانه
+                        </div>
                       </div>
 
                       <div className="mt-[20px] px-4">
@@ -467,21 +497,21 @@ export default function CoinsPage() {
                                 className="w-8 h-8 rounded-full flex-shrink-0"
                               />
                               <div className="text-right">
-                                <div className="text-[12px] font-medium text-[#000000] leading-tight">
+                                <div className="text-[12px] font-iran-sans-medium text-[#000000] leading-tight">
                                   {row.fa_name}
                                 </div>
-                                <div className="text-[11px] mt-[5px] text-[#696464] leading-tight">
+                                <div className="text-[11px] font-iran-sans-regular mt-[5px] text-[#696464] leading-tight">
                                   {row.currency_code}
                                 </div>
                               </div>
                             </div>
                           </div>
 
-                          <div className="text-[12px] font-medium text-center text-[#000000]">
+                          <div className="text-[12px] font-number-regular text-center text-[#000000]">
                             {fmt(row.price)} $
                           </div>
                           <div
-                            className={`text-[14px] font-[400] text-center ${
+                            className={`text-[14px] font-number-regular text-center ${
                               Number(row.daily_change_percent) >= 0
                                 ? "text-green-600"
                                 : "text-red-600"
@@ -493,17 +523,17 @@ export default function CoinsPage() {
                         </div>
 
                         <div className="flex justify-between items-center mt-[23px]">
-                          <span className="text-[12px] font-[400] text-[#000000]">
-                            فروش به والت
+                          <span className="text-[12px] font-iran-sans-regular text-[#000000]">
+                            فروش به والت:{" "}
                           </span>
-                          <span className="text-[12px] font-[400] text-[#000000]">
+                          <span className="text-[12px] font-number-regular text-[#000000]">
                             {fmt(row.sell_irt_price)} تومان
                           </span>
                         </div>
 
                         <div className="flex justify-between items-center mt-[11px]">
-                          <span className="text-[12px] font-[400] text-[#000000]">
-                            خرید از والت
+                          <span className="text-[12px] font-iran-sans-regular text-[#000000]">
+                            خرید از والت: 
                           </span>
                           <span className="text-[12px] font-[400] text-[#000000]">
                             {fmt(row.buy_irt_price)} تومان
@@ -517,12 +547,11 @@ export default function CoinsPage() {
                             e.stopPropagation();
                             router.push(`/coin/${row.currency_code}`);
                           }}
-                          className="bg-[#1652F0] text-white text-[12px] font-[900] w-full h-[47px] rounded-[8px] hover:bg-[#1447D8] transition"
+                          className="bg-[#1652F0] text-white text-[12px] font-iran-sans-black w-full h-[47px] rounded-[8px] hover:bg-[#1447D8] transition"
                         >
                           معامله
                         </button>
                       </div>
-            
                     </div>
                   ) : (
                     <div
@@ -538,22 +567,22 @@ export default function CoinsPage() {
                           alt={row.currency_code}
                           className="w-8 h-8 rounded-full flex-shrink-0"
                         />
-                        <div className="text-right flex-1">
-                          <div className="text-[12px] font-medium text-[#000000] leading-tight">
+                        <div className="text-right flex-col  ">
+                          <div className="text-[12px] font-iran-sans-medium text-[#000000] leading-tight">
                             {row.fa_name}
                           </div>
-                          <div className="text-[11px] text-[#696464] leading-tight">
+                          <div className="text-[11px] mt-[5px]  font-iran-sans-regular text-[#696464] leading-tight">
                             {row.currency_code}
                           </div>
                         </div>
                       </div>
 
-                      <div className="text-[12px] text-[#000000] text-center">
+                      <div className="text-[12px] font-number-regular text-[#000000] text-center">
                         {fmt(row.price)} $
                       </div>
 
                       <div
-                        className={`text-[12px] font-[400] text-center ${
+                        className={`text-[12px] font-number-regular text-center ${
                           Number(row.daily_change_percent) >= 0
                             ? "text-green-600"
                             : "text-red-600"
@@ -571,14 +600,19 @@ export default function CoinsPage() {
         </div>
 
         <div className="flex justify-center items-center gap-2 mt-6 flex-wrap">
-          {getPaginationPages().map((page, index) => (
-            page === '...' ? (
-              <span key={`ellipsis-mobile-${index}`} className="px-1 text-gray-500 text-[12px]">...</span>
+          {getPaginationPages().map((page, index) =>
+            page === "..." ? (
+              <span
+                key={`ellipsis-mobile-${index}`}
+                className="px-1 text-gray-500 text-[12px]"
+              >
+                ...
+              </span>
             ) : (
               <button
                 key={page}
                 onClick={() => handlePageChange(page as number)}
-                className={`w-8 h-8 rounded-full flex items-center justify-center border transition text-[12px] cursor-pointer
+                className={`w-8 h-8 rounded-full font-number-regular  flex items-center justify-center border transition text-[12px] cursor-pointer
                   ${
                     currentPage === page
                       ? "bg-[#1652F0] text-white border-[#1652F0]"
@@ -588,7 +622,7 @@ export default function CoinsPage() {
                 {(page as number).toLocaleString("fa-IR")}
               </button>
             )
-          ))}
+          )}
         </div>
       </div>
     </div>

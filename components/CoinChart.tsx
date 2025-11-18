@@ -31,7 +31,7 @@ const periodLabelMap: Record<ChartPeriod, string> = {
   "1m": "۱ ماه",
   "3m": "۳ ماه",
   "1y": "۱ سال",
-  ALL: "ALL",
+  ALL: "همه",
 };
 
 const CoinChart: React.FC<CoinChartProps> = ({
@@ -85,21 +85,11 @@ const CoinChart: React.FC<CoinChartProps> = ({
   const formatDateLabel = (ts: number, period: ChartPeriod) => {
     const d = new Date(ts);
     const monthNames = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
+      "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
+      "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"
     ];
     if (period === "24h") {
-      return `${d.getHours().toString().padStart(2, '0')}:00`;
+      return `${d.getHours().toString().padStart(2, '۰')}:۰۰`;
     }
     return `${d.getDate()} ${monthNames[d.getMonth()]}`;
   };
@@ -267,10 +257,13 @@ const CoinChart: React.FC<CoinChartProps> = ({
         backgroundColor: "#fff",
         borderColor: "#e6eefb",
         borderWidth: 1,
-        textStyle: { color: "#000" },
+        textStyle: { 
+          color: "#000",
+          fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
+        },
         formatter: (params: any) => {
           const date = params && params.length ? params[0].axisValue : "";
-          const lines = [`<div style="direction:rtl;font-family:iranSans">`];
+          const lines = [`<div style="direction:rtl;  font-family:var(--font-iran-sans), 'IranSans', 'Tahoma', sans-serif">`];
           lines.push(
             `<div style="font-weight:600;margin-bottom:4px">${date}</div>`
           );
@@ -291,7 +284,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
                 " تومان";
             }
             lines.push(
-              `<div  style="display:flex;justify-content:space-between"><span>${label}</span><span style="font-weight:600">${value}</span></div>`
+              `<div style="display:flex;justify-content:space-between;gap:20px; "><span>${label}</span><span style="font-weight:600">${value}</span></div>`
             );
           });
           lines.push("</div>");
@@ -309,8 +302,8 @@ const CoinChart: React.FC<CoinChartProps> = ({
         { 
           left: 50, 
           right: 50, 
-          top: "75%", 
-          height: "20%",
+          top: "85%", 
+          height: "10%",
           backgroundColor: "#f8f8f8"
         },
       ],
@@ -324,7 +317,8 @@ const CoinChart: React.FC<CoinChartProps> = ({
           axisLabel: { 
             color: "#7b8aa6", 
             fontSize: 12,
-            interval: 'auto'
+            interval: 'auto',
+            fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
           },
           axisTick: { show: false },
         },
@@ -338,7 +332,8 @@ const CoinChart: React.FC<CoinChartProps> = ({
             show: true,
             color: "#7b8aa6",
             fontSize: 10,
-            interval: 'auto'
+            interval: 'auto',
+            fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
           },
           axisTick: { show: true },
         },
@@ -349,11 +344,16 @@ const CoinChart: React.FC<CoinChartProps> = ({
           name: "دلار",
           position: "left",
           gridIndex: 0,
-          nameTextStyle: { color: "#7b8aa6", fontSize: 12 },
+          nameTextStyle: { 
+            color: "#7b8aa6", 
+            fontSize: 12,
+            fontFamily: "var(--font-iran-sans), 'IranSans', 'Tahoma', sans-serif"
+          },
           axisLabel: {
             formatter: (v: number) =>
               v >= 1000 ? `${Math.round(v / 1000)}k` : `${v}`,
             color: "#7b8aa6",
+            fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
           },
           splitLine: { lineStyle: { color: "#f4f7fb" } },
         },
@@ -362,7 +362,11 @@ const CoinChart: React.FC<CoinChartProps> = ({
           name: "تومان",
           position: "right",
           gridIndex: 0,
-          nameTextStyle: { color: "#7b8aa6", fontSize: 12 },
+          nameTextStyle: { 
+            color: "#7b8aa6", 
+            fontSize: 12,
+            fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
+          },
           axisLabel: {
             formatter: (v: number) => {
               if (Math.abs(v) >= 1e9) return `${(v / 1e9).toFixed(1)}B`;
@@ -371,6 +375,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
               return v;
             },
             color: "#7b8aa6",
+            fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
           },
           splitLine: { show: false },
         },
@@ -378,11 +383,16 @@ const CoinChart: React.FC<CoinChartProps> = ({
           type: "value",
           gridIndex: 1,
           name: "نرخ دلار",
-          nameTextStyle: { color: "#7b8aa6", fontSize: 12 },
+          nameTextStyle: { 
+            color: "#7b8aa6", 
+            fontSize: 12,
+            fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
+          },
           axisLabel: { 
             show: true,
             color: "#7b8aa6",
             fontSize: 10,
+            fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif",
             formatter: (v: number) => {
               if (Math.abs(v) >= 1e7) return `${(v / 1e7).toFixed(1)}M`;
               if (Math.abs(v) >= 1e4) return `${(v / 1e4).toFixed(0)}K`;
@@ -395,6 +405,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
             lineStyle: { 
               color: "#f0f0f0",
               type: "dashed"
+              
             } 
           },
         },
@@ -417,14 +428,21 @@ const CoinChart: React.FC<CoinChartProps> = ({
           backgroundColor: "#f8f8f8",
           borderColor: "#e6eefb",
           fillerColor: "rgba(22,82,240,0.1)",
-          textStyle: { color: "#7b8aa6" },
+          textStyle: { 
+            color: "#7b8aa6",
+            fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
+          },
         },
       ],
       legend: {
         show: true,
         top: 10,
         itemGap: 20,
-        textStyle: { color: "#6b7280", fontSize: 12, fontFamily: "iranSans" },
+        textStyle: { 
+          color: "#6b7280", 
+          fontSize: 12, 
+          fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
+        },
         data: [
           `قیمت ${getCoinName()} (تومان)`,
           "برابری دلار (USD)",
@@ -480,6 +498,7 @@ const CoinChart: React.FC<CoinChartProps> = ({
             color: "#16A34A" 
           },
           areaStyle: {
+            
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: "rgba(22,163,74,0.16)" },
               { offset: 1, color: "rgba(22,163,74,0.02)" },
@@ -487,23 +506,25 @@ const CoinChart: React.FC<CoinChartProps> = ({
           },
         },
       ],
-      textStyle: { fontFamily: "iranSans, sans-serif" },
+      textStyle: { 
+        fontFamily: "var(--font-number-sans-regular), 'IranSans', 'Tahoma', sans-serif"
+      },
     };
   }, [data, currentSymbol]);
 
   return (
-    <div className={` bg-[#ffffff] overflow-hidden mt-[32px] md:mt-[56px] md:mx-[50px]  md:w-[calc(100%-100px)] xl:mt-[63px] xl:h-[697px] xl:mx-[150px] xl:w-[calc(100%-300px)]  rounded-[30px] mx-[19px] w-[calc(100%-38px)] shadow-[0_4px_103px_0_rgba(13,26,142,0.08)] ${className}`}>
+    <div className={`--font-number-sans-regular bg-[#ffffff] overflow-hidden mt-[32px] md:mt-[56px] md:mx-[50px] md:w-[calc(100%-100px)] xl:mt-[63px] xl:h-[697px] xl:mx-[150px] xl:w-[calc(100%-300px)] rounded-[30px] mx-[19px] w-[calc(100%-38px)] shadow-[0_4px_103px_0_rgba(13,26,142,0.08)] ${className}`}>
       <div className="">
-        <div className="flex items-center justify-start  mr-6 ">
+        <div className="flex items-center justify-start mr-6">
           <div className="text-sm text-gray-500"></div>
-          <div className="flex items-center gap-4  ">
+          <div className="flex items-center gap-4">
             {periods.map((p) => (
               <button
                 key={p}
                 onClick={() => setSelectedPeriod(p)}
-                className={`text-sm px-2 py-1 rounded-md transition-all duration-150 ${
+                className={`font-number-regular text-sm px-2 py-1 rounded-md transition-all duration-150 ${
                   selectedPeriod === p
-                    ? "text-blue-600 font-semibold underline decoration-blue-400 decoration-2"
+                    ? "text-blue-600 font-number-medium underline decoration-blue-400 decoration-2"
                     : "text-gray-400 hover:text-gray-600"
                 }`}
               >
@@ -515,13 +536,13 @@ const CoinChart: React.FC<CoinChartProps> = ({
 
         <div className="w-full">
           {isLoading ? (
-            <div className="py-20 text-center text-gray-400">
+            <div className="font-iran-sans py-20 text-center text-gray-400">
               در حال بارگذاری...
             </div>
           ) : (
             <>
               {error && (
-                <div className="mb-2 text-sm text-yellow-700 bg-yellow-50 p-2 rounded">
+                <div className="font-iran-sans mb-2 text-sm text-yellow-700 bg-yellow-50 p-2 rounded">
                   {error}
                 </div>
               )}

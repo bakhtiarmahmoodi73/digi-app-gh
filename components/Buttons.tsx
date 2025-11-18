@@ -25,7 +25,7 @@ const ButtonGroup = () => {
         <button
           key={button}
           onClick={() => handleButtonClick(button)}
-          className={`rounded-[8px] font-iranSans xl:h-[47px] xl:text-[14px] font-[400] md:h-[47px] md:text-[12px] ${
+          className={`rounded-[8px] font-iran-sans-regular xl:h-[47px] xl:text-[14px] font-[400] md:h-[47px] md:text-[12px] ${
             selectedButton === button
               ? 'bg-[#1652F0] text-[#F7F7F7]'
               : 'bg-[#F7F7F7] text-[#000000]'
