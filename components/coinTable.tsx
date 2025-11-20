@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -110,7 +108,7 @@ export default function CoinsPage() {
             </div>
           </div>
         ),
-        size: 280,
+        size: 0,
       },
       {
         accessorKey: "price",
@@ -120,7 +118,7 @@ export default function CoinsPage() {
             {fmt(row.original.price)} $
           </div>
         ),
-        size: 130,
+        size: 0,
       },
       {
         accessorKey: "daily_change_percent",
@@ -139,7 +137,7 @@ export default function CoinsPage() {
             </div>
           );
         },
-        size: 130,
+        size: 0,
       },
       {
         accessorKey: "buy_irt_price",
@@ -149,7 +147,7 @@ export default function CoinsPage() {
             {fmt(row.original.buy_irt_price)} تومان
           </div>
         ),
-        size: 150,
+        size: 0,
       },
       {
         accessorKey: "sell_irt_price",
@@ -159,7 +157,7 @@ export default function CoinsPage() {
             {fmt(row.original.sell_irt_price)} تومان
           </div>
         ),
-        size: 150,
+        size: 0,
       },
       {
         id: "actions",
@@ -213,7 +211,7 @@ export default function CoinsPage() {
             </button>
           </div>
         ),
-        size: 250,
+        size: 0,
       },
     ],
     [router, search]
@@ -246,11 +244,7 @@ export default function CoinsPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const gridClass = `
-  grid 
-  gap-x-0 gap-y-0 items-center 
-  md:grid-cols-[repeat(6,minmax(112px,1fr))]
-`;
+
 
   const mobileGridClass = `
   grid 
@@ -258,8 +252,16 @@ export default function CoinsPage() {
   grid-cols-[minmax(120px,1fr)_minmax(80px,1fr)_minmax(80px,1fr)]
 `;
 
+  const desktopGridClass = `
+    grid grid-cols-6 gap-0 items-center
+    xl:grid-cols-[minmax(130px,1fr)_minmax(130px,1fr)_minmax(130px,1fr)_minmax(150px,1fr)_minmax(150px,1fr)_minmax(244px,1fr)]
+  `;
+
   const getPaginationPages = () => {
     const pages = [];
+    if (totalPages <= 1) {
+      return [];
+    }
 
     pages.push(1);
 
@@ -286,33 +288,27 @@ export default function CoinsPage() {
   };
 
   return (
-    <div className="  flex flex-col items-center     xl:w-[calc(100%-300px) w-full ">
-      <div className="hidden md:block  md:w-full ">
-        <div
-          className={` bg-[#E3E7EC] border rounded-[8px] md:h-[70px]  xl:h-[90px] 
-
-    ${gridClass}
-
-      text-[#000000] font-[400]  xl:w-[calc(100%-300px) xl:mx-[150px] `}
-        >
-          <div className=" text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] md:mr-[30px] xl:mr-0 xl:text-center">
+    <div className="  flex flex-col items-center xl:w-[calc(100%-300px) w-full ">
+      
+      <div className="hidden md:block md:w-full">
+        <div className={`${desktopGridClass} bg-[#E3E7EC] border rounded-[8px] md:h-[70px] xl:h-[90px] text-[rgb(0,0,0)] font-[400]  xl:w-[calc(100%-300px) xl:mx-[150px]`}>
+          <div className="flex  justify-center text-[14px] xl:text-[16px] font-iran-sans-regular ">
             نام رمز ارز
           </div>
-          <div className="text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] text-center">
+          <div className="flex items-center justify-center text-[14px] xl:text-[16px] font-iran-sans-regular">
             ارزش دلاری
           </div>
-          <div className="text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] text-center">
+          <div className="flex items-center justify-center text-[14px] xl:text-[16px] font-iran-sans-regular">
             تغییر روزانه
           </div>
-          <div className="text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] text-center">
+          <div className="flex items-center justify-center text-[14px] xl:text-[16px] font-iran-sans-regular">
             خرید از والت
           </div>
-          <div className="text-[#000000] font-iran-sans-regular md:text-[14px] xl:text-[16px] text-center">
+          <div className="flex items-center justify-center text-[14px] xl:text-[16px] font-iran-sans-regular">
             فروش به والت
           </div>
-
-          <div className="flex md:ml-[14px]">
-            <div className="flex items-center  bg-white border rounded-[8px] md:h-[47px]  xl:h-[63px] px-3 xl:w-[244px] ">
+          <div className="flex items-center justify-center xl:mb-[10px] md:ml-[14px] xl:ml-[8px]">
+            <div className="flex items-center bg-white border rounded-[8px] md:h-[47px] xl:h-[63px] px-3 w-full xl:w-[244px] ">
               <svg
                 className="w-4 h-4 text-gray-400 ml-2 flex-shrink-0"
                 viewBox="0 0 24 24"
@@ -342,12 +338,13 @@ export default function CoinsPage() {
                 onChange={(e) => {
                   setSearch(e.target.value);
                 }}
-                className="outline-none font-iran-sans-regular md:text-[12px] w-full placeholder-gray-400 bg-transparent"
+                className="outline-none text-[13px] w-full placeholder-gray-400 bg-transparent"
               />
             </div>
           </div>
         </div>
 
+        {/* بدنه با 6 ستون */}
         <div className="bg-white   border border-[#F7F7F7]  xl:w-[calc(100%-300px) xl:mx-[150px]">
           {isLoading ? (
             <div className="text-center py-12 text-gray-500">
@@ -364,16 +361,12 @@ export default function CoinsPage() {
               <div
                 key={row.id}
                 onClick={() => onClickRow(row.id)}
-                className={`md:h-[81px]  xl:pr-[26px] xl:h-[97px] transition cursor-pointer border-b border-[#E5E9F2] 
-                  ${gridClass}
+                className={`${desktopGridClass} md:h-[81px] xl:h-[97px] transition cursor-pointer border-b border-[#E5E9F2] 
                   ${index % 2 === 0 ? "bg-[#F7F7F7]" : "bg-[#FFFFFF]"}
-                  ${
-                    selectedId === row.id
-                      ? "border-2 border-blue-400 shadow-md bg-blue-50"
-                      : ""
-                  }`}
+                  ${selectedId === row.id ? "border-2 border-blue-400 shadow-md bg-blue-50" : ""}
+                `}
               >
-                <div className="flex  items-center md:gap-[6px] text-center md:mr-[11px] ">
+                <div className="flex items-center gap-3 md:mr-[11px] xl:mr-[26px]">
                   <img
                     src={row.icon}
                     alt={row.currency_code}
@@ -389,36 +382,44 @@ export default function CoinsPage() {
                   </div>
                 </div>
 
-                <div className="md:text-[12px] font-number-regular text-[#000000] xl:pl-10 text-center ">
-                  {fmt(row.price)} $
+                <div className="flex items-center justify-center">
+                  <div className="md:text-[12px] font-number-regular text-[#000000]">
+                    {fmt(row.price)} $
+                  </div>
                 </div>
 
-                <div
-                  className={`md:text-[12px] font-number-regular text-center xl:pl-5 ${
-                    Number(row.daily_change_percent) >= 0
-                      ? "text-green-600"
-                      : "text-red-600"
-                  }`}
-                >
-                  {Number(row.daily_change_percent) >= 0 ? "+" : ""}
-                  {row.daily_change_percent}٪
+                <div className="flex items-center justify-center">
+                  <div
+                    className={`md:text-[12px] font-number-regular text-center ${
+                      Number(row.daily_change_percent) >= 0
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }`}
+                  >
+                    {Number(row.daily_change_percent) >= 0 ? "+" : ""}
+                    {row.daily_change_percent}٪
+                  </div>
                 </div>
 
-                <div className="md:text-[12px] font-number-regular text-[#000000] text-center   xl:pl-5">
-                  {fmt(row.buy_irt_price)} تومان
+                <div className="flex items-center justify-center">
+                  <div className="md:text-[12px] font-number-regular text-[#000000] text-center">
+                    {fmt(row.buy_irt_price)} تومان
+                  </div>
                 </div>
 
-                <div className="md:text-[12px] font-number-regular  text-[#000000] text-center  xl:pl-5">
-                  {fmt(row.sell_irt_price)} تومان
+                <div className="flex items-center justify-center">
+                  <div className="md:text-[12px] font-number-regular text-center text-[#000000]">
+                    {fmt(row.sell_irt_price)} تومان
+                  </div>
                 </div>
 
-                <div className="flex justify-center md:ml-[14px]">
+                <div className="flex items-center justify-center">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       router.push(`/coin/${row.currency_code}`);
                     }}
-                    className="bg-[#1652F0] text-[#EEF2F5] md:text-[14px] font-iran-sans-black rounded-[8px] hover:bg-[#1447D8] transition whitespace-nowrap md:w-[130px] md:h-[47px]"
+                    className="bg-[#1652F0] text-[#EEF2F5] md:text-[14px] font-iran-sans-black rounded-[8px] hover:bg-[#1447D8] transition whitespace-nowrap md:w-[120px] md:h-[47px] xl:w-[130px]"
                   >
                     معامله
                   </button>
@@ -438,7 +439,7 @@ export default function CoinsPage() {
               <button
                 key={page}
                 onClick={() => handlePageChange(page as number)}
-                className={`w-[31px] font-number-regular h-[31px] rounded-full flex items-center justify-center  transition cursor-pointer relative z-50
+                className={`w-[31px] font-number-regular h-[31px] rounded-full flex items-center justify-center transition cursor-pointer relative z-50
                   ${
                     currentPage === page
                       ? "bg-[#1652F0] text-white border-[#1652F0]"
@@ -533,9 +534,9 @@ export default function CoinsPage() {
 
                         <div className="flex justify-between items-center mt-[11px]">
                           <span className="text-[12px] font-iran-sans-regular text-[#000000]">
-                            خرید از والت: 
+                            خرید از والت:
                           </span>
-                          <span className="text-[12px] font-[400] text-[#000000]">
+                          <span className="text-[12px] font-iran-sans-regular text-[#000000]">
                             {fmt(row.buy_irt_price)} تومان
                           </span>
                         </div>
@@ -567,11 +568,11 @@ export default function CoinsPage() {
                           alt={row.currency_code}
                           className="w-8 h-8 rounded-full flex-shrink-0"
                         />
-                        <div className="text-right flex-col  ">
+                        <div className="text-right flex-col">
                           <div className="text-[12px] font-iran-sans-medium text-[#000000] leading-tight">
                             {row.fa_name}
                           </div>
-                          <div className="text-[11px] mt-[5px]  font-iran-sans-regular text-[#696464] leading-tight">
+                          <div className="text-[11px] mt-[5px] font-iran-sans-regular text-[#696464] leading-tight">
                             {row.currency_code}
                           </div>
                         </div>
@@ -612,7 +613,7 @@ export default function CoinsPage() {
               <button
                 key={page}
                 onClick={() => handlePageChange(page as number)}
-                className={`w-8 h-8 rounded-full font-number-regular  flex items-center justify-center border transition text-[12px] cursor-pointer
+                className={`w-8 h-8 rounded-full font-number-regular flex items-center justify-center border transition text-[12px] cursor-pointer
                   ${
                     currentPage === page
                       ? "bg-[#1652F0] text-white border-[#1652F0]"

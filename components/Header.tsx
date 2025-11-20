@@ -4,7 +4,9 @@ import Image from "next/image";
 
 function Header() {
   return (
-    <nav className="mx-auto flex items-center justify-between  bg-navbar h-[64px]   md:h-[92px] xl:h-[104px]   max-w-[1440px] ">
+    <div className="w-full bg-navbar">
+    <nav className="mx-auto flex items-center justify-between   h-[64px]   md:h-[92px] xl:h-[104px]   max-w-[1440px] ">
+      
       <div className="flex">
         <Image
           src="/images/Group 405 (1).png"
@@ -74,6 +76,7 @@ function Header() {
         </div>
       </div>
     </nav>
+    </div>
   );
 }
 

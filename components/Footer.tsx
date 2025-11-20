@@ -5,7 +5,8 @@ import Image from "next/image";
 
 function Footer() {
   return (
-    <footer className=" mx-auto overflow-x-hidden w-full h-[579px]  bg-[#1B2A4E] md:h-[357px] xl:h-[402px] xl:max-w-[1440px] ">
+    <div className="bg-[#1B2A4E]">
+    <footer className=" mx-auto overflow-x-hidden w-full h-[579px]   md:h-[357px] xl:h-[402px] xl:max-w-[1440px] ">
       <div className="flex flex-col mx-auto md:flex-row md:gap-[34px] md:mx-0 md:mr-[18px] 2xl:gap-[38px]  xl:mx-[150px]">
         <div className="flex flex-col mt-[56px]  mx-[18px] gap-[16px] md:gap-[23px]  md:mx-0 md:mt-[52px] xl:gap-[14px] xl:mt-[44px]  xl:w-[352px] xl:h-[228px] ">
           <Image
@@ -209,6 +210,7 @@ function Footer() {
         </div>
       </div>
     </footer>
+    </div>
   );
 }
 
