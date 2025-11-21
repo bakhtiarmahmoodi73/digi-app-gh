@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 import CoinChart from "../../../components/CoinChart";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-
+import Accordion from "@/components/CollapseDetailsA";
+import AccordionB from "@/components/CollapseDetailsB"
+import AccordionC from "@/components/CollapseDetailsC";
 type Coin = {
   id: number;
   currency_code: string;
@@ -427,29 +429,12 @@ export default function CoinDetailsPage() {
         </p>
       </div>
 
-      <div className="  h-[225px]  rounded-[15px] border-[1px] border-[#F1F1F1] mx-[20px] mt-[31px] md:mt-[49px] md:mx-[50px] xl:mx-[150px]  ">
-        <div className="flex items-center justify-between mx-[20px] mt-[19px] md:mt-[40px] md:mr-[27px] md:ml-[17px] xl:mr-[49px] xl:ml-[29px] ">
-          <p className="  font-iran-sans-medium text-[#000000]  text-[16px] leading-[25.04px] md:text-[18px] ">
-            رمز ارز چیست؟
-          </p>
-          <Image
-            src="/images/Frame.svg"
-            alt="frame"
-            width={1}
-            height={1}
-            className=" w-[16px] h-[16px] md:w-[24px] md:h-[24px] text-[#000000]  rotate-[180deg] "
-          />
-        </div>
-        <p className="  font-iran-sans-regular text-[#000000]  text-[12px] leading-[24px] mt-[19px] mx-[20px] md:text-[14px] xl:text-[16px] md:mt-[28px]  md:mr-[27px] md:ml-[17px] xl:mr-[49px] xl:ml-[29px]">
-          لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی آزمایشی و
-          بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح
-          گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و
-          ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا
-          از نظر گرافی ...
-        </p>
-      </div>
+      <Accordion />
 
-      <div className=" flex justify-between items-center mx-[20px] mt-[18px] px-[21px] h-[50px] md:h-[70px] md:mt-[24px] md:mx-[50px] md:px-[26px] xl:h-[88px] xl:mt-[15px] xl:px-[49px] xl:mx-[150px]  rounded-[15px] border-[1px] border-[#F1F1F1]   ">
+
+
+
+      {/* <div className=" flex justify-between items-center mx-[20px] mt-[18px] px-[21px] h-[50px] md:h-[70px] md:mt-[24px] md:mx-[50px] md:px-[26px] xl:h-[88px] xl:mt-[15px] xl:px-[49px] xl:mx-[150px]  rounded-[15px] border-[1px] border-[#F1F1F1]   ">
         <p className="  xl:text-[18px] md:text-[14px] font-iran-sans-regular text-[#000000] text-[12px] leading-[18.78px] ">
           آیا می توانم با کارت بانکی بیت کوین بخرم؟
         </p>
@@ -460,8 +445,11 @@ export default function CoinDetailsPage() {
           height={1}
           className=" w-[16px] h-[16px] text-[#000000] rotate-[-0deg] md:w-[24px] md:h-[24px] "
         />
-      </div>
-      <div className="flex justify-between items-center mx-[20px] mt-[18px] px-[21px]  h-[50px] md:h-[70px] md:mt-[24px] md:mx-[50px] md:px-[26px] xl:h-[88px] xl:mt-[15px] xl:px-[49px] xl:mx-[150px] rounded-[15px] border-[1px] border-[#F1F1F1]  ">
+      </div> */}
+      <AccordionB />
+
+
+      {/* <div className="flex justify-between items-center mx-[20px] mt-[18px] px-[21px]  h-[50px] md:h-[70px] md:mt-[24px] md:mx-[50px] md:px-[26px] xl:h-[88px] xl:mt-[15px] xl:px-[49px] xl:mx-[150px] rounded-[15px] border-[1px] border-[#F1F1F1]  ">
         <p className="  xl:text-[18px]  md:text-[14px] font-iran-sans-regular text-[#000000]  text-[12px] leading-[18.78px]  ">
           چرا باید از والت استفاده کنم؟
         </p>
@@ -472,7 +460,10 @@ export default function CoinDetailsPage() {
           height={1}
           className=" w-[16px] h-[16px] text-[#000000]  rotate-[-0deg] md:w-[24px] md:h-[24px] "
         />
-      </div>
+      </div> */}
+
+       <AccordionC />
+
 
       <div className="flex flex-col xl:mt-[58px] xl:mx-[150px] xl:gap-[38px] md:mt-[53px] md:mx-[50px] md:flex-row-reverse md:gap-[29px] gap-[24px] mt-[38px] mx-[20px] h-[454px]  rounded-[15px] bg-[#F8F9FA]  md:h-[294px] xl:h-[366px]  ">
         <div className="flex flex-col gap-[17px] md:gap-[26px] xl:gap-[43px] xl ">
