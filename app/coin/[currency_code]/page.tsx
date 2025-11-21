@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Accordion from "@/components/CollapseDetailsA";
 import AccordionC from "@/components/CollapseDetailsC";
-import AccordionB from "@/components/CollapseDetailsB";
+import Accordionb from "@/components/CollapseDetailsB";
 type Coin = {
   id: number;
   currency_code: string;
@@ -446,7 +446,7 @@ export default function CoinDetailsPage() {
           className=" w-[16px] h-[16px] text-[#000000] rotate-[-0deg] md:w-[24px] md:h-[24px] "
         />
       </div> */}
-      <AccordionB />
+      <Accordionb />
 
 
       {/* <div className="flex justify-between items-center mx-[20px] mt-[18px] px-[21px]  h-[50px] md:h-[70px] md:mt-[24px] md:mx-[50px] md:px-[26px] xl:h-[88px] xl:mt-[15px] xl:px-[49px] xl:mx-[150px] rounded-[15px] border-[1px] border-[#F1F1F1]  ">

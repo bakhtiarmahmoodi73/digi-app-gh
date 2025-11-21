@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const AccordionB = () => {
+const Accordionb = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
@@ -47,4 +47,4 @@ const AccordionB = () => {
   );
 };
 
-export default AccordionB;
+export default Accordionb;
