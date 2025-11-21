@@ -7,8 +7,8 @@ import CoinChart from "../../../components/CoinChart";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Accordion from "@/components/CollapseDetailsA";
-import AccordionB from "@/components/CollapseDetailsB"
 import AccordionC from "@/components/CollapseDetailsC";
+import AccordionB from "@/components/CollapseDetailsB";
 type Coin = {
   id: number;
   currency_code: string;
