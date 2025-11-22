@@ -54,7 +54,6 @@ const CoinChart: React.FC<CoinChartProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [currentSymbol, setCurrentSymbol] = useState<string>(symbol || "BTC");
 
-  // Get coin symbol from URL path
   useEffect(() => {
     const getSymbolFromURL = () => {
       if (symbol) return symbol;
@@ -62,20 +61,18 @@ const CoinChart: React.FC<CoinChartProps> = ({
       const pathname = window.location.pathname;
       const pathParts = pathname.split('/').filter(part => part.trim() !== '');
       
-      // Assuming URL structure like /coin/btc or /currency/sol etc.
       const possibleSymbol = pathParts[pathParts.length - 1];
       if (possibleSymbol && possibleSymbol.length <= 10) {
         return possibleSymbol.toUpperCase();
       }
       
-      return "BTC"; // fallback
+      return "BTC";
     };
 
     const newSymbol = getSymbolFromURL();
     setCurrentSymbol(newSymbol);
   }, [symbol]);
 
-  // Ensure selectedPeriod is always valid
   useEffect(() => {
     if (!periods.includes(selectedPeriod)) {
       setSelectedPeriod("24h");
@@ -244,7 +241,6 @@ const CoinChart: React.FC<CoinChartProps> = ({
     const usdSeries = data.map((d) => d.price_usd);
     const rateSeries = data.map((d) => d.dollar_rate);
 
-    // Get coin name for chart title
     const getCoinName = () => {
       return currentSymbol;
     };

@@ -75,12 +75,7 @@ export default function CoinsPage() {
     }
   }, [search]);
 
-  const fmt = (v: string | number | undefined | null) => {
-    if (v === undefined || v === null || v === "") return "-";
-    const n = Number(v);
-    if (Number.isNaN(n)) return String(v);
-    return n.toLocaleString("fa-IR");
-  };
+ 
 
   const displayData = useMemo(() => {
     return data;
@@ -115,7 +110,7 @@ export default function CoinsPage() {
         header: () => <div className=" ">ارزش دلاری</div>,
         cell: ({ row }) => (
           <div className="text-[16px] text-[#000000]">
-            {fmt(row.original.price)} $
+            {row.original.price} $
           </div>
         ),
         size: 0,
@@ -144,7 +139,7 @@ export default function CoinsPage() {
         header: () => <div className="">خرید از والت</div>,
         cell: ({ row }) => (
           <div className="text-[16px] text-[#000000] ">
-            {fmt(row.original.buy_irt_price)} تومان
+            {row.original.buy_irt_price} تومان
           </div>
         ),
         size: 0,
@@ -154,7 +149,7 @@ export default function CoinsPage() {
         header: () => <div className="">فروش به والت</div>,
         cell: ({ row }) => (
           <div className="text-[16px] text-[#000000] ">
-            {fmt(row.original.sell_irt_price)} تومان
+            {row.original.sell_irt_price} تومان
           </div>
         ),
         size: 0,
@@ -344,7 +339,6 @@ export default function CoinsPage() {
           </div>
         </div>
 
-        {/* بدنه با 6 ستون */}
         <div className="bg-white   border border-[#F7F7F7]  xl:w-[calc(100%-300px) xl:mx-[150px]">
           {isLoading ? (
             <div className="text-center py-12 text-gray-500">
@@ -384,7 +378,7 @@ export default function CoinsPage() {
 
                 <div className="flex items-center justify-center">
                   <div className="md:text-[12px] font-number-regular text-[#000000]">
-                    {fmt(row.price)} $
+                    {row.price} $
                   </div>
                 </div>
 
@@ -403,13 +397,13 @@ export default function CoinsPage() {
 
                 <div className="flex items-center justify-center">
                   <div className="md:text-[12px] font-number-regular text-[#000000] text-center">
-                    {fmt(row.buy_irt_price)} تومان
+                    {row.buy_irt_price} تومان
                   </div>
                 </div>
 
                 <div className="flex items-center justify-center">
                   <div className="md:text-[12px] font-number-regular text-center text-[#000000]">
-                    {fmt(row.sell_irt_price)} تومان
+                    {row.sell_irt_price} تومان
                   </div>
                 </div>
 
@@ -509,7 +503,7 @@ export default function CoinsPage() {
                           </div>
 
                           <div className="text-[12px] font-number-regular text-center text-[#000000]">
-                            {fmt(row.price)} $
+                            {row.price} $
                           </div>
                           <div
                             className={`text-[14px] font-number-regular text-center ${
@@ -528,7 +522,7 @@ export default function CoinsPage() {
                             فروش به والت:{" "}
                           </span>
                           <span className="text-[12px] font-number-regular text-[#000000]">
-                            {fmt(row.sell_irt_price)} تومان
+                            {row.sell_irt_price} تومان
                           </span>
                         </div>
 
@@ -537,7 +531,7 @@ export default function CoinsPage() {
                             خرید از والت:
                           </span>
                           <span className="text-[12px] font-iran-sans-regular text-[#000000]">
-                            {fmt(row.buy_irt_price)} تومان
+                            {row.buy_irt_price} تومان
                           </span>
                         </div>
                       </div>
@@ -579,7 +573,7 @@ export default function CoinsPage() {
                       </div>
 
                       <div className="text-[12px] font-number-regular text-[#000000] text-center">
-                        {fmt(row.price)} $
+                        {row.price} $
                       </div>
 
                       <div
@@ -617,7 +611,7 @@ export default function CoinsPage() {
                   ${
                     currentPage === page
                       ? "bg-[#1652F0] text-white border-[#1652F0]"
-                      : "bg-white text-gray-600 border-[#E2E8F0] hover:bg-gray-100"
+                      : "bg-[#EEF2F5] text-[#000000] border-[#E2E8F0] hover:bg-gray-100"
                   }`}
               >
                 {(page as number).toLocaleString("fa-IR")}
