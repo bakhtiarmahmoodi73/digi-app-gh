@@ -75,8 +75,6 @@ export default function CoinsPage() {
     }
   }, [search]);
 
- 
-
   const displayData = useMemo(() => {
     return data;
   }, [data]);
@@ -239,8 +237,6 @@ export default function CoinsPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-
-
   const mobileGridClass = `
   grid 
   gap-x-0 gap-y-0 items-center 
@@ -284,9 +280,10 @@ export default function CoinsPage() {
 
   return (
     <div className="  flex flex-col items-center xl:w-[calc(100%-300px) w-full ">
-      
       <div className="hidden md:block md:w-full">
-        <div className={`${desktopGridClass} bg-[#E3E7EC] border rounded-[8px] md:h-[70px] xl:h-[90px] text-[rgb(0,0,0)] font-[400]  xl:w-[calc(100%-300px) xl:mx-[150px]`}>
+        <div
+          className={`${desktopGridClass} bg-[#E3E7EC] border rounded-[8px] md:h-[70px] xl:h-[90px] text-[rgb(0,0,0)] font-[400]  xl:w-[calc(100%-300px) xl:mx-[150px]`}
+        >
           <div className="flex  justify-center text-[14px] xl:text-[16px] font-iran-sans-regular ">
             نام رمز ارز
           </div>
@@ -357,7 +354,11 @@ export default function CoinsPage() {
                 onClick={() => onClickRow(row.id)}
                 className={`${desktopGridClass} md:h-[81px] xl:h-[97px] transition cursor-pointer border-b border-[#E5E9F2] 
                   ${index % 2 === 0 ? "bg-[#F7F7F7]" : "bg-[#FFFFFF]"}
-                  ${selectedId === row.id ? "border-2 border-blue-400 shadow-md bg-blue-50" : ""}
+                  ${
+                    selectedId === row.id
+                      ? "border-2 border-blue-400 shadow-md bg-blue-50"
+                      : ""
+                  }
                 `}
               >
                 <div className="flex items-center gap-3 md:mr-[11px] xl:mr-[26px]">
@@ -530,7 +531,7 @@ export default function CoinsPage() {
                           <span className="text-[12px] font-iran-sans-regular text-[#000000]">
                             خرید از والت:
                           </span>
-                          <span className="text-[12px] font-iran-sans-regular text-[#000000]">
+                          <span className="text-[12px] font-number-regular text-[#000000]">
                             {row.buy_irt_price} تومان
                           </span>
                         </div>
