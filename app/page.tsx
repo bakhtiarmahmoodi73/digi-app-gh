@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import CoinTable from "../components/coinTable";
-import DropDown from "@/components/DropdownButtons";
+import DropDown from "@/components/Dropdown";
 
 export default function Home() {
   return (
