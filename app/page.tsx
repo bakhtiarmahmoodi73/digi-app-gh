@@ -2,31 +2,19 @@
 
 import Image from "next/image";
 import CoinTable from "../components/coinTable";
-import ButtonGroup from "@/components/Buttons";
+import DropDownButtons from "@/components/DropdownButtons";
 
 export default function Home() {
   return (
     <div className=" mx-auto  overflow-x-hidden mb-[55px] xl:mt-[0px] md:mb-0 flex flex-col max-w-[1440px] ">
       <div className="mx-auto xl:mx-auto xl:mt-[96px] md:mt-[61px] ">
-        <p className="xl:text-[40px] md:text-[30px] leading-[100%] font-iran-sans-black text-[20px]  text-[#000000] mt-[50px] mx-auto ">
+        <p className="xl:text-[40px] md:text-[30px] leading-[100%] font-iran-sans-black text-xl  text-[#000000] mt-[50px] mx-auto ">
           لیست قیمت لحظه‌ای ارزهای دیجیتال‌
         </p>
       </div>
 
-      <div className="mt-[32px] mx-[20px] md:hidden">
-        <button className="flex items-center justify-between rounded-[8px] w-full h-[47px] font-iran-sans-black text-[12px] font-iranSans text-[#F7F7F7] bg-[#1652F0] xl:w-[130px] xl:h-[47px]  xl:text-[14px]  md:w-[85px] md:h-[47px]  md:text-[12px] ">
-          <span className="mr-[28px]">دیفای</span>
-          <Image
-            src="/images/Frame (1).png"
-            alt="frame"
-            width={40}
-            height={60}
-            className="w-[24px] ml-[18px] invert brightness-0 md:hidden"
-          />
-        </button>
-      </div>
+      <DropDownButtons />
 
-      <ButtonGroup />
 
       <div className="mt-[12px] mx-[20px]  xl:mt-[41px] xl:mx-0 xl:h-[982px] md:mt-[15px] md:mx-[50px] ">
         <CoinTable />
