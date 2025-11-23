@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import CoinTable from "../components/coinTable";
-import DropDownButtons from "@/components/DropdownButtons";
+import DropDown from "@/components/DropdownButtons";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
         </p>
       </div>
 
-      <DropDownButtons />
+      <DropDown />
 
 
       <div className="mt-[12px] mx-[20px]  xl:mt-[41px] xl:mx-0 xl:h-[982px] md:mt-[15px] md:mx-[50px] ">

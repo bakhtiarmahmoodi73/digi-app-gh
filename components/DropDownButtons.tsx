@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const DropDownButtons = () => {
+const DropDown = () => {
   const [selectedButton, setSelectedButton] = useState<string>('دیفای');
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -98,4 +98,4 @@ const DropDownButtons = () => {
   );
 };
 
-export default DropDownButtons;
+export default DropDown;
